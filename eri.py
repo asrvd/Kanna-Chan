@@ -33,7 +33,7 @@ async def help(ctx):
     )
     h.add_field(
       name="__COMMANDS__",
-      value=f"`love` Eri sends love to the person.\n`thank` Eri thanks the person.\n`pat` pat any person.\n`think` Eri thinks.\n`hug` Eri hugs the person.\n`dance` Eri dances with the person.\n`befriend` Eri befriends the person.\n`say` Eri says what you want her to say.\n`arz` Eri sends a shayari for you.",
+      value=f"`love` Eri sends love to the person.\n`thank` Eri thanks the person.\n`pat` pat any person.\n`think` Eri thinks.\n`amazed` Eri is amazed woah..\n`hug` Eri hugs the person.\n`dance` Eri dances with the person.\n`befriend` Eri befriends the person.\n`say` Eri says what you want her to say.\n`arz` Eri sends a shayari for you.",
       inline=False
     )
     h.add_field(
@@ -94,6 +94,12 @@ async def hug(ctx, mem: discord.User = None):
 async def think(ctx):
   emb = discord.Embed(title="", description=f"Eri thinks hmmm..", color=0x2e69f2)
   emb.set_image(url="https://media.tenor.com/images/15861461cdbe63aa8385792ad9cea02b/tenor.gif")
+  await ctx.send(embed=emb)
+  
+@client.command()
+async def amazed(ctx):
+  emb = discord.Embed(title="", description=f"Eri is amazed woah..", color=0x2e69f2)
+  emb.set_image(url="https://media.tenor.com/images/4f2493534399529a6104997f3540af0e/tenor.gif")
   await ctx.send(embed=emb)
 
 @client.command()
