@@ -64,7 +64,7 @@ async def games(ctx):
   )
   emb.add_field(
     name="__LOTTERY__",
-    value="Start a game of lattery using eri. You will have to send three random numbers between 0 to 5 with space in between like `t.lottery 1 3 4`.",
+    value="Start a game of lattery using eri. You will have to send three random numbers between 0 to 5 with space in between like `eri lottery 1 3 4`.",
     inline="False"
   )
   emb.add_field(
