@@ -33,7 +33,7 @@ async def help(ctx):
     )
     h.add_field(
       name="__COMMANDS__",
-      value=f"`love` Eri sends love to the person.\n`thank` Eri thanks the person.\n`befriend` Eri befriends the person.\n`say` Eri says what you want her to say.\n`arz` Eri sends a shayari for you.",
+      value=f"`love` Eri sends love to the person.\n`thank` Eri thanks the person.\n`pat` pat any person.\n`befriend` Eri befriends the person.\n`say` Eri says what you want her to say.\n`arz` Eri sends a shayari for you.",
       inline=False
     )
     h.add_field(
@@ -74,7 +74,14 @@ async def games(ctx):
   )
   await ctx.send(embed=emb)
 
-
+@client.command()
+async def pat(ctx, mem: discord.User = None):
+    if mem == None:
+        mem = ctx.author
+    emb = discord.Embed(title="", description=f"{ctx.author.mention} pats {mem.mention} uwu", color=0x2e69f2)
+    emb.set_image(url="https://cdn.discordapp.com/attachments/785024897863647285/857923132387229717/8989d41a8b3c1246d3caa4fcdba7a54c.gif")
+    await ctx.send(embed=emb)
+  
 @client.command()
 async def love(ctx, mem: discord.User = None):
     if mem == None:
@@ -88,7 +95,7 @@ async def thank(ctx, mem: discord.User = None):
     if mem == None:
         mem = ctx.author
     emb = discord.Embed(title="", description=f"Arigatou {mem.mention} :)", color=0x2e69f2)
-    emb.set_image(url="https://i.pinimg.com/564x/11/34/c6/1134c617f1e64a46364ff606b1c917a8.jpg")
+    emb.set_image(url="https://tenor.com/view/eri-from-mha-eri-eri-chan-thanks-thank-you-gif-21993724")
     await ctx.send(embed=emb)
 
 
