@@ -123,8 +123,9 @@ async def thank(ctx, mem: discord.User = None):
     if mem == None:
         mem = ctx.author
     emb = discord.Embed(title="", description=f"Arigatou {mem.mention} :)", color=0x2e69f2)
-    emb.set_image(url="https://media.tenor.co/videos/6c232f0b282cb156f08b49539ad0ca56/mp4")
-    await ctx.send(embed=emb)
+    file = discord.File("images/eri_thank.gif", filename="thank.gif")
+    emb.set_image(url="attachment://thank.gif")
+    await ctx.send(file=file, embed=emb)
 
 
 @client.command()
