@@ -33,7 +33,7 @@ async def help(ctx):
     )
     h.add_field(
       name="__COMMANDS__",
-      value=f"`love` Eri sends love to the person.\n`thank` Eri thanks the person.\n`pat` pat any person.\n`befriend` Eri befriends the person.\n`say` Eri says what you want her to say.\n`arz` Eri sends a shayari for you.",
+      value=f"`love` Eri sends love to the person.\n`thank` Eri thanks the person.\n`pat` pat any person.\n`think` Eri thinks.\n`hug` Eri hugs the person.\n`dance` Eri dances with the person.\n`befriend` Eri befriends the person.\n`say` Eri says what you want her to say.\n`arz` Eri sends a shayari for you.",
       inline=False
     )
     h.add_field(
@@ -72,6 +72,28 @@ async def games(ctx):
     value="Ship two people, cus why not? Command: `eri ship`",
     inline="False"
   )
+  await ctx.send(embed=emb)
+  
+@client.command()
+async def dance(ctx, mem: discord.User = None):
+  if mem == None:
+      mem = ctx.author
+  emb = discord.Embed(title="", description=f"Eri dances with {ctx.author.mention} uwu", color=0x2e69f2)
+  emb.set_image(url="https://tenor.com/view/eri-gif-18152120")
+  await ctx.send(embed=emb)
+ 
+@client.command()
+async def hug(ctx, mem: discord.User = None):
+    if mem == None:
+        mem = ctx.author
+    emb = discord.Embed(title="", description=f"Eri hugs {mem.mention} uwu", color=0x2e69f2)
+    emb.set_image(url="https://tenor.com/view/anime-my-hero-academia-gif-18710284")
+    await ctx.send(embed=emb)
+
+@client.command()
+async def think(ctx):
+  emb = discord.Embed(title="", description=f"Eri thinks hmmm..", color=0x2e69f2)
+  emb.set_image(url="https://media.tenor.com/images/15861461cdbe63aa8385792ad9cea02b/tenor.gif")
   await ctx.send(embed=emb)
 
 @client.command()
