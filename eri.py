@@ -79,7 +79,7 @@ async def dance(ctx, mem: discord.User = None):
   if mem == None:
       mem = ctx.author
   emb = discord.Embed(title="", description=f"Eri dances with {ctx.author.mention} uwu", color=0x2e69f2)
-  emb.set_image(url="https://media.tenor.com/images/81ad31ff1400c71da0b78ced7995ed19/tenor.gif")
+  emb.set_image(url="https://media.tenor.co/videos/1e1e3ef28d96f63a5c1a528f4d89fadf/mp4")
   await ctx.send(embed=emb)
  
 @client.command()
@@ -123,7 +123,7 @@ async def thank(ctx, mem: discord.User = None):
     if mem == None:
         mem = ctx.author
     emb = discord.Embed(title="", description=f"Arigatou {mem.mention} :)", color=0x2e69f2)
-    emb.set_image(url="https://media.tenor.com/images/a4069925c432ee267b656ca1c3f5d87f/tenor.gif")
+    emb.set_image(url="https://media.tenor.co/videos/6c232f0b282cb156f08b49539ad0ca56/mp4")
     await ctx.send(embed=emb)
 
 
