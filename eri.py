@@ -99,7 +99,7 @@ async def think(ctx):
 @client.command()
 async def amazed(ctx):
   emb = discord.Embed(title="", description=f"Eri is amazed woah..", color=0x2e69f2)
-  emb.set_image(url="https://media.tenor.com/images/4f2493534399529a6104997f3540af0e/tenor.gif")
+  emb.set_image(url="https://pa1.narvii.com/7582/7ed86b1e2bc7270ba78a2ff8f4bdeb9aa59c776cr1-498-331_hq.gif")
   await ctx.send(embed=emb)
 
 @client.command()
