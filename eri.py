@@ -79,7 +79,7 @@ async def dance(ctx, mem: discord.User = None):
   if mem == None:
       mem = ctx.author
   emb = discord.Embed(title="", description=f"Eri dances with {ctx.author.mention} uwu", color=0x2e69f2)
-  emb.set_image(url="https://tenor.com/view/eri-gif-18152120")
+  emb.set_image(url="https://media.tenor.com/images/81ad31ff1400c71da0b78ced7995ed19/tenor.gif")
   await ctx.send(embed=emb)
  
 @client.command()
@@ -87,7 +87,7 @@ async def hug(ctx, mem: discord.User = None):
     if mem == None:
         mem = ctx.author
     emb = discord.Embed(title="", description=f"Eri hugs {mem.mention} uwu", color=0x2e69f2)
-    emb.set_image(url="https://tenor.com/view/anime-my-hero-academia-gif-18710284")
+    emb.set_image(url="https://media.tenor.com/images/fb0abf13f4931ce1ed9c2051ceb282c8/tenor.gif")
     await ctx.send(embed=emb)
 
 @client.command()
