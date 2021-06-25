@@ -123,7 +123,7 @@ async def thank(ctx, mem: discord.User = None):
     if mem == None:
         mem = ctx.author
     emb = discord.Embed(title="", description=f"Arigatou {mem.mention} :)", color=0x2e69f2)
-    emb.set_image(url="https://64.media.tumblr.com/f643a4a8d83d345aaf466e62d39fb817/dce722e6c9832eb1-30/s540x810/5c7aa0d4f99cf93e9f88576242faef7513cc28f2.gifv")
+    emb.set_image(url="https://64.media.tumblr.com/87b08101c752e07596e25c0d012ac933/b62db867b2382026-80/s540x810/6336aecb57125d8e0a1d5f87cf294e57061f3371.gif")
     await ctx.send(embed=emb)
 
 
