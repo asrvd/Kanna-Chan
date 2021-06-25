@@ -79,8 +79,8 @@ async def dance(ctx, mem: discord.User = None):
   if mem == None:
       mem = ctx.author
   emb = discord.Embed(title="", description=f"Eri dances with {ctx.author.mention} uwu", color=0x2e69f2)
-  file = discord.File("images/eri_dance.mp4", filename="dance.mp4")
-  emb.set_image(url="attachment://dance.mp4")
+  file = discord.File("images/eri_dance.gif", filename="dance.gif")
+  emb.set_image(url="attachment://dance.gif")
   await ctx.send(file=file, embed=emb)
  
 @client.command()
@@ -124,8 +124,8 @@ async def thank(ctx, mem: discord.User = None):
     if mem == None:
         mem = ctx.author
     emb = discord.Embed(title="", description=f"Arigatou {mem.mention} :)", color=0x2e69f2)
-    file = discord.File("images/eri_thank.mp4", filename="thank.mp4")
-    emb.set_image(url="attachment://thank.mp4")
+    file = discord.File("images/eri_thank.gif", filename="thank.gif")
+    emb.set_image(url="attachment://thank.gif")
     await ctx.send(file=file, embed=emb)
 
 
