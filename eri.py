@@ -187,11 +187,11 @@ async def lottery(ctx, *, guesses):
   '''Enter the lottery and see if you win!'''
   numbers = []
   for x in range(3):
-    numbers.append(random.randint(1, 5))
+    numbers.append(random.randint(0, 9))
 
   split = guesses.split(' ')
   if len(split) != 3:
-    return await ctx.send('Please separate your numbers with a space, and make sure your numbers are between 0 and 5.')
+    return await ctx.send('Please separate your numbers with a space, and make sure there are 3 numbers between 0 and 9.')
   string_numbers = [str(i) for i in numbers]
   if split[0] == string_numbers[0] and split[1] == string_numbers[1] and split[2] == string_numbers[2]:
     await ctx.send(f'{ctx.author.mention} You won! Congratulations on winning the lottery!')
