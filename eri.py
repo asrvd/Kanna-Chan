@@ -43,7 +43,7 @@ async def help(ctx):
       name="__MISC__", value="Eri Chan also replies to you when you say `love you eri chan` or `hate you eri chan`.", inline=False
     )
     h.add_field(
-      name="__SOURCE__", value="`m.source`", inline=False
+      name="__SOURCE__", value="`eri source`", inline=False
     )
     await ctx.send(embed=h)
   except Exception as e:
@@ -51,7 +51,7 @@ async def help(ctx):
 
 @client.command()
 async def source(ctx):
-  await ctx.send("https://github.com/AsheeshhSenpai/Miko-Chan")
+  await ctx.send("https://github.com/AsheeshhSenpai/Eri-Chan")
  
 
 @client.command()
