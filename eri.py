@@ -28,7 +28,7 @@ async def help(ctx):
     )
     h.add_field(
       name="__ABOUT__", 
-      value=f"\nPrefix : `m.`\nEri Chan is a fun discord bot. She can play fun games with you, do some fun stuff and love you if you love her❤️.", 
+      value=f"\nPrefix : `eri`\nEri Chan is a fun discord bot. She can play fun games with you, do some fun stuff and love you if you love her❤️.", 
       inline=False
     )
     h.add_field(
