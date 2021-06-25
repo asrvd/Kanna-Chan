@@ -79,9 +79,8 @@ async def dance(ctx, mem: discord.User = None):
   if mem == None:
       mem = ctx.author
   emb = discord.Embed(title="", description=f"Eri dances with {ctx.author.mention} uwu", color=0x2e69f2)
-  file = discord.File("images/eri_dance.gif", filename="dance.gif")
-  emb.set_image(url="attachment://dance.gif")
-  await ctx.send(file=file, embed=emb)
+  emb.set_image(url="https://media.tenor.com/images/bac652a2057644e9a732245870dbe699/tenor.gif")
+  await ctx.send(embed=emb)
  
 @client.command()
 async def hug(ctx, mem: discord.User = None):
@@ -124,9 +123,8 @@ async def thank(ctx, mem: discord.User = None):
     if mem == None:
         mem = ctx.author
     emb = discord.Embed(title="", description=f"Arigatou {mem.mention} :)", color=0x2e69f2)
-    file = discord.File("images/eri_thank.gif", filename="thank.gif")
-    emb.set_image(url="attachment://thank.gif")
-    await ctx.send(file=file, embed=emb)
+    emb.set_image(url="https://64.media.tumblr.com/f643a4a8d83d345aaf466e62d39fb817/dce722e6c9832eb1-30/s540x810/5c7aa0d4f99cf93e9f88576242faef7513cc28f2.gifv")
+    await ctx.send(embed=emb)
 
 
 @client.command()
