@@ -128,7 +128,7 @@ async def av(ctx, mem: discord.User = None):
   if mem == None:
     mem = ctx.author.id
   pfp = mem.avatar_url
-  embed = discord.Embed()
+  embed = discord.Embed(color=0x2e69f2)
   embed.set_image(url=pfp)
   await ctx.send(embed=embed)
 
