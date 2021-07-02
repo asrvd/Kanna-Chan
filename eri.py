@@ -126,7 +126,8 @@ async def love(ctx, mem: discord.User = None):
 @client.command(aliases=['avatar', 'pfp'])
 async def av(ctx, mem: discord.User = None):
   if mem == None:
-    mem = ctx.author.id
+    mem_id = ctx.author.id
+    mem = client.get_user(mem_id)
   pfp = mem.avatar_url
   embed = discord.Embed(color=0x2e69f2)
   embed.set_image(url=pfp)
