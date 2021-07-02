@@ -135,7 +135,7 @@ async def av(ctx, mem: discord.User = None):
 @client.command()
 async def thank(ctx, mem: discord.User = None):
     if mem == None:
-        mem = ctx.author
+      mem = ctx.author.id
     emb = discord.Embed(title="", description=f"Arigatou {mem.mention} :)", color=0x2e69f2)
     emb.set_image(url="https://64.media.tumblr.com/87b08101c752e07596e25c0d012ac933/b62db867b2382026-80/s540x810/6336aecb57125d8e0a1d5f87cf294e57061f3371.gif")
     await ctx.send(embed=emb)
