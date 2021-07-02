@@ -68,6 +68,11 @@ async def games(ctx):
     inline="False"
   )
   emb.add_field(
+    name="__AVATAR__",
+    value="`av`, `avatar`, `pfp` Eri shows enlarged avatar of the user.",
+    inline="False"
+  )
+  emb.add_field(
     name="__SHIP__",
     value="Ship two people, cus why not? Command: `eri ship`",
     inline="False"
@@ -117,6 +122,15 @@ async def love(ctx, mem: discord.User = None):
     emb = discord.Embed(title="", description=f"Eri sends love to {mem.mention} uwu", color=0x2e69f2)
     emb.set_image(url="https://i.pinimg.com/564x/58/1d/84/581d84005865fc6f74c8831ad50ade85.jpg")
     await ctx.send(embed=emb)
+
+@client.command(aliases=['avatar', 'pfp'])
+async def av(ctx, mem: discord.User = None):
+  if mem == None:
+    mem = ctx.author.id
+  pfp = mem.avatar_url
+  embed = discord.Embed()
+  embed.set_image(url=pfp)
+  await ctx.send(embed=embed)
 
 @client.command()
 async def thank(ctx, mem: discord.User = None):
