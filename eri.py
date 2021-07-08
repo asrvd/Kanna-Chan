@@ -139,7 +139,9 @@ async def pat(ctx, m1: discord.Member = None, m2: discord.Member = None):
   pfp1 = pfp1.resize((122, 122))
   pfp2 = pfp2.resize((122, 122))
   pp1 = circle(pfp1)
+  pp1.save('pp1.png')
   pp2 = circle(pfp2)
+  pp2.save('pp2.png')
 
   bg.paste(pp1, (122, 86))
   bg.paste(pp2, (355, 82))
