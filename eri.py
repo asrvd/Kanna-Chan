@@ -15,6 +15,13 @@ intents.presences = True
 client = commands.Bot(command_prefix=['kanna ', 'kana ', 'k.'], case_insensitive=True, intents=intents)
 client.remove_command("help")
 
+def circle(image):
+  cropsize = (image.size[0] * 3, image.size[1] * 3)
+  mask = Image.new('L', cropsize, 0)
+  ImageDraw.Draw(mask).ellipse((0, 0) + cropsize, fill=255)
+  mask = mask.resize(image.size, Image.ANTIALIAS)
+  image.putalpha(mask)
+  return image
 
 @client.event
 async def on_ready():
@@ -127,16 +134,12 @@ async def pat(ctx, m1: discord.Member = None, m2: discord.Member = None):
   asset2 = m2.avatar_url_as(size=256)
   data1 = BytesIO(await asset1.read())
   data2 = BytesIO(await asset2.read())
-  pfp1 = Image.open(data1).convert('RGB')
-  pfp2 = Image.open(data2).convert('RGB')
+  pfp1 = Image.open(data1).convert('RGBA')
+  pfp2 = Image.open(data2).convert('RGBA')
   pfp1 = pfp1.resize((122, 122))
   pfp2 = pfp2.resize((122, 122))
-  pp1 = ImageOps.fit(pfp1, mask.size, centering=(0.5, 0.5))
-  pp1.putalpha(mask)
-  pp1.save('pp1.png')
-  pp2 = ImageOps.fit(pfp2, mask.size, centering=(0.5, 0.5))
-  pp2.putalpha(mask)
-  pp2.save('pp2.png')
+  pp1 = circle(pfp1)
+  pp2 = circle(pfp2)
 
   bg.paste(pp1, (122, 86))
   bg.paste(pp2, (355, 82))
