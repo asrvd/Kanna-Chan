@@ -1,4 +1,4 @@
 discord.py>=1.7.1
 python-decouple
-PIL
+pillow
 io
