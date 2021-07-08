@@ -118,7 +118,7 @@ async def pat(ctx, m1: discord.Member = None, m2: discord.Member = None):
   elif m2 == None:
     m2 = m1
     m1 = ctx.author
-  bg = Image.open("/images/kanna_pat.png")
+  bg = Image.open("\images\kanna_pat.png")
   asset1 = m1.avatar_url_as(size=256)
   asset2 = m2.avatar_url_as(size=256)
   data1 = BytesIO(await asset1.read())
@@ -159,7 +159,7 @@ async def av(ctx, m1: discord.Member = None, m2: discord.Member = None):
     embed.set_image(url=pfp)
     await ctx.send(embed=embed)
   elif m2 != m1:
-    bg = Image.open("/images/bgimg.png")
+    bg = Image.open("\images\img.png")
     asset1 = m1.avatar_url_as(size=512)
     asset2 = m2.avatar_url_as(size=512)
     data1 = BytesIO(await asset1.read())
