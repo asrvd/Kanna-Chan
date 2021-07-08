@@ -1,15 +1,18 @@
 import os
 import discord
+from discord import embeds
 from discord.ext import commands
 import random
 from decouple import config
+from PIL import Image
+from io import BytesIO
 
 
 intents = discord.Intents.default()
 intents.members = True
 intents.presences = True
 
-client = commands.Bot(command_prefix='eri ', case_insensitive=True, intents=intents)
+client = commands.Bot(command_prefix=['kanna ', 'kana ', 'k.'], case_insensitive=True, intents=intents)
 client.remove_command("help")
 
 
@@ -28,22 +31,22 @@ async def help(ctx):
     )
     h.add_field(
       name="__ABOUT__", 
-      value=f"\nPrefix : `eri`\nEri Chan is a fun discord bot. She can play fun games with you, do some fun stuff and love you if you love her❤️.", 
+      value=f"\nPrefix : `kanna `, `kana `, `k.`\nKanna Chan is a fun discord bot. She can play fun games with you, do some fun stuff and love you if you love her❤️.", 
       inline=False
     )
     h.add_field(
       name="__COMMANDS__",
-      value=f"`love` Eri sends love to the person.\n`thank` Eri thanks the person.\n`pat` pat any person.\n`think` Eri thinks.\n`amazed` Eri is amazed woah..\n`hug` Eri hugs the person.\n`dance` Eri dances with the person.\n`befriend` Eri befriends the person.\n`say` Eri says what you want her to say.\n`arz` Eri sends a shayari for you.",
+      value=f"`love` Kanna sends love to the person.\n`thank` Kanna thanks the person.\n`pat` pat any person.\n`think` Kanna thinks.\n`amazed` Kanna is amazed woah..\n`hug` Kanna hugs the person.\n`dance` Kanna dances with the person.\n`kill` Kanna kills the person.\n`befriend` Kanna befriends the person.\n`say` Kanna says what you want her to say.\n`arz` Kanna sends a shayari for you.",
       inline=False
     )
     h.add_field(
-      name="__GAMES__", value="Send `eri games` to see the list of games available and how to play them.", inline=False
+      name="__GAMES__", value="Send `kanna games` to see the list of games available and how to play them.", inline=False
     )
     h.add_field(
-      name="__MISC__", value="Eri Chan also replies to you when you say `love you eri chan` or `hate you eri chan`.", inline=False
+      name="__MISC__", value="Kanna Chan also replies to you when you say `love you kanna chan` or `hate you kanna chan`.", inline=False
     )
     h.add_field(
-      name="__SOURCE__", value="`eri source`", inline=False
+      name="__SOURCE__", value="`kanna source`", inline=False
     )
     await ctx.send(embed=h)
   except Exception as e:
@@ -59,22 +62,22 @@ async def games(ctx):
   emb = discord.Embed(title="GAMES", color=0x2e69f2)
   emb.add_field(
     name="__TRUTH OR DARE__",
-    value="Start a game of truth or dare using eri! For truth send `eri truth` and for dare send `eri dare`.",
+    value="Start a game of truth or dare using eri! For truth send `kanna truth` and for dare send `kanna dare`.",
     inline="False"
   )
   emb.add_field(
     name="__LOTTERY__",
-    value="Start a game of lattery using eri. You will have to send three random numbers between 0 to 5 with space in between like `eri lottery 1 3 4`.",
+    value="Start a game of lattery using eri. You will have to send three random numbers between 0 to 5 with space in between like `kanna lottery 1 3 4`.",
     inline="False"
   )
   emb.add_field(
     name="__AVATAR__",
-    value="`av`, `avatar`, `pfp` Eri shows enlarged avatar of the user.",
+    value="`av`, `avatar`, `pfp` kanna shows enlarged avatar of the user.",
     inline="False"
   )
   emb.add_field(
     name="__SHIP__",
-    value="Ship two people, cus why not? Command: `eri ship`",
+    value="Ship two people, cus why not? Command: `kanna ship`",
     inline="False"
   )
   await ctx.send(embed=emb)
@@ -84,7 +87,7 @@ async def dance(ctx, mem: discord.User = None):
   if mem == None:
       mem = ctx.author
   emb = discord.Embed(title="", description=f"Eri dances with {ctx.author.mention} uwu", color=0x2e69f2)
-  emb.set_image(url="https://media.tenor.com/images/bac652a2057644e9a732245870dbe699/tenor.gif")
+  emb.set_image(url="https://gifimage.net/wp-content/uploads/2018/04/kanna-gif-8.gif")
   await ctx.send(embed=emb)
  
 @client.command()
@@ -92,53 +95,102 @@ async def hug(ctx, mem: discord.User = None):
     if mem == None:
         mem = ctx.author
     emb = discord.Embed(title="", description=f"Eri hugs {mem.mention} uwu", color=0x2e69f2)
-    emb.set_image(url="https://media.tenor.com/images/fb0abf13f4931ce1ed9c2051ceb282c8/tenor.gif")
+    emb.set_image(url="https://giffiles.alphacoders.com/187/187466.gif")
     await ctx.send(embed=emb)
 
 @client.command()
 async def think(ctx):
   emb = discord.Embed(title="", description=f"Eri thinks hmmm..", color=0x2e69f2)
-  emb.set_image(url="https://media.tenor.com/images/15861461cdbe63aa8385792ad9cea02b/tenor.gif")
+  emb.set_image(url="https://i.pinimg.com/originals/4f/b6/4c/4fb64c59ff0394033f61b6c018d61ed1.gif")
   await ctx.send(embed=emb)
   
 @client.command()
 async def amazed(ctx):
   emb = discord.Embed(title="", description=f"Eri is amazed woah..", color=0x2e69f2)
-  emb.set_image(url="https://pa1.narvii.com/7582/7ed86b1e2bc7270ba78a2ff8f4bdeb9aa59c776cr1-498-331_hq.gif")
+  emb.set_image(url="https://preview.redd.it/n5ptq0iw65351.png?width=640&crop=smart&auto=webp&s=75887b8b7e949f52c4f548dd5d037249dca05566")
   await ctx.send(embed=emb)
 
 @client.command()
-async def pat(ctx, mem: discord.User = None):
-    if mem == None:
-        mem = ctx.author
-    emb = discord.Embed(title="", description=f"{ctx.author.mention} pats {mem.mention} uwu", color=0x2e69f2)
-    emb.set_image(url="https://cdn.discordapp.com/attachments/785024897863647285/857923132387229717/8989d41a8b3c1246d3caa4fcdba7a54c.gif")
-    await ctx.send(embed=emb)
+async def pat(ctx, m1: discord.Member = None, m2: discord.Member = None):
+  if m1 == None:
+    m1 = ctx.author
+    m2 = ctx.author
+  elif m2 == None:
+    m2 = m1
+    m1 = ctx.author
+  bg = Image.open("/images/kanna_pat.png")
+  asset1 = m1.avatar_url_as(size=256)
+  asset2 = m2.avatar_url_as(size=256)
+  data1 = BytesIO(await asset1.read())
+  data2 = BytesIO(await asset2.read())
+  pfp1 = Image.open(data1)
+  pfp2 = Image.open(data2)
+  pfp1 = pfp1.resize((122, 122))
+  pfp2 = pfp2.resize((122, 122))
+
+  bg.paste(pfp1, (122, 86))
+  bg.paste(pfp2, (355, 82))
+
+  bg.save("avatar.png")
+  file = discord.File("avatar.png")
+  emb = discord.Embed(title="", description=f"{m1.mention} pats {m2.mention} uwu", color=0x2e69f2)
+  emb.set_image(url="attachment://avatar.png")
+  await ctx.send(embed=emb, file=file)
   
 @client.command()
 async def love(ctx, mem: discord.User = None):
     if mem == None:
         mem = ctx.author
     emb = discord.Embed(title="", description=f"Eri sends love to {mem.mention} uwu", color=0x2e69f2)
-    emb.set_image(url="https://i.pinimg.com/564x/58/1d/84/581d84005865fc6f74c8831ad50ade85.jpg")
+    emb.set_image(url="https://pa1.narvii.com/7231/f52073bab90f9a13f3e292af0b3e1b1e8f8ba189r1-540-304_hq.gif")
     await ctx.send(embed=emb)
 
 @client.command(aliases=['avatar', 'pfp'])
-async def av(ctx, mem: discord.User = None):
-  if mem == None:
-    mem_id = ctx.author.id
-    mem = client.get_user(mem_id)
-  pfp = mem.avatar_url
-  embed = discord.Embed(color=0x2e69f2)
-  embed.set_image(url=pfp)
-  await ctx.send(embed=embed)
+async def av(ctx, m1: discord.Member = None, m2: discord.Member = None):
+  if m1 == None:
+    m1 = ctx.author
+    m2 = ctx.author
+  elif m2 == None:
+    m2 = m1
+    m1 = ctx.author
+  if m2 == m1:
+    pfp = m1.avatar_url
+    embed = discord.Embed(color=0x2e69f2)
+    embed.set_image(url=pfp)
+    await ctx.send(embed=embed)
+  elif m2 != m1:
+    bg = Image.open("/images/bgimg.png")
+    asset1 = m1.avatar_url_as(size=512)
+    asset2 = m2.avatar_url_as(size=512)
+    data1 = BytesIO(await asset1.read())
+    data2 = BytesIO(await asset2.read())
+    pfp1 = Image.open(data1)
+    pfp2 = Image.open(data2)
+    pfp1 = pfp1.resize((500, 500))
+    pfp2 = pfp2.resize((500, 500))
+
+    bg.paste(pfp1, (0, 0))
+    bg.paste(pfp2, (500, 0))
+
+    if m1.is_avatar_animated() and m2.is_avatar_animated():
+      bg.save("avatar.gif")
+      file = discord.File("avatar.gif")
+      embed=discord.Embed(color=0x2e69f2)
+      embed.set_image(url="attachment://avatar.gif")
+      await ctx.send(embed=embed, file=file)
+    else:
+      bg.save("avatar.png")
+      file = discord.File("avatar.png")
+      embed=discord.Embed(color=0x2e69f2)
+      embed.set_image(url="attachment://avatar.png")
+      await ctx.send(embed=embed, file=file)
 
 @client.command()
 async def thank(ctx, mem: discord.User = None):
     if mem == None:
       mem = ctx.author.id
     emb = discord.Embed(title="", description=f"Arigatou {mem.mention} :)", color=0x2e69f2)
-    emb.set_image(url="https://64.media.tumblr.com/87b08101c752e07596e25c0d012ac933/b62db867b2382026-80/s540x810/6336aecb57125d8e0a1d5f87cf294e57061f3371.gif")
+    emb.set_image(url="https://i.ytimg.com/vi/ALEFgAbDE8U/maxresdefault.jpg")
     await ctx.send(embed=emb)
 
 
@@ -146,8 +198,8 @@ async def thank(ctx, mem: discord.User = None):
 async def befriend(ctx, mem: discord.User = None):
   if mem == None:
     mem = ctx.author
-  emb = discord.Embed(title="", description=f"Eri is your friend now uwu {mem.mention} :)", color=0x2e69f2)
-  emb.set_image(url="https://i.pinimg.com/originals/69/28/d5/6928d57fd76c7822724abbae3800e354.gif")
+  emb = discord.Embed(title="", description=f"Kanna is your friend now uwu {mem.mention} :)", color=0x2e69f2)
+  emb.set_image(url="https://i.pinimg.com/originals/d9/ff/de/d9ffde3f3d3114ca7012f6c6c153ec55.jpg")
   await ctx.send(embed=emb)
 
 @client.command()
@@ -297,40 +349,40 @@ async def on_message(message):
   await client.process_commands(message)
 
   love_words=[
-    "i love you eri chan",
-    "love you eri chan",
-    "eri chan i love you",
-    "i love eri chan",
-    "eri chan is love",
-    "i love you eri",
-    "love you eri"
+    "i love you kanna chan",
+    "love you kanna chan",
+    "kanna chan i love you",
+    "i love kanna chan",
+    "kanna chan is love",
+    "i love you kanna",
+    "love you kanna"
   ]
 
   hate_words=[
-    "i hate you eri chan",
-    "hate you eri chan",
-    "eri chan i hate you",
-    "eri chan hate",
-    "i hate you eri",
-    "hate you eri"
+    "i hate you kanna chan",
+    "hate you kanna chan",
+    "kanna chan i hate you",
+    "kanna chan hate",
+    "i hate you kanna",
+    "hate you kanna"
   ]
 
-  love_emb = discord.Embed(title="", description=f"Eri loves you too {message.author.mention} uwu", color=0x2e69f2)
-  love_emb.set_image(url="https://i.pinimg.com/564x/58/1d/84/581d84005865fc6f74c8831ad50ade85.jpg")
+  love_emb = discord.Embed(title="", description=f"Kanna loves you too {message.author.mention} uwu", color=0x2e69f2)
+  love_emb.set_image(url="https://pa1.narvii.com/7231/f52073bab90f9a13f3e292af0b3e1b1e8f8ba189r1-540-304_hq.gif")
   
-  hate_emb = discord.Embed(title="", description=f"Eri is sad :( {message.author.mention} eri loves you :(", color=0x2e69f2)
-  hate_emb.set_image(url="https://i.pinimg.com/originals/24/c5/0c/24c50cdc5844753daaaa713745e094a9.gif")
+  hate_emb = discord.Embed(title="", description=f"Kanna is sad :( {message.author.mention} Kanna loves you :(", color=0x2e69f2)
+  hate_emb.set_image(url="https://i.kym-cdn.com/photos/images/original/001/349/853/60b.gif")
 
   if message.content.lower() in love_words:
     if message.author.id == 784363251940458516:
-      await message.channel.send(f"{message.author.mention}\nEri loves asheesh too uwu..❤")
+      await message.channel.send(f"{message.author.mention}\nKanna loves asheesh too uwu..❤")
       await message.add_reaction('❤')
     else: 
       await message.channel.send(embed=love_emb)
       await message.add_reaction('❤')
   elif message.content.lower() in hate_words:
     if message.author.id == 784363251940458516:
-      await message.channel.send(f"{message.author.mention}\nBut Eri loves asheesh..❤")
+      await message.channel.send(f"{message.author.mention}\nBut Kanna loves asheesh..❤")
       await message.add_reaction('❤')
     else: 
       await message.channel.send(embed=hate_emb)
