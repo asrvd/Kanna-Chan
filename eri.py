@@ -153,7 +153,7 @@ async def av(ctx, m1: discord.Member = None, m2: discord.Member = None):
     embed = discord.Embed(color=0x2e69f2)
     embed.set_image(url=pfp)
     await ctx.send(embed=embed)
-  elif m1 == None and m2 != None:
+  elif m1 != None and m2 == None:
     pfp = m2.avatar_url
     embed = discord.Embed(color=0x2e69f2)
     embed.set_image(url=pfp)
