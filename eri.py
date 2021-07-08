@@ -15,14 +15,19 @@ intents.presences = True
 client = commands.Bot(command_prefix=['kanna ', 'kana ', 'k.'], case_insensitive=True, intents=intents)
 client.remove_command("help")
 
-def circle(image):
-  cropsize = (image.size[0] * 3, image.size[1] * 3)
-  mask = Image.new('L', cropsize, 0)
-  ImageDraw.Draw(mask).ellipse((0, 0) + cropsize, fill=255)
-  mask = mask.resize(image.size, Image.ANTIALIAS)
-  mask = ImageChops.darker(mask, image.split()[-1])
-  image.putalpha(mask)
-  return image
+def circle(im, rad=100):
+  circle = Image.new('L', (rad * 2, rad * 2), 0)
+  draw = ImageDraw.Draw(circle)
+  draw.ellipse((0, 0, rad * 2, rad * 2), fill=255)
+  alpha = Image.new('L', im.size, "white")
+  w, h = im.size
+  alpha.paste(circle.crop((0, 0, rad, rad)), (0, 0))
+  alpha.paste(circle.crop((0, rad, rad, rad * 2)), (0, h - rad))
+  alpha.paste(circle.crop((rad, 0, rad * 2, rad)), (w - rad, 0))
+  alpha.paste(circle.crop((rad, rad, rad * 2, rad * 2)), (w - rad, h - rad))
+  alpha = ImageChops.darker(alpha, im.split()[-1])
+  im.putalpha(alpha)
+  return im
 
 @client.event
 async def on_ready():
