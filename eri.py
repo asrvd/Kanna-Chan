@@ -147,9 +147,17 @@ async def love(ctx, mem: discord.User = None):
 
 @client.command(aliases=['avatar', 'pfp'])
 async def av(ctx, m1: discord.Member = None, m2: discord.Member = None):
-  if m1 == None:
+  if m1 == None and m2 == None:
     m1 = ctx.author
-    m2 = ctx.author
+    pfp = m1.avatar_url
+    embed = discord.Embed(color=0x2e69f2)
+    embed.set_image(url=pfp)
+    await ctx.send(embed=embed)
+  elif m1 == None and m2 != None:
+    pfp = m2.avatar_url
+    embed = discord.Embed(color=0x2e69f2)
+    embed.set_image(url=pfp)
+    await ctx.send(embed=embed)
   elif m2 == None:
     m2 = m1
     m1 = ctx.author
