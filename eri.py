@@ -4,7 +4,7 @@ from discord import embeds
 from discord.ext import commands
 import random
 from decouple import config
-from PIL import Image
+from PIL import Image, ImageOps, ImageDraw
 from io import BytesIO
 
 
@@ -118,6 +118,10 @@ async def pat(ctx, m1: discord.Member = None, m2: discord.Member = None):
   elif m2 == None:
     m2 = m1
     m1 = ctx.author
+  size = (128, 128)
+  mask = Image.new('L', size, 0)
+  draw = ImageDraw.Draw(mask) 
+  draw.ellipse((0, 0) + size, fill=255)
   bg = Image.open("kanna_pat.png")
   asset1 = m1.avatar_url_as(size=256)
   asset2 = m2.avatar_url_as(size=256)
@@ -127,9 +131,15 @@ async def pat(ctx, m1: discord.Member = None, m2: discord.Member = None):
   pfp2 = Image.open(data2)
   pfp1 = pfp1.resize((122, 122))
   pfp2 = pfp2.resize((122, 122))
+  pp1 = ImageOps.fit(pfp1, mask.size, centering=(0.5, 0.5))
+  pp1.putalpha(mask)
+  pp1.save('pp1.png')
+  pp2 = ImageOps.fit(pfp2, mask.size, centering=(0.5, 0.5))
+  pp2.putalpha(mask)
+  pp2.save('pp2.png')
 
-  bg.paste(pfp1, (122, 86))
-  bg.paste(pfp2, (355, 82))
+  bg.paste(pp1, (122, 86))
+  bg.paste(pp2, (355, 82))
 
   bg.save("avatar.png")
   file = discord.File("avatar.png")
