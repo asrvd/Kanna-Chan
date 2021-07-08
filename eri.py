@@ -4,7 +4,7 @@ from discord import embeds
 from discord.ext import commands
 import random
 from decouple import config
-from PIL import Image, ImageOps, ImageDraw
+from PIL import Image, ImageOps, ImageDraw, ImageChops
 from io import BytesIO
 
 
@@ -20,6 +20,7 @@ def circle(image):
   mask = Image.new('L', cropsize, 0)
   ImageDraw.Draw(mask).ellipse((0, 0) + cropsize, fill=255)
   mask = mask.resize(image.size, Image.ANTIALIAS)
+  mask = ImageChops.darker(mask, image.split()[-1])
   image.putalpha(mask)
   return image
 
