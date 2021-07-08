@@ -86,7 +86,7 @@ async def games(ctx):
 async def dance(ctx, mem: discord.User = None):
   if mem == None:
       mem = ctx.author
-  emb = discord.Embed(title="", description=f"Eri dances with {ctx.author.mention} uwu", color=0x2e69f2)
+  emb = discord.Embed(title="", description=f"kanna dances with {ctx.author.mention} uwu", color=0x2e69f2)
   emb.set_image(url="https://gifimage.net/wp-content/uploads/2018/04/kanna-gif-8.gif")
   await ctx.send(embed=emb)
  
@@ -94,19 +94,19 @@ async def dance(ctx, mem: discord.User = None):
 async def hug(ctx, mem: discord.User = None):
     if mem == None:
         mem = ctx.author
-    emb = discord.Embed(title="", description=f"Eri hugs {mem.mention} uwu", color=0x2e69f2)
+    emb = discord.Embed(title="", description=f"Kanna hugs {mem.mention} uwu", color=0x2e69f2)
     emb.set_image(url="https://giffiles.alphacoders.com/187/187466.gif")
     await ctx.send(embed=emb)
 
 @client.command()
 async def think(ctx):
-  emb = discord.Embed(title="", description=f"Eri thinks hmmm..", color=0x2e69f2)
+  emb = discord.Embed(title="", description=f"Kanna thinks hmmm..", color=0x2e69f2)
   emb.set_image(url="https://i.pinimg.com/originals/4f/b6/4c/4fb64c59ff0394033f61b6c018d61ed1.gif")
   await ctx.send(embed=emb)
   
 @client.command()
 async def amazed(ctx):
-  emb = discord.Embed(title="", description=f"Eri is amazed woah..", color=0x2e69f2)
+  emb = discord.Embed(title="", description=f"Kanna is amazed woah..", color=0x2e69f2)
   emb.set_image(url="https://preview.redd.it/n5ptq0iw65351.png?width=640&crop=smart&auto=webp&s=75887b8b7e949f52c4f548dd5d037249dca05566")
   await ctx.send(embed=emb)
 
@@ -141,7 +141,7 @@ async def pat(ctx, m1: discord.Member = None, m2: discord.Member = None):
 async def love(ctx, mem: discord.User = None):
     if mem == None:
         mem = ctx.author
-    emb = discord.Embed(title="", description=f"Eri sends love to {mem.mention} uwu", color=0x2e69f2)
+    emb = discord.Embed(title="", description=f"Kanna sends love to {mem.mention} uwu", color=0x2e69f2)
     emb.set_image(url="https://pa1.narvii.com/7231/f52073bab90f9a13f3e292af0b3e1b1e8f8ba189r1-540-304_hq.gif")
     await ctx.send(embed=emb)
 
