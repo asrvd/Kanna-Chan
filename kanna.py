@@ -54,7 +54,7 @@ async def help(ctx):
     )
     h.add_field(
     name="__CUSTOM CARDS__",
-    value="`simpcard` Make a simpcard with your name, name of the person you simp for and your pfp.\n`gaycard` Make a Gay Card with your name and pfp in it."
+    value="`simpcard` Make a simpcard with your name, name of the person you simp for and your pfp.\n`gaycard` Make a Gay Card with your name and pfp in it.\n`uwucard` Make a card to show love for the person that makes you happy uwu."
     )
     h.add_field(
     name="__AVATAR__",
@@ -134,10 +134,26 @@ async def attack(ctx, mem: discord.User = None):
 @client.command()
 async def lick(ctx, mem: discord.User = None):
   if mem == None:
-      mem = ctx.author
+    mem = ctx.author
   emb = discord.Embed(title="", description=f"{ctx.author.mention} licks {mem.mention}, tastes good :)", color=0x2e69f2)
   emb.set_image(url="https://i.kym-cdn.com/photos/images/newsfeed/001/230/497/04d.gif")
   await ctx.send(embed=emb)
+
+@client.command()
+async def uwucard(ctx, mem: discord.User = None):
+  if mem == None:
+    mem = ctx.author
+  bg = Image.open("lob.png")
+  asset = mem.avatar_url_as(size=256)
+  data = BytesIO(await asset.read())
+  pfp = Image.open(data).convert('RGBA')
+  pfp = pfp.resize((463, 430))
+  bg.paste(pfp, (35, 121))
+  bg.save("uwu.png")
+  file = discord.File("uwu.png")
+  embed = discord.Embed(description=f"{mem.mention} you make {ctx.author.mention} happy uwu.", color=0x2e69f2)
+  embed.set_image(url="attachment://uwu.png")
+  await ctx.send(embed=embed, file=file)
 
 @client.command()
 async def gaycard(ctx):
