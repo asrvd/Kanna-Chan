@@ -49,8 +49,17 @@ async def help(ctx):
     )
     h.add_field(
       name="__COMMANDS__",
-      value=f"`love` Kanna sends love to the person.\n`thank` Kanna thanks the person.\n`pat` pat any person.\n`think` Kanna thinks.\n`amazed` Kanna is amazed woah..\n`hug` Kanna hugs the person.\n`dance` Kanna dances with the person.\n`kill` Kanna kills the person.\n`befriend` Kanna befriends the person.\n`say` Kanna says what you want her to say.\n`arz` Kanna sends a shayari for you.",
+      value=f"`love` Kanna sends love to the person.\n`thank` Kanna thanks the person.\n`pat` pat any person.\n`think` Kanna thinks.\n`amazed` Kanna is amazed woah..\n`hug` Kanna hugs the person.\n`dance` Kanna dances with the person.\n`kill` Kanna kills the person.\n`befriend` Kanna befriends the person.\n`lick` lickie lickie..\n`attack` Kanna attacks.\n`say` Kanna says what you want her to say.\n`arz` Kanna sends a shayari for you.",
       inline=False
+    )
+    h.add_field(
+    name="__CUSTOM CARDS__",
+    value="`simpcard` Make a simpcard with your name, name of the person you simp for and your pfp.\n`gaycard` Make a Gay Card with your name and pfp in it."
+    )
+    h.add_field(
+    name="__AVATAR__",
+    value="`av`, `avatar`, `pfp` kanna shows enlarged avatar of the user.",
+    inline="False"
     )
     h.add_field(
       name="__GAMES__", value="Send `kanna games` to see the list of games available and how to play them.", inline=False
@@ -84,11 +93,6 @@ async def games(ctx):
     inline="False"
   )
   emb.add_field(
-    name="__AVATAR__",
-    value="`av`, `avatar`, `pfp` kanna shows enlarged avatar of the user.",
-    inline="False"
-  )
-  emb.add_field(
     name="__SHIP__",
     value="Ship two people, cus why not? Command: `kanna ship`",
     inline="False"
@@ -110,6 +114,30 @@ async def hug(ctx, mem: discord.User = None):
     emb = discord.Embed(title="", description=f"Kanna hugs {mem.mention} uwu", color=0x2e69f2)
     emb.set_image(url="https://giffiles.alphacoders.com/187/187466.gif")
     await ctx.send(embed=emb)
+
+@client.command()
+async def kill(ctx, mem: discord.User = None):
+  if mem == None:
+    mem = ctx.author
+  emb = discord.Embed(title="", description=f"{ctx.author.mention} kills {mem.mention}", color=0x2e69f2)
+  emb.set_image(url="https://media1.tenor.com/images/28c19622e8d7362ccc140bb24e4089ec/tenor.gif")
+  await ctx.send(embed=emb)
+
+@client.command()
+async def attack(ctx, mem: discord.User = None):
+  if mem == None:
+    mem = ctx.author
+  emb = discord.Embed(title="", description=f"{mem.mention} Behold the power of Dragon Loli!", color=0x2e69f2)
+  emb.set_image(url="https://i.pinimg.com/originals/5d/db/a3/5ddba3cec2b283d94b66abd7314b6cbd.gif")
+  await ctx.send(embed=emb)
+
+@client.command()
+async def lick(ctx, mem: discord.User = None):
+  if mem == None:
+      mem = ctx.author
+  emb = discord.Embed(title="", description=f"{ctx.author.mention} licks {mem.mention}, tastes good :)", color=0x2e69f2)
+  emb.set_image(url="https://i.kym-cdn.com/photos/images/newsfeed/001/230/497/04d.gif")
+  await ctx.send(embed=emb)
 
 @client.command()
 async def gaycard(ctx):
