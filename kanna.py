@@ -12,7 +12,7 @@ intents = discord.Intents.default()
 intents.members = True
 intents.presences = True
 
-client = commands.Bot(command_prefix=['kanna ', 'kana ', 'k.'], case_insensitive=True, intents=intents)
+client = commands.Bot(command_prefix=['kanna ', 'kana ', 'k.', 'Kanna', 'Kana'], case_insensitive=True, intents=intents)
 client.remove_command("help")
 
 def circle(im, rad=100):
