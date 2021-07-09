@@ -124,11 +124,12 @@ async def simpcard(ctx, *, simp):
   text = simp
   bg.paste(pfp, (47, 60))
   draw = ImageDraw.Draw(bg)
-  draw.text((379, 154), nick, (0, 0, 0), font=font)
-  draw.text((46, 338), text, (0, 0, 0), font=font)
+  draw.text((390, 176), nick, (0, 0, 0), font=font)
+  draw.text((53, 353), text, (0, 0, 0), font=font)
   bg.save("simp.png")
   file = discord.File("simp.png")
   embed = discord.Embed(description=f"{ctx.author.mention} Here is your verified Simp Card.", color=0x2e69f2)
+  embed.set_image(url="attachment://simp.png")
   await ctx.send(embed=embed, file=file)
   
 
