@@ -147,7 +147,7 @@ async def uwucard(ctx, mem: discord.User = None):
   asset = mem.avatar_url_as(size=256)
   data = BytesIO(await asset.read())
   pfp = Image.open(data).convert('RGBA')
-  pfp = pfp.resize((463, 430))
+  pfp = pfp.resize((181, 201))
   bg.paste(pfp, (35, 121))
   bg.save("uwu.png")
   file = discord.File("uwu.png")
