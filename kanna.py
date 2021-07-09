@@ -4,7 +4,7 @@ from discord import embeds
 from discord.ext import commands
 import random
 from decouple import config
-from PIL import Image, ImageOps, ImageDraw, ImageChops
+from PIL import Image, ImageOps, ImageDraw, ImageChops, ImageFont
 from io import BytesIO
 
 
@@ -110,6 +110,27 @@ async def hug(ctx, mem: discord.User = None):
     emb = discord.Embed(title="", description=f"Kanna hugs {mem.mention} uwu", color=0x2e69f2)
     emb.set_image(url="https://giffiles.alphacoders.com/187/187466.gif")
     await ctx.send(embed=emb)
+
+@client.command()
+async def simpcard(ctx, *, simp):
+  bg = Image.open("s.png")
+  font = ImageFont.truetype("roboto.ttf", 24)
+  auth = ctx.author
+  asset = auth.avatar_url_as(size=256)
+  data = BytesIO(await asset.read())
+  pfp = Image.open(data).convert('RGBA')
+  pfp = pfp.resize((185, 214))
+  nick = auth.display_name
+  text = simp
+  bg.paste(pfp, (47, 60))
+  draw = ImageDraw.Draw(bg)
+  draw.text((379, 154), nick, (0, 0, 0), font=font)
+  draw.text((46, 338), text, (0, 0, 0), font=font)
+  bg.save("simp.png")
+  file = discord.File("simp.png")
+  embed = discord.Embed(description=f"{ctx.author.mention} Here is your verified Simp Card.", color=0x2e69f2)
+  await ctx.send(embed=embed, file=file)
+  
 
 @client.command()
 async def think(ctx):
