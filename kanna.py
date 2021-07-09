@@ -112,7 +112,7 @@ async def hug(ctx, mem: discord.User = None):
     await ctx.send(embed=emb)
 
 @client.command()
-async def simpcard(ctx):
+async def gaycard(ctx):
   bg = Image.open("gay_card.png")
   font = ImageFont.truetype("roboto.ttf", 32)
   auth = ctx.author
