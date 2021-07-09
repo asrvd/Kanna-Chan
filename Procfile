@@ -1,1 +1,1 @@
-worker: python eri.py
+worker: python kanna.py
