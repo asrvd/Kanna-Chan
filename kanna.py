@@ -45,32 +45,32 @@ async def help(ctx):
       color=0x2e69f2,
     )
     h.add_field(
-    name="🔑**PREFIX**", 
+    name="🔑 **PREFIX**", 
     value=f"Send `kana prefix`", 
     inline=True
     )
     h.add_field(
-    name="📃**COMMANDS**",
+    name="📃 **COMMANDS**",
     value=f"Send `kana cmds`",
     inline=True
     )
     h.add_field(
-    name="⚙**SOURCE**",
+    name="⚙ **SOURCE**",
     value=f"Send `kana source`",
     inline=True
     )
     h.add_field(
-    name="🎐**INVITE ME**",
+    name="🎐 **INVITE ME**",
     value=f"[Click here](https://discord.com/api/oauth2/authorize?client_id=857835279259664403&permissions=318528&scope=bot)",
     inline=True
     )
     h.add_field(
-    name="❓**ABOUT**",
+    name="❓ **ABOUT**",
     value=f"[Click here](https://github.com/AsheeshhSenpai/Kanna-Chan/blob/main/README.md#about)",
     inline=True
     )
     h.add_field(
-    name="⭐**STAR KANNA ON GITHUB**",
+    name="⭐ **STAR KANNA ON GITHUB**",
     value=f"[Click here](https://github.com/AsheeshhSenpai/Kanna-Chan)",
     inline=True
     )
@@ -101,22 +101,22 @@ async def cmds(ctx):
     color=0x2e69f2,
     )
     h.add_field(
-    name="🤪**FUN**", 
+    name="🤪 **FUN**", 
     value=f"Send `kana fun` to see list of commands available.", 
     inline=False
     )
     h.add_field(
-    name="💳**CUSTOM CARDS**",
+    name="💳 **CUSTOM CARDS**",
     value=f"`simpcard (person you simp for)` Kana makes a simpcard for you with your name and pfp on it.\n`gaycard` Kana makes a gaycard for you with your name and pfp.\n`uwucard` (mention someone) Kana makes a card to show your love for another person uwu.",
     inline=False
     )
     h.add_field(
-    name="🎴**AVATAR**",
+    name="🎴 **AVATAR**",
     value=f"`av`, `avatar` or `pfp` Kana sends pfp of a user or shared pfp.",
     inline=False
     )
     h.add_field(
-    name="🧩**GAMES**",
+    name="🧩 **GAMES**",
     value=f"Send `kana games` to see list of games available and how to play them.",
     inline=False
     )
@@ -138,62 +138,62 @@ async def fun(ctx):
     color=0x2e69f2,
     )
     h.add_field(
-    name="**Love**", 
+    name="❤ **Love**", 
     value=f"Kanna sends love to the person.", 
     inline=True
     )
     h.add_field(
-    name="**Pat**",
+    name="🤚 **Pat**",
     value=f"pat any person.",
     inline=True
     )
     h.add_field(
-    name="**Thank**",
+    name="🙇‍♀️ **Thank**",
     value=f"Kanna thanks the person.",
     inline=True
     )
     h.add_field(
-    name="**Think**",
+    name="🤔 **Think**",
     value=f"Kanna thinks hmmm..",
     inline=True
     )
     h.add_field(
-    name="**Amazed**",
+    name="😮 **Amazed**",
     value=f"Kanna is amazed woah..",
     inline=True
     )
     h.add_field(
-    name="**Hug**",
+    name="🫂 **Hug**",
     value=f"Kanna hugs the person.",
     inline=True
     )
     h.add_field(
-    name="**Dance**",
+    name="💃 **Dance**",
     value=f"Kanna dances with the person.",
     inline=True
     )
     h.add_field(
-    name="**Kill**",
+    name="🔪 **Kill**",
     value=f"Kanna kills the person.",
     inline=True
     )
     h.add_field(
-    name="**Befriend**",
+    name="🤝 **Befriend**",
     value=f"Kanna befriends the person.",
     inline=True
     )
     h.add_field(
-    name="**Lick**",
+    name="👅 **Lick**",
     value=f"lickie lickie..",
     inline=True
     )
     h.add_field(
-    name="**Attack**",
+    name="😈 **Attack**",
     value=f"Kanna attacks",
     inline=True
     )
     h.add_field(
-    name="**Say**",
+    name="🗣 **Say**",
     value=f"Kanna says what you want her to say.",
     inline=True
     )
