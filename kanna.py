@@ -70,8 +70,8 @@ async def help(ctx):
     inline=True
     )
     h.add_field(
-    name="⭐ **STAR KANNA ON GITHUB**",
-    value=f"[Click here](https://github.com/AsheeshhSenpai/Kanna-Chan)",
+    name="⭐ **UPVOTE ME**",
+    value=f"[Click here](https://discordbotlist.com/bots/kanna-chan/upvote)",
     inline=True
     )
     h.set_footer(
@@ -86,6 +86,15 @@ async def help(ctx):
 async def source(ctx):
   await ctx.send("https://github.com/AsheeshhSenpai/Kanna-Chan")
  
+@client.command()
+async def vote(ctx):
+  emb = discord.Embed(title="UPVOTE KANNA CHAN!!", description="Vote for Kanna uwu\n[Click here](https://discordbotlist.com/bots/kanna-chan/upvote)", color=0x2e69f2)
+  kana = client.get_user(kana_id)
+  emb.set_footer(
+    text=f"Kanna Chan",
+    icon_url=kana.avatar_url,
+  )
+  await ctx.send(embed=emb)
 
 @client.command()
 async def prefix(ctx):
