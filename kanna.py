@@ -13,7 +13,7 @@ intents.members = True
 intents.presences = True
 
 kana_id = 857835279259664403
-client = commands.Bot(command_prefix=['kanna ', 'kana ', 'k.', 'Kanna', 'Kana'], case_insensitive=True, intents=intents)
+client = commands.Bot(command_prefix=['kanna ', 'kana ', 'k.', 'K.', 'Kanna ', 'Kana '], case_insensitive=True, intents=intents)
 client.remove_command("help")
 
 def circle(im, rad=100):
