@@ -12,6 +12,7 @@ intents = discord.Intents.default()
 intents.members = True
 intents.presences = True
 
+kana_id = 857835279259664403
 client = commands.Bot(command_prefix=['kanna ', 'kana ', 'k.', 'Kanna', 'Kana'], case_insensitive=True, intents=intents)
 client.remove_command("help")
 
@@ -36,39 +37,46 @@ async def on_ready():
 
 @client.command()
 async def help(ctx):
+  kana = client.get_user(kana_id)
   try:
     h = discord.Embed(
-      title="NEED HELP?",
-      description="Bot Creator: **ASHISH**",
+      title="HELP HAS COME!",
+      description="BOT CREATOR: [**ASHISH**](https://github.com/AsheeshhSenpai)",
       color=0x2e69f2,
     )
     h.add_field(
-      name="__ABOUT__", 
-      value=f"\nPrefix : `kanna `, `kana `, `k.`\nKanna Chan is a fun discord bot. She can play fun games with you, do some fun stuff and love you if you love her❤️.", 
-      inline=False
+    name="🔑**PREFIX**", 
+    value=f"Send `kana prefix`", 
+    inline=True
     )
     h.add_field(
-      name="__COMMANDS__",
-      value=f"`love` Kanna sends love to the person.\n`thank` Kanna thanks the person.\n`pat` pat any person.\n`think` Kanna thinks.\n`amazed` Kanna is amazed woah..\n`hug` Kanna hugs the person.\n`dance` Kanna dances with the person.\n`kill` Kanna kills the person.\n`befriend` Kanna befriends the person.\n`lick` lickie lickie..\n`attack` Kanna attacks.\n`say` Kanna says what you want her to say.\n`arz` Kanna sends a shayari for you.",
-      inline=False
+    name="📃**COMMANDS**",
+    value=f"Send `kana cmds`",
+    inline=True
     )
     h.add_field(
-    name="__CUSTOM CARDS__",
-    value="`simpcard` Make a simpcard with your name, name of the person you simp for and your pfp.\n`gaycard` Make a Gay Card with your name and pfp in it.\n`uwucard` Make a card to show love for the person that makes you happy uwu."
+    name="⚙**SOURCE**",
+    value=f"Send `kana source`",
+    inline=True
     )
     h.add_field(
-    name="__AVATAR__",
-    value="`av`, `avatar`, `pfp` kanna shows enlarged avatar of the user.",
-    inline="False"
+    name="🎐**INVITE ME**",
+    value=f"[Click here](https://discord.com/api/oauth2/authorize?client_id=857835279259664403&permissions=318528&scope=bot)",
+    inline=True
     )
     h.add_field(
-      name="__GAMES__", value="Send `kanna games` to see the list of games available and how to play them.", inline=False
+    name="❓**ABOUT**",
+    value=f"[Click here](https://github.com/AsheeshhSenpai/Kanna-Chan/blob/main/README.md#about)",
+    inline=True
     )
     h.add_field(
-      name="__MISC__", value="Kanna Chan also replies to you when you say `love you kanna chan` or `hate you kanna chan`.", inline=False
+    name="⭐**STAR KANNA ON GITHUB**",
+    value=f"[Click here](https://github.com/AsheeshhSenpai/Kanna-Chan)",
+    inline=True
     )
-    h.add_field(
-      name="__SOURCE__", value="`kanna source`", inline=False
+    h.set_footer(
+    text=f"Kanna Chan",
+    icon_url=kana.avatar_url,
     )
     await ctx.send(embed=h)
   except Exception as e:
@@ -76,26 +84,149 @@ async def help(ctx):
 
 @client.command()
 async def source(ctx):
-  await ctx.send("https://github.com/AsheeshhSenpai/Eri-Chan")
+  await ctx.send("https://github.com/AsheeshhSenpai/Kanna-Chan")
  
 
 @client.command()
+async def prefix(ctx):
+  await ctx.send("Prefixes for kanna are `k.`, `kana ` and `kanna `.")
+
+@client.command()
+async def cmds(ctx):
+  kana = client.get_user(kana_id)
+  try:
+    h = discord.Embed(
+    title="COMMANDS",
+    description="BOT CREATOR: [**ASHISH**](https://github.com/AsheeshhSenpai)",
+    color=0x2e69f2,
+    )
+    h.add_field(
+    name="🤪**FUN**", 
+    value=f"Send `kana fun` to see list of commands available.", 
+    inline=False
+    )
+    h.add_field(
+    name="💳**CUSTOM CARDS**",
+    value=f"`simpcard (person you simp for)` Kana makes a simpcard for you with your name and pfp on it.\n`gaycard` Kana makes a gaycard for you with your name and pfp.\n`uwucard` (mention someone) Kana makes a card to show your love for another person uwu.",
+    inline=False
+    )
+    h.add_field(
+    name="🎴**AVATAR**",
+    value=f"`av`, `avatar` or `pfp` Kana sends pfp of a user or shared pfp.",
+    inline=False
+    )
+    h.add_field(
+    name="🧩**GAMES**",
+    value=f"Send `kana games` to see list of games available and how to play them.",
+    inline=False
+    )
+    h.set_footer(
+    text=f"Kanna Chan",
+    icon_url=kana.avatar_url,
+    )
+    await ctx.send(embed=h)
+  except Exception as e:
+    print(e)
+
+@client.command()
+async def fun(ctx):
+  kana = client.get_user(kana_id)
+  try:
+    h = discord.Embed(
+    title="FUN COMMANDS",
+    description="BOT CREATOR: [**ASHISH**](https://github.com/AsheeshhSenpai)",
+    color=0x2e69f2,
+    )
+    h.add_field(
+    name="**Love**", 
+    value=f"Kanna sends love to the person.", 
+    inline=True
+    )
+    h.add_field(
+    name="**Pat**",
+    value=f"pat any person.",
+    inline=True
+    )
+    h.add_field(
+    name="**Thank**",
+    value=f"Kanna thanks the person.",
+    inline=True
+    )
+    h.add_field(
+    name="**Think**",
+    value=f"Kanna thinks hmmm..",
+    inline=True
+    )
+    h.add_field(
+    name="**Amazed**",
+    value=f"Kanna is amazed woah..",
+    inline=True
+    )
+    h.add_field(
+    name="**Hug**",
+    value=f"Kanna hugs the person.",
+    inline=True
+    )
+    h.add_field(
+    name="**Dance**",
+    value=f"Kanna dances with the person.",
+    inline=True
+    )
+    h.add_field(
+    name="**Kill**",
+    value=f"Kanna kills the person.",
+    inline=True
+    )
+    h.add_field(
+    name="**Befriend**",
+    value=f"Kanna befriends the person.",
+    inline=True
+    )
+    h.add_field(
+    name="**Lick**",
+    value=f"lickie lickie..",
+    inline=True
+    )
+    h.add_field(
+    name="**Attack**",
+    value=f"Kanna attacks",
+    inline=True
+    )
+    h.add_field(
+    name="**Say**",
+    value=f"Kanna says what you want her to say.",
+    inline=True
+    )
+    h.set_footer(
+    text=f"Kanna Chan",
+    icon_url=kana.avatar_url,
+    )
+    await ctx.send(embed=h)
+  except Exception as e:
+    print(e)
+
+@client.command()
 async def games(ctx):
+  kana = client.get_user(kana_id)
   emb = discord.Embed(title="GAMES", color=0x2e69f2)
   emb.add_field(
-    name="__TRUTH OR DARE__",
+    name="🌚**TRUTH OR DARE**",
     value="Start a game of truth or dare using eri! For truth send `kanna truth` and for dare send `kanna dare`.",
     inline="False"
   )
   emb.add_field(
-    name="__LOTTERY__",
+    name="🎰**LOTTERY**",
     value="Start a game of lattery using eri. You will have to send three random numbers between 0 to 5 with space in between like `kanna lottery 1 3 4`.",
     inline="False"
   )
   emb.add_field(
-    name="__SHIP__",
+    name="🥰**SHIP**",
     value="Ship two people, cus why not? Command: `kanna ship`",
     inline="False"
+  )
+  emb.set_footer(
+    text=f"Kanna Chan",
+    icon_url=kana.avatar_url,
   )
   await ctx.send(embed=emb)
   
