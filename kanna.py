@@ -513,7 +513,7 @@ async def marry(ctx, mem: discord.User = None):
         )
         await ctx.send(embed=em1)
         create(ctx.author.id, mem.id)
-      else:
+      elif response.content.lower().strip() == "no":
         msg = "The proposal between " + author + " and " + mem.name + " has been declined."
         em2 = discord.Embed(description=msg, color=0x2e69f2)
         em2.set_footer(
@@ -571,7 +571,7 @@ async def divorce(ctx, mem: discord.User = None):
         )
         await ctx.send(embed=em1)
         remove(ctx.author.id, mem.id)
-      else:
+      elif response.content.lower().strip() == "no":
         msg = f"{ctx.author.mention} {mem.name} doesn't want to divorce with you ;-;.\nPlease sort out things on your own ;-;"
         em2 = discord.Embed(description=msg, color=0x2e69f2)
         em2.set_footer(
