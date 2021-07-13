@@ -503,7 +503,7 @@ async def marry(ctx, mem: discord.User = None):
       await ctx.send(mem.mention, embed=em)
       def check(m):
         return m.author == mem
-      response = await client.wait_for('message', check=check)
+      response = await client.wait_for('message', check=check, timeout=40)
       if response.content.lower().strip() == "yes":
         msg = f" {author} and {mem.name}\n\nYou are married now uwu."
         em1 = discord.Embed(title=":heart: Congratulations!! :heart:", description=msg, color=0x2e69f2)
@@ -561,7 +561,7 @@ async def divorce(ctx, mem: discord.User = None):
       await ctx.send(mem.mention, embed=em)
       def check(m):
         return m.author == mem
-      response = await client.wait_for('message', check=check)
+      response = await client.wait_for('message', check=check, timeout=40)
       if response.content.lower().strip() == "yes":
         msg = f"{author} and {mem.name} have taken divorce ;-;\n\nYou are no more married now."
         em1 = discord.Embed(title=":broken_heart: Divorce :broken_heart:", description=msg, color=0x2e69f2)
