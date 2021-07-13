@@ -6,6 +6,8 @@ import random
 from decouple import config
 from PIL import Image, ImageOps, ImageDraw, ImageChops, ImageFont
 from io import BytesIO
+import datetime
+import pyrebase
 
 
 intents = discord.Intents.default()
@@ -30,10 +32,89 @@ def circle(im, rad=100):
   im.putalpha(alpha)
   return im
 
+firebase = pyrebase.initialize_app(config("firebaseConfig"))
+db = firebase.database()
+
+def create(mem1, mem2):
+  now = str(datetime.date.today())
+  db.child("MARRIAGE").child(mem1).set({"PARTNER": mem2, "TIME": now})
+
+def mcheck(user1, user2 = None):
+  auth1 = db.child("MARRIAGE").child(user1).get().val()
+  auth2 = db.child("MARRIAGE").child(user2).get().val()
+  all_users = db.child("MARRIAGE").get()
+  if all_users.each() != None:
+    for user in all_users.each():
+      partner = db.child("MARRIAGE").child(user.key()).child("PARTNER").get().val()
+      if partner == user1 or partner == user2:
+        return True
+        break
+  if auth1 != None or auth2 != None:
+    return True
+  else:
+    return False
+
+def scheck(user):
+  auth1 = db.child("MARRIAGE").child(user).get().val()
+  all_users = db.child("MARRIAGE").get()
+  if all_users.each() != None:
+    for users in all_users.each():
+      partner = db.child("MARRIAGE").child(users.key()).child("PARTNER").get().val()
+      if partner == user:
+        return True
+        break
+  if auth1 != None:
+    return True
+  else:
+    return False
+
+def return_partner(user):
+  auth = db.child("MARRIAGE").child(user).get().val()
+  if auth == None:
+    all_users = db.child("MARRIAGE").get()
+    if all_users.each() != None:
+      for users in all_users.each():
+        partner = db.child("MARRIAGE").child(users.key()).child("PARTNER").get().val()
+        if partner == user:
+          p = users.key()
+          break
+  else:
+    p = db.child("MARRIAGE").child(user).child("PARTNER").get().val()
+  return p
+
+def check_partner(user1, user2):
+  auth1 = db.child("MARRIAGE").child(user1).child("PARTNER").get().val()
+  auth2 = db.child("MARRIAGE").child(user2).child("PARTNER").get().val()
+  if user1 == auth2 or user2 == auth1:
+    return True
+  else:
+    return False
+
+def return_time(user):
+  auth = db.child("MARRIAGE").child(user).get().val()
+  if auth == None:
+    all_users = db.child("MARRIAGE").get()
+    if all_users.each() != None:
+      for users in all_users.each():
+        partner = db.child("MARRIAGE").child(users.key()).child("PARTNER").get().val()
+        if partner == user:
+          user = users.key()
+    time = db.child("MARRIAGE").child(user).child("TIME").get().val()
+  else:
+    time = db.child("MARRIAGE").child(user).child("TIME").get().val()
+  return time
+
+def remove(user1, user2):
+  list = [user1, user2]
+  for user in list:
+    auth = db.child("MARRIAGE").child(user).get().val()
+    if auth != None:
+      db.child("MARRIAGE").child(user).remove()
+
 @client.event
 async def on_ready():
   await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name='Asheeshh Onii Chan'))
-  print('Eri is Online.')
+  print('Kanna is Online.')
 
 @client.command()
 async def help(ctx):
@@ -219,17 +300,22 @@ async def games(ctx):
   kana = client.get_user(kana_id)
   emb = discord.Embed(title="GAMES", color=0x2e69f2)
   emb.add_field(
-    name="🌚**TRUTH OR DARE**",
+    name="🌚 **TRUTH OR DARE**",
     value="Start a game of truth or dare using eri! For truth send `kanna truth` and for dare send `kanna dare`.",
     inline="False"
   )
   emb.add_field(
-    name="🎰**LOTTERY**",
+    name="🎰 **LOTTERY**",
     value="Start a game of lattery using eri. You will have to send three random numbers between 0 to 5 with space in between like `kanna lottery 1 3 4`.",
     inline="False"
   )
   emb.add_field(
-    name="🥰**SHIP**",
+    name="❤ **MARRY**",
+    value="Marry any person. Send `kana marry` to know more.",
+    inline="False"
+  )
+  emb.add_field(
+    name="🥰 **SHIP**",
     value="Ship two people, cus why not? Command: `kanna ship`",
     inline="False"
   )
@@ -238,7 +324,8 @@ async def games(ctx):
     icon_url=kana.avatar_url,
   )
   await ctx.send(embed=emb)
-  
+
+
 @client.command()
 async def dance(ctx, mem: discord.User = None):
   if mem == None:
@@ -390,6 +477,107 @@ async def love(ctx, mem: discord.User = None):
     emb = discord.Embed(title="", description=f"Kanna sends love to {mem.mention} uwu", color=0x2e69f2)
     emb.set_image(url="https://pa1.narvii.com/7231/f52073bab90f9a13f3e292af0b3e1b1e8f8ba189r1-540-304_hq.gif")
     await ctx.send(embed=emb)
+
+@client.command()
+async def marry(ctx, mem: discord.User = None):
+  kana = client.get_user(kana_id)
+  if mem == None:
+    emb=discord.Embed(description="You need to mention someone to marry them\nThe command is `marry @user`.")
+    emb.set_footer(
+    text=f"Kanna Chan",
+    icon_url=kana.avatar_url,
+    )
+    await ctx.send(embed=emb)
+  elif mem.id == ctx.author.id:
+    await ctx.send("You can't marry yourself, dumb <:dum:864375070196367400>")
+  else:
+    if mcheck(ctx.author.id, mem.id) == False:
+      author = ctx.author.name
+      desc = f":ring: **{author}** has proposed to **{mem.name}** :ring:\n\n{mem.name} , Do you accept this proposal?\n**Type yes to accept or no to decline.**"
+      em = discord.Embed(title="MARRIAGE PROPOSAL!", description=desc,color=0x2e69f2)
+      em.set_footer(
+      text=f"Kanna Chan",
+      icon_url=kana.avatar_url,
+      )
+      await ctx.send(mem.mention, embed=em)
+      def check(m):
+        return m.author == mem
+      response = await client.wait_for('message', check=check)
+      if response.content.lower().strip() == "yes":
+        msg = f" {author} and {mem.name}\n\nYou are married now uwu."
+        em1 = discord.Embed(title=":heart: Congratulations!! :heart:", description=msg, color=0x2e69f2)
+        em1.set_footer(
+        text=f"Kanna Chan",
+        icon_url=kana.avatar_url,
+        )
+        await ctx.send(embed=em1)
+        create(ctx.author.id, mem.id)
+      else:
+        msg = "The proposal between " + author + " and " + mem.name + " has been declined."
+        em2 = discord.Embed(description=msg, color=0x2e69f2)
+        em2.set_footer(
+        text=f"Kanna Chan",
+        icon_url=kana.avatar_url,
+        )
+        await ctx.send(ctx.author.mention, embed=em2)
+    else:
+      await ctx.send("Anyone of you is already married ;-;")
+
+@client.command()
+async def marriage(ctx):
+  kana = client.get_user(kana_id)
+  if scheck(ctx.author.id) == True:
+    partner = client.get_user(int(return_partner(ctx.author.id)))
+    partner_name = partner.name
+    then = return_time(ctx.author.id)
+    thatday = datetime.datetime.strptime(then ,'%Y-%m-%d')
+    month = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December"}
+    emb = discord.Embed(description=f"**{ctx.author.name}** is married to **{partner_name}** uwu\n\nMarried since {thatday.day} {month[thatday.month]}, {thatday.year}\nYou are cute <:catcute:785777055617777717>", color=0x2e69f2)
+    emb.set_footer(
+    text=f"Kanna Chan",
+    icon_url=kana.avatar_url,
+    )
+    await ctx.send(ctx.author.mention, embed = emb)
+  else:
+    await ctx.send(f"{ctx.author.mention} You are currently not married to anyone.")
+
+@client.command()
+async def divorce(ctx, mem: discord.User = None):
+  kana = client.get_user(kana_id)
+  if mem == ctx.author:
+    await ctx.send("How do you divorce with yourself baka! <:dum:864375070196367400>")
+  elif mem == None:
+    await ctx.send("Who do you wnat to divorce with?")
+  else:
+    if check_partner(ctx.author.id, mem.id) == True:
+      author = ctx.author.name
+      desc = f" **{author}** wants to divorce with **{mem.name}** \n\n{mem.name} , Do you accept this proposal?\n**Type yes to accept or no to decline.**"
+      em = discord.Embed(title="✉ DIVORCE NOTICE! ✉", description=desc,color=0x2e69f2)
+      em.set_footer(
+        text=f"Kanna Chan",
+        icon_url=kana.avatar_url,
+      )
+      await ctx.send(mem.mention, embed=em)
+      def check(m):
+        return m.author == mem
+      response = await client.wait_for('message', check=check)
+      if response.content.lower().strip() == "yes":
+        msg = f"{author} and {mem.name} have taken divorce ;-;\n\nYou are no more married now."
+        em1 = discord.Embed(title=":broken_heart: Divorce :broken_heart:", description=msg, color=0x2e69f2)
+        em1.set_footer(
+        text=f"Kanna Chan",
+        icon_url=kana.avatar_url,
+        )
+        await ctx.send(embed=em1)
+        remove(ctx.author.id, mem.id)
+      else:
+        msg = f"{ctx.author.mention} {mem.name} doesn't want to divorce with you ;-;.\nPlease sort out things on your own ;-;"
+        em2 = discord.Embed(description=msg, color=0x2e69f2)
+        em2.set_footer(
+        text=f"Kanna Chan",
+        icon_url=kana.avatar_url,
+        )
+        await ctx.send(embed=em2)
 
 @client.command(aliases=['avatar', 'pfp'])
 async def av(ctx, m1: discord.Member = None, m2: discord.Member = None):
