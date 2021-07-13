@@ -8,6 +8,7 @@ from PIL import Image, ImageOps, ImageDraw, ImageChops, ImageFont
 from io import BytesIO
 import datetime
 import pyrebase
+import json
 
 
 intents = discord.Intents.default()
@@ -32,7 +33,7 @@ def circle(im, rad=100):
   im.putalpha(alpha)
   return im
 
-firebase = pyrebase.initialize_app(config("firebaseConfig"))
+firebase = pyrebase.initialize_app(json.loads(config("firebaseConfig")))
 db = firebase.database()
 
 def create(mem1, mem2):
