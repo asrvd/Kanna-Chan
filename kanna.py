@@ -552,7 +552,7 @@ async def divorce(ctx, mem: discord.User = None):
   else:
     if check_partner(ctx.author.id, mem.id) == True:
       author = ctx.author.name
-      desc = f" **{author}** wants to divorce with **{mem.name}** \n\n{mem.name} , Do you accept this proposal?\n**Type yes to accept or no to decline.**"
+      desc = f" **{author}** wants to divorce with **{mem.name}** \n\n{mem.name} , Do you accept this divorce notice?\n**Type yes to accept or no to decline.**"
       em = discord.Embed(title="✉ DIVORCE NOTICE! ✉", description=desc,color=0x2e69f2)
       em.set_footer(
         text=f"Kanna Chan",
