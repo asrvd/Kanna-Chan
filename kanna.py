@@ -9,6 +9,7 @@ from io import BytesIO
 import datetime
 import pyrebase
 import json
+import requests
 
 
 intents = discord.Intents.default()
@@ -18,6 +19,7 @@ intents.presences = True
 kana_id = 857835279259664403
 client = commands.Bot(command_prefix=['kanna ', 'kana ', 'k.', 'K.', 'Kanna ', 'Kana '], case_insensitive=True, intents=intents)
 client.remove_command("help")
+rapid_api = str(config("RAPID_API_KEY"))
 
 def circle(im, rad=100):
   circle = Image.new('L', (rad * 2, rad * 2), 0)
@@ -308,6 +310,11 @@ async def games(ctx):
   emb.add_field(
     name="🎰 **LOTTERY**",
     value="Start a game of lattery using eri. You will have to send three random numbers between 0 to 5 with space in between like `kanna lottery 1 3 4`.",
+    inline="False"
+  )
+  emb.add_field(
+    name="📄 **DEFINE**",
+    value="`kana df (your query here)` Kana sends the definition of your query.",
     inline="False"
   )
   emb.add_field(
@@ -742,6 +749,30 @@ async def lottery(ctx, *, guesses):
     await ctx.send(f'{ctx.author.mention} You won! Congratulations on winning the lottery!')
   else:
     await ctx.send(f"{ctx.author.mention} Better luck next time... You were one of the 124/125 who lost the lottery...\nThe numbers were `{', '.join(string_numbers)}`")
+
+@client.command(aliases=["df"])
+async def define(ctx, *, query):
+  kana = client.get_user(kana_id)
+  url = "https://mashape-community-urban-dictionary.p.rapidapi.com/define"
+  querystring = {"term":f"{query}"}
+  headers = {
+    'x-rapidapi-key': rapid_api,
+    'x-rapidapi-host': "mashape-community-urban-dictionary.p.rapidapi.com"
+  }
+  res = requests.request("GET", url, headers=headers, params=querystring)
+  result = res.content
+  json_data = json.loads(result)
+  list = json_data["list"]
+  if list == []:
+    await ctx.send("No results available for this query ;-;")
+  else:
+    jtext = json_data["list"][0]["definition"]
+    example = json_data["list"][0]["example"]
+    link = json_data["list"][0]["permalink"]
+    emb = discord.Embed(description=f"{jtext}\n\n`*{example}*`\n\n*more results at {link}*", color=0x2e69f2)
+    emb.set_author(name=f"Definition Of {query.capitalize()}", icon_url=ctx.author.avatar_url)
+    emb.set_footer(text="Kanna Chan", icon_url=kana.avatar_url)
+    await ctx.send(embed=emb)
 
 @client.command()
 async def arz(ctx):
