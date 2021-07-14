@@ -769,7 +769,7 @@ async def define(ctx, *, query):
     jtext = json_data["list"][0]["definition"]
     example = json_data["list"][0]["example"]
     link = json_data["list"][0]["permalink"]
-    emb = discord.Embed(description=f"{jtext}\n\n`*{example}*`\n\n*more results at {link}*", color=0x2e69f2)
+    emb = discord.Embed(description=f"{jtext}\n\n*`{example}`*\n\nmore results at {link}*", color=0x2e69f2)
     emb.set_author(name=f"Definition Of {query.capitalize()}", icon_url=ctx.author.avatar_url)
     emb.set_footer(text="Kanna Chan", icon_url=kana.avatar_url)
     await ctx.send(embed=emb)
