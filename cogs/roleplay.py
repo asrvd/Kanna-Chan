@@ -6,9 +6,9 @@ from io import BytesIO
 class Roleplay(commands.Cog):
     def __init__(self, client):
         self.client = client
-        
+
     @commands.command()
-    async def dance(ctx, mem: discord.User = None):
+    async def dance(self, ctx, mem: discord.User = None):
         if mem == None:
             mem = ctx.author
         emb = discord.Embed(title="", description=f"kanna dances with {ctx.author.mention} uwu", color=0x2e69f2)
@@ -16,7 +16,7 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=emb)
  
     @commands.command()
-    async def hug(ctx, mem: discord.User = None):
+    async def hug(self, ctx, mem: discord.User = None):
         if mem == None:
             mem = ctx.author
         emb = discord.Embed(title="", description=f"Kanna hugs {mem.mention} uwu", color=0x2e69f2)
@@ -24,7 +24,7 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command()
-    async def kill(ctx, mem: discord.User = None):
+    async def kill(self, ctx, mem: discord.User = None):
         if mem == None:
             mem = ctx.author
         emb = discord.Embed(title="", description=f"{ctx.author.mention} kills {mem.mention}", color=0x2e69f2)
@@ -32,7 +32,7 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command()
-    async def attack(ctx, mem: discord.User = None):
+    async def attack(self, ctx, mem: discord.User = None):
         if mem == None:
             mem = ctx.author
         emb = discord.Embed(title="", description=f"{mem.mention} Behold the power of Dragon Loli!", color=0x2e69f2)
@@ -40,7 +40,7 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command()
-    async def lick(ctx, mem: discord.User = None):
+    async def lick(self, ctx, mem: discord.User = None):
         if mem == None:
             mem = ctx.author
         emb = discord.Embed(title="", description=f"{ctx.author.mention} licks {mem.mention}, tastes good :)", color=0x2e69f2)
@@ -48,19 +48,19 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command()
-    async def think(ctx):
+    async def think(self, ctx):
         emb = discord.Embed(title="", description=f"Kanna thinks hmmm..", color=0x2e69f2)
         emb.set_image(url="https://i.pinimg.com/originals/4f/b6/4c/4fb64c59ff0394033f61b6c018d61ed1.gif")
         await ctx.send(embed=emb)
   
     @commands.command()
-    async def amazed(ctx):
+    async def amazed(self, ctx):
         emb = discord.Embed(title="", description=f"Kanna is amazed woah..", color=0x2e69f2)
         emb.set_image(url="https://preview.redd.it/n5ptq0iw65351.png?width=640&crop=smart&auto=webp&s=75887b8b7e949f52c4f548dd5d037249dca05566")
         await ctx.send(embed=emb)
 
     @commands.command()
-    async def pat(ctx, m1: discord.Member = None, m2: discord.Member = None):
+    async def pat(self, ctx, m1: discord.Member = None, m2: discord.Member = None):
         if m1 == None:
             m1 = ctx.author
             m2 = ctx.author
@@ -93,7 +93,7 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=emb, file=file)
     
     @commands.command()
-    async def love(ctx, mem: discord.User = None):
+    async def love(self, ctx, mem: discord.User = None):
         if mem == None:
             mem = ctx.author
         emb = discord.Embed(title="", description=f"Kanna sends love to {mem.mention} uwu", color=0x2e69f2)
@@ -101,7 +101,7 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command()
-    async def thank(ctx, mem: discord.User = None):
+    async def thank(self, ctx, mem: discord.User = None):
         if mem == None:
             mem = ctx.author.id
         emb = discord.Embed(title="", description=f"Arigatou {mem.mention} :)", color=0x2e69f2)
@@ -109,7 +109,7 @@ class Roleplay(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command()
-    async def befriend(ctx, mem: discord.User = None):
+    async def befriend(self, ctx, mem: discord.User = None):
         if mem == None:
             mem = ctx.author
         emb = discord.Embed(title="", description=f"Kanna is your friend now uwu {mem.mention} :)", color=0x2e69f2)

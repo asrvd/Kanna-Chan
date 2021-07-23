@@ -116,7 +116,7 @@ async def reload(ctx):
   for file in os.listdir("./cogs"):
     if file.endswith(".py") and not file.startswith("_"):
       client.reload_extension(f"cogs.{file[:-3]}")
-      await ctx.send("```>> Kanna reloaded cogs```")
+  await ctx.send("```>> Kanna reloaded cogs```")
 
 
 @client.command()
