@@ -54,7 +54,7 @@ class Help(commands.Cog):
             print(e)
 
     @commands.command()
-    async def source(ctx):
+    async def source(self, ctx):
         await ctx.send("https://github.com/AsheeshhSenpai/Kanna-Chan")
         
     @commands.command()
@@ -68,7 +68,7 @@ class Help(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command()
-    async def prefix(ctx):
+    async def prefix(self, ctx):
         await ctx.send("Prefixes for kanna are `k.`, `kana ` and `kanna `.")
 
     @commands.command()
