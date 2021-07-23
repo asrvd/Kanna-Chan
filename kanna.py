@@ -126,6 +126,12 @@ async def on_ready():
   print(">> cogs loaded")
   print('>> Kanna is Online.')
 
+@client.command()
+async def reload(ctx):
+  for file in os.listdir("./cogs"):
+    if file.endswith(".py") and not file.startswith("_"):
+      client.reload_extension(f"cogs.{file[:-3]}")
+      await ctx.send("```>> Kanna reloaded cogs```")
 
 @client.command()
 async def dance(ctx, mem: discord.User = None):
