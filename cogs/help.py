@@ -68,6 +68,16 @@ class Help(commands.Cog):
         await ctx.send(embed=emb)
 
     @commands.command()
+    async def invite(self, ctx):
+        emb = discord.Embed(title="INVITE KANNA CHAN!!", description="Invite Kanna in your server uwu\n[Click here](https://discord.com/api/oauth2/authorize?client_id=857835279259664403&permissions=318528&scope=bot)", color=0x2e69f2)
+        kana = self.client.get_user(self.kana_id)
+        emb.set_footer(
+            text=f"Kanna Chan",
+            icon_url=kana.avatar_url,
+        )
+        await ctx.send(embed=emb)
+
+    @commands.command()
     async def prefix(self, ctx):
         await ctx.send("Prefixes for kanna are `k.`, `kana ` and `kanna `.")
 
