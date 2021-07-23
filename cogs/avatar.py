@@ -45,7 +45,7 @@ class Avatar(commands.Cog):
 
         #for shared pfp
         elif m2 != m1:                                
-            bg = Image.open("img.png")
+            bg = Image.open("./images/img.png")
             asset1 = m1.avatar_url_as(size=512)
             asset2 = m2.avatar_url_as(size=512)
             data1 = BytesIO(await asset1.read())
