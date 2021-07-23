@@ -112,6 +112,7 @@ async def on_ready():
   print('>> Kanna is Online.')
 
 @client.command()
+@commands.is_owner()
 async def reload(ctx):
   for file in os.listdir("./cogs"):
     if file.endswith(".py") and not file.startswith("_"):
