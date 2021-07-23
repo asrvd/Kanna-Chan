@@ -11,12 +11,12 @@ kana_id = 857835279259664403
 client = commands.Bot(command_prefix=['kanna ', 'kana ', 'k.', 'K.', 'Kanna ', 'Kana '], case_insensitive=True, intents=intents)
 client.remove_command("help")
 
+print(">> Kanna is awaking...")
+
 def load_cogs():
   for file in os.listdir("./cogs"):
     if file.endswith(".py") and not file.startswith("_"):
       client.load_extension(f"cogs.{file[:-3]}")
-
-print(">> Kanna is awaking...")
 
 @client.event
 async def on_ready():
