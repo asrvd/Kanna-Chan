@@ -30,8 +30,6 @@ class Misc(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        await self.client.process_commands(message)
-
         love_words=[
             "i love you kanna chan",
             "love you kanna chan",
