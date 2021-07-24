@@ -6,27 +6,26 @@ import imageio
 import numpy as np
 from PIL import Image, ImageSequence
 
-
+def resize(self, image):
+    size = 500, 500
+    im = Image.open(image)
+    global frames
+    frames = ImageSequence.Iterator(im)
+    def thumbnails(frames):
+        for frame in frames:
+            thumbnail = frame.copy()
+            thumbnail.thumbnail(size, Image.ANTIALIAS)
+            yield thumbnail
+    frames = thumbnails(frames)
+    om = next(frames)
+    om.info = im.info
+    return om
 
 class Avatar(commands.Cog):
     def __init__(self, client):
         self.client = client
         self.kana_id = 857835279259664403
         self.frames = frames
-    def resize(self, image):
-        size = 500, 500
-        im = Image.open(image)
-        global frames
-        frames = ImageSequence.Iterator(im)
-        def thumbnails(frames):
-            for frame in frames:
-                thumbnail = frame.copy()
-                thumbnail.thumbnail(size, Image.ANTIALIAS)
-                yield thumbnail
-        frames = thumbnails(frames)
-        om = next(frames)
-        om.info = im.info
-        return om
     @commands.command(aliases=['avatar', 'pfp'])
     async def av(self, ctx, m1: discord.Member = None, m2: discord.Member = None):
         kana = self.client.get_user(self.kana_id)
@@ -83,9 +82,9 @@ class Avatar(commands.Cog):
                 im2 = "pfp2.gif"
                 await m1.avatar_url.save(im1)
                 await m2.avatar_url.save(im2)
-                image1 = self.resize("pfp1.gif")
+                image1 = resize("pfp1.gif")
                 image1.save("pp1.gif", save_all=True, append_images=list(self.frames))
-                image2 = self.resize("pfp2.gif")
+                image2 = resize("pfp2.gif")
                 image2.save("pp2.gif", save_all=True, append_images=list(self.frames))
                 av1 = imageio.get_reader("pp1.gif")
                 av2 = imageio.get_reader("pp2.gif")
