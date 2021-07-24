@@ -69,8 +69,10 @@ class Avatar(commands.Cog):
                 pfp2 = Image.open(data2)
                 pfp1 = pfp1.resize((500, 500))
                 pfp2 = pfp2.resize((500, 500))
-                av1 = imageio.get_reader(pfp1)
-                av2 = imageio.get_reader(pfp2)
+                pfp1.save("av1.gif")
+                pfp2.save("av2.gif")
+                av1 = imageio.get_reader("av1.gif")
+                av2 = imageio.get_reader("av2.gif")
                 frames = min(av1.get_length(), av2.get_length()) 
                 new_gif = imageio.get_writer('final.gif')
                 for frame_number in range(frames):
