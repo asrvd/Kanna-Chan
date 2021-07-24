@@ -66,8 +66,14 @@ class Avatar(commands.Cog):
                 im2 = "pfp2.gif"
                 await m1.avatar_url.save(im1)
                 await m2.avatar_url.save(im2)
-                av1 = imageio.get_reader(im1)
-                av2 = imageio.get_reader(im2)
+                image1 = Image.open(im1)
+                image2 = Image.open(im2)
+                image1.resize((500, 500))
+                image2.resize((500, 500))
+                image1.save("pp1.gif")
+                image2.save("pp2.gif")
+                av1 = imageio.get_reader("pp1.gif")
+                av2 = imageio.get_reader("pp2.gif")
                 frames = min(av1.get_length(), av2.get_length()) 
                 new_gif = imageio.get_writer('final.gif')
                 for frame_number in range(frames):
