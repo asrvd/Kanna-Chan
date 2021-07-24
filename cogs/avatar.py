@@ -81,9 +81,9 @@ class Avatar(commands.Cog):
                 im2 = "pfp2.gif"
                 await m1.avatar_url.save(im1)
                 await m2.avatar_url.save(im2)
-                image1 = resize("pfp1.gif")
+                image1 = resize(im1)
                 image1.save("pp1.gif", save_all=True, append_images=list(frames))
-                image2 = resize("pfp2.gif")
+                image2 = resize(im2)
                 image2.save("pp2.gif", save_all=True, append_images=list(frames))
                 av1 = imageio.get_reader("pp1.gif")
                 av2 = imageio.get_reader("pp2.gif")
