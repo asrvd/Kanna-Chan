@@ -61,18 +61,8 @@ class Avatar(commands.Cog):
             bg.paste(pfp2, (500, 0))
 
             if m1.is_avatar_animated() and m2.is_avatar_animated():
-                asset1 = m1.avatar_url_as(size=512)
-                asset2 = m2.avatar_url_as(size=512)
-                data1 = BytesIO(await asset1.read())
-                data2 = BytesIO(await asset2.read())
-                pfp1 = Image.open(data1)
-                pfp2 = Image.open(data2)
-                pfp1 = pfp1.resize((500, 500))
-                pfp2 = pfp2.resize((500, 500))
-                pfp1.save("av1.gif")
-                pfp2.save("av2.gif")
-                av1 = imageio.get_reader("av1.gif")
-                av2 = imageio.get_reader("av2.gif")
+                av1 = imageio.get_reader(m1.avatar_url)
+                av2 = imageio.get_reader(m2.avatar_url)
                 frames = min(av1.get_length(), av2.get_length()) 
                 new_gif = imageio.get_writer('final.gif')
                 for frame_number in range(frames):
