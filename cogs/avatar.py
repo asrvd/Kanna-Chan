@@ -2,6 +2,8 @@ import discord
 from discord.ext import commands
 from PIL import Image
 from io import BytesIO
+import imageio
+import numpy as np
 
 class Avatar(commands.Cog):
     def __init__(self, client):
@@ -59,10 +61,18 @@ class Avatar(commands.Cog):
             bg.paste(pfp2, (500, 0))
 
             if m1.is_avatar_animated() and m2.is_avatar_animated():
-                bg.save("avatar.gif")
-                file = discord.File("avatar.gif")
+                av1 = imageio.get_reader(m1.avatar_url)
+                av2 = imageio.get_reader(m2.avatar_url)
+                frames = min(av1.get_length(), av2.get_length()) 
+                new_gif = imageio.get_writer('final.gif')
+                for frame_number in range(frames):
+                    img1 = av1.get_next_data()
+                    img2 = av2.get_next_data()
+                    new_image = np.hstack((img1, img2))
+                    new_gif.append_data(new_image)
+                file = discord.File('final.gif')
                 embed=discord.Embed(color=0x2e69f2)
-                embed.set_image(url="attachment://avatar.gif")
+                embed.set_image(url="attachment://final.gif")
                 embed.set_footer(
                 text=f"Kanna Chan",
                 icon_url=kana.avatar_url,
