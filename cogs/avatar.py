@@ -4,7 +4,6 @@ from PIL import Image
 from io import BytesIO
 import imageio
 import numpy as np
-import urllib.request
 from PIL import Image, ImageSequence
 
 
@@ -90,9 +89,9 @@ class Avatar(commands.Cog):
                 image2.save("pp2.gif", save_all=True, append_images=list(self.frames))
                 av1 = imageio.get_reader("pp1.gif")
                 av2 = imageio.get_reader("pp2.gif")
-                frames = min(av1.get_length(), av2.get_length()) 
+                all_frames = min(av1.get_length(), av2.get_length()) 
                 new_gif = imageio.get_writer('final.gif')
-                for frame_number in range(frames):
+                for frame_number in range(all_frames):
                     img1 = av1.get_next_data()
                     img2 = av2.get_next_data()
                     new_image = np.hstack((img1, img2))
