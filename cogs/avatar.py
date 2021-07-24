@@ -6,7 +6,7 @@ import imageio
 import numpy as np
 from PIL import Image, ImageSequence
 
-def resize(self, image):
+def resize(image):
     size = 500, 500
     im = Image.open(image)
     global frames
