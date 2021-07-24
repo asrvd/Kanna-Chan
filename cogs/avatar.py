@@ -22,7 +22,7 @@ def resize(image):
     return om
 
 class Avatar(commands.Cog):
-    def __init__(self, client):
+    def __init__(self, client, frames):
         self.client = client
         self.kana_id = 857835279259664403
         self.frames = frames
