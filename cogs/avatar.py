@@ -22,10 +22,9 @@ def resize(image):
     return om
 
 class Avatar(commands.Cog):
-    def __init__(self, client, frames):
+    def __init__(self, client):
         self.client = client
         self.kana_id = 857835279259664403
-        self.frames = frames
     @commands.command(aliases=['avatar', 'pfp'])
     async def av(self, ctx, m1: discord.Member = None, m2: discord.Member = None):
         kana = self.client.get_user(self.kana_id)
@@ -83,9 +82,9 @@ class Avatar(commands.Cog):
                 await m1.avatar_url.save(im1)
                 await m2.avatar_url.save(im2)
                 image1 = resize("pfp1.gif")
-                image1.save("pp1.gif", save_all=True, append_images=list(self.frames))
+                image1.save("pp1.gif", save_all=True, append_images=list(frames))
                 image2 = resize("pfp2.gif")
-                image2.save("pp2.gif", save_all=True, append_images=list(self.frames))
+                image2.save("pp2.gif", save_all=True, append_images=list(frames))
                 av1 = imageio.get_reader("pp1.gif")
                 av2 = imageio.get_reader("pp2.gif")
                 all_frames = min(av1.get_length(), av2.get_length()) 
