@@ -4,6 +4,7 @@ from PIL import Image
 from io import BytesIO
 import imageio
 import numpy as np
+import urllib.request
 
 class Avatar(commands.Cog):
     def __init__(self, client):
@@ -61,8 +62,12 @@ class Avatar(commands.Cog):
             bg.paste(pfp2, (500, 0))
 
             if m1.is_avatar_animated() and m2.is_avatar_animated():
-                av1 = imageio.get_reader(m1.avatar_url)
-                av2 = imageio.get_reader(m2.avatar_url)
+                urllib.request.urlretrieve(
+                m1.avatar_url, "av1.gif")
+                urllib.request.urlretrieve(
+                m2.avatar_url, "av2.gif")
+                av1 = imageio.get_reader("av1.gif")
+                av2 = imageio.get_reader("av2.gif")
                 frames = min(av1.get_length(), av2.get_length()) 
                 new_gif = imageio.get_writer('final.gif')
                 for frame_number in range(frames):
