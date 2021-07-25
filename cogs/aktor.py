@@ -12,7 +12,7 @@ class Akinator(commands.Cog):
 
     @commands.command()
     async def akinator(self, ctx):
-        await ctx.author.send(f"{ctx.author.mention} The game is about to begin!\n You will get 60 seconds to answer each question, answer in `yes/no` or `y/n`. Please go to your DM.")
+        await ctx.author.send(f"{ctx.author.mention} The game is about to begin!\n You will get 60 seconds to answer each question, answer in `yes/no` or `y/n`.")
         await asyncio.sleep(5)
         q = await aki.start_game()
         c = 0
