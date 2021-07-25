@@ -97,6 +97,7 @@ class Avatar(commands.Cog):
                         new_gif.append_data(new_image)
                     except ValueError:
                         await ctx.send("Their is large difference in size of the avatars, so Kanna is not able to align them :(")
+                        break
                 file = discord.File('final.gif')
                 embed=discord.Embed(color=0x2e69f2)
                 embed.set_image(url="attachment://final.gif")
