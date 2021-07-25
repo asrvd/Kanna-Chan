@@ -89,6 +89,7 @@ class Avatar(commands.Cog):
                 av2 = imageio.get_reader("pp2.gif")
                 all_frames = min(av1.get_length(), av2.get_length()) 
                 new_gif = imageio.get_writer('final.gif')
+                c = 0
                 for frame_number in range(all_frames):
                     try:
                         img1 = av1.get_next_data()
@@ -97,15 +98,17 @@ class Avatar(commands.Cog):
                         new_gif.append_data(new_image)
                     except ValueError:
                         await ctx.send("Their is large difference in size of the avatars, so Kanna is not able to align them :(")
+                        c = c + 1
                         break
-                file = discord.File('final.gif')
-                embed=discord.Embed(color=0x2e69f2)
-                embed.set_image(url="attachment://final.gif")
-                embed.set_footer(
-                text=f"Kanna Chan",
-                icon_url=kana.avatar_url,
-                )
-                await ctx.send(embed=embed, file=file)
+                if c == 0:        
+                    file = discord.File('final.gif')
+                    embed=discord.Embed(color=0x2e69f2)
+                    embed.set_image(url="attachment://final.gif")
+                    embed.set_footer(
+                    text=f"Kanna Chan",
+                    icon_url=kana.avatar_url,
+                    )
+                    await ctx.send(embed=embed, file=file)
             else:
                 bg.save("avatar.png")
                 file = discord.File("avatar.png")
