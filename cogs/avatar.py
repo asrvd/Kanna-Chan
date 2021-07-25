@@ -7,7 +7,7 @@ import numpy as np
 from PIL import Image, ImageSequence
 
 def resize(image):
-    size = 500, 500
+    size = 200, 200
     im = Image.open(image)
     global frames
     frames = ImageSequence.Iterator(im)
