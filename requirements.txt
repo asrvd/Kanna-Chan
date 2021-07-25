@@ -3,3 +3,4 @@ python-decouple
 pillow
 pyrebase
 imageio
+akinator.py
