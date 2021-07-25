@@ -18,6 +18,8 @@ def check_channel(guild, channel):
     ch = db.child("AKINATOR").child(guild).child("CHANNEL").get().val()
     if ch == channel:
         return True
+    elif ch == None:
+        return "None"
     else:
         return False
 
@@ -82,6 +84,8 @@ class Akinator(commands.Cog):
                 else:
                     await ctx.send("Oof :(")
                 await aki.close()
+        elif check_channel(ctx.message.guild.id, ctx.message.channel.id) == "None":
+            await ctx.send("No channel is set for akinator!\nUse `kana aksetup` to setup channel.")
         else:
             await ctx.send("This command cannot be run in this channel!")
 
