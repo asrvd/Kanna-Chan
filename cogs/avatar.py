@@ -90,10 +90,13 @@ class Avatar(commands.Cog):
                 all_frames = min(av1.get_length(), av2.get_length()) 
                 new_gif = imageio.get_writer('final.gif')
                 for frame_number in range(all_frames):
-                    img1 = av1.get_next_data()
-                    img2 = av2.get_next_data()
-                    new_image = np.hstack((img1, img2))
-                    new_gif.append_data(new_image)
+                    try:
+                        img1 = av1.get_next_data()
+                        img2 = av2.get_next_data()
+                        new_image = np.hstack((img1, img2))
+                        new_gif.append_data(new_image)
+                    except ValueError:
+                        await ctx.send("Their is large difference in size of the avatars, so Kanna is not able to align them :(")
                 file = discord.File('final.gif')
                 embed=discord.Embed(color=0x2e69f2)
                 embed.set_image(url="attachment://final.gif")
