@@ -32,7 +32,7 @@ class Akinator(commands.Cog):
     async def aksetup(self, ctx, *, channel: discord.TextChannel = None):
         if channel != None:
             create(ctx.message.guild.id, channel.id)
-            await ctx.send(f"Akinator as been setup to {channel.mention}")
+            await ctx.send(f"Akinator has been setup to {channel.mention}")
         else:
             await ctx.send("You need to mention a channel!")
 
