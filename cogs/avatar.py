@@ -48,7 +48,7 @@ class Avatar(commands.Cog):
             icon_url=kana.avatar_url,
             )
             await ctx.send(embed=embed)
-        if m2 == m1:
+        elif m2 == m1:
             pfp = m1.avatar_url
             embed = discord.Embed(color=0x2e69f2)
             embed.set_image(url=pfp)
