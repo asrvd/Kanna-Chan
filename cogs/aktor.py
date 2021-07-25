@@ -20,7 +20,7 @@ class Akinator(commands.Cog):
             await ctx.author.send(f"**{q}**")
             try:
                 def check(m):
-                    return m.author == ctx.author
+                    return m.author == ctx.author and m.channel.type is discord.ChannelType.private
                 a = await self.client.wait_for('message', check=check, timeout=60)
                 if a == "back":
                     try:
