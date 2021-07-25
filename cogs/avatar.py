@@ -99,13 +99,13 @@ class Avatar(commands.Cog):
                         break
                 if c == 0:        
                     file = discord.File('final.gif')
-                    embed=discord.Embed(color=0x2e69f2)
-                    embed.set_image(url="attachment://final.gif")
-                    embed.set_footer(
-                    text=f"Kanna Chan",
-                    icon_url=kana.avatar_url,
-                    )
-                    await ctx.send(embed=embed, file=file)
+                    #embed=discord.Embed(color=0x2e69f2)
+                    #embed.set_image(url="attachment://final.gif")
+                    #embed.set_footer(
+                    #text=f"Kanna Chan",
+                    #icon_url=kana.avatar_url,
+                    #)
+                    await ctx.send(file=file)
             else:
                 bg.save("avatar.png")
                 file = discord.File("avatar.png")
