@@ -4,3 +4,4 @@ pillow
 pyrebase
 imageio
 akinator.py
+pygifsicle

@@ -5,7 +5,7 @@ from io import BytesIO
 import imageio
 import numpy as np
 from PIL import Image, ImageSequence
-
+from pygifsicle import optimize
 
 
 class Avatar(commands.Cog):
@@ -97,7 +97,8 @@ class Avatar(commands.Cog):
                         await ctx.send("Their is large difference in size of the avatars, so Kanna is not able to align them :(")
                         c = c + 1
                         break
-                if c == 0:        
+                if c == 0:
+                    optimize('final.gif')        
                     file = discord.File('final.gif')
                     #embed=discord.Embed(color=0x2e69f2)
                     #embed.set_image(url="attachment://final.gif")
