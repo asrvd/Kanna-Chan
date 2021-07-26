@@ -79,9 +79,9 @@ class Avatar(commands.Cog):
                     om.info = im.info
                     return om, frames
                 image1, frame1 = resize(im1)
-                image1.save("pp1.gif", save_all=True, append_images=list(frame1))
+                image1.save("pp1.gif", save_all=True, append_images=list(frame1), loop=0)
                 image2, frame2 = resize(im2)
-                image2.save("pp2.gif", save_all=True, append_images=list(frame2))
+                image2.save("pp2.gif", save_all=True, append_images=list(frame2), loop=0)
                 av1 = imageio.get_reader("pp1.gif")
                 av2 = imageio.get_reader("pp2.gif")
                 all_frames = min(av1.get_length(), av2.get_length()) 
