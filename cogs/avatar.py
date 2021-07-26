@@ -109,7 +109,7 @@ class Avatar(commands.Cog):
                     text=f"Kanna Chan",
                     icon_url=kana.avatar_url,
                     )
-                    await ctx.send(file=file)
+                    await ctx.send(embed=embed, file=file)
             else:
                 bg.save("avatar.png")
                 file = discord.File("avatar.png")
