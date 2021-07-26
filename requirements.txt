@@ -1,4 +1,4 @@
-python-3.8.4
+python-3.8.11
 discord.py>=1.7.1
 python-decouple
 pillow
