@@ -6,20 +6,7 @@ import imageio
 import numpy as np
 from PIL import Image, ImageSequence
 
-def resize(image):
-    size = 200, 200
-    im = Image.open(image)
-    global frames
-    frames = ImageSequence.Iterator(im)
-    def thumbnails(frames):
-        for frame in frames:
-            thumbnail = frame.copy()
-            thumbnail.thumbnail(size, Image.ANTIALIAS)
-            yield thumbnail
-    frames = thumbnails(frames)
-    om = next(frames)
-    om.info = im.info
-    return om
+
 
 class Avatar(commands.Cog):
     def __init__(self, client):
@@ -78,6 +65,20 @@ class Avatar(commands.Cog):
                 im2 = "pfp2.gif"
                 await m1.avatar_url.save(im1)
                 await m2.avatar_url.save(im2)
+                def resize(image):
+                    size = 200, 200
+                    im = Image.open(image)
+                    global frames
+                    frames = ImageSequence.Iterator(im)
+                    def thumbnails(frames):
+                        for frame in frames:
+                            thumbnail = frame.copy()
+                            thumbnail.thumbnail(size, Image.ANTIALIAS)
+                            yield thumbnail
+                        frames = thumbnails(frames)
+                        om = next(frames)
+                        om.info = im.info
+                        return om
                 image1 = resize(im1)
                 image1.save("pp1.gif", save_all=True, append_images=list(frames))
                 image2 = resize(im2)
