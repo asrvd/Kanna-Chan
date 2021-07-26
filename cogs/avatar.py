@@ -5,7 +5,6 @@ from io import BytesIO
 import imageio
 import numpy as np
 from PIL import Image, ImageSequence
-from pygifsicle import optimize
 
 
 class Avatar(commands.Cog):
@@ -98,14 +97,18 @@ class Avatar(commands.Cog):
                         c = c + 1
                         break
                 if c == 0:
-                    optimize('final.gif')        
-                    file = discord.File('final.gif')
-                    #embed=discord.Embed(color=0x2e69f2)
-                    #embed.set_image(url="attachment://final.gif")
-                    #embed.set_footer(
-                    #text=f"Kanna Chan",
-                    #icon_url=kana.avatar_url,
-                    #)
+                    gif = Image.open("./final.gif")
+                    framess = [frame.copy() for frame in ImageSequence.Iterator(gif)]
+                    framess[0].save('shared.gif',
+			        save_all = True, append_images = framess[1:],
+			        optimize = False, duration = 100, loop=0)
+                    file = discord.File('shared.gif')
+                    embed=discord.Embed(color=0x2e69f2)
+                    embed.set_image(url="attachment://shared.gif")
+                    embed.set_footer(
+                    text=f"Kanna Chan",
+                    icon_url=kana.avatar_url,
+                    )
                     await ctx.send(file=file)
             else:
                 bg.save("avatar.png")
