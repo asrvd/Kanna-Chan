@@ -75,10 +75,10 @@ class Avatar(commands.Cog):
                             thumbnail = frame.copy()
                             thumbnail.thumbnail(size, Image.ANTIALIAS)
                             yield thumbnail
-                        frames = thumbnails(frames)
-                        om = next(frames)
-                        om.info = im.info
-                        return om
+                    frames = thumbnails(frames)
+                    om = next(frames)
+                    om.info = im.info
+                    return om
                 image1 = resize(im1)
                 image1.save("pp1.gif", save_all=True, append_images=list(frames))
                 image2 = resize(im2)
