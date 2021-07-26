@@ -68,7 +68,6 @@ class Avatar(commands.Cog):
                 def resize(image):
                     size = 200, 200
                     im = Image.open(image)
-                    global frames
                     frames = ImageSequence.Iterator(im)
                     def thumbnails(frames):
                         for frame in frames:
@@ -78,11 +77,11 @@ class Avatar(commands.Cog):
                     frames = thumbnails(frames)
                     om = next(frames)
                     om.info = im.info
-                    return om
-                image1 = resize(im1)
-                image1.save("pp1.gif", save_all=True, append_images=list(frames))
-                image2 = resize(im2)
-                image2.save("pp2.gif", save_all=True, append_images=list(frames))
+                    return om, frames
+                image1, frame1 = resize(im1)
+                image1.save("pp1.gif", save_all=True, append_images=list(frame1))
+                image2, frame2 = resize(im2)
+                image2.save("pp2.gif", save_all=True, append_images=list(frame2))
                 av1 = imageio.get_reader("pp1.gif")
                 av2 = imageio.get_reader("pp2.gif")
                 all_frames = min(av1.get_length(), av2.get_length()) 
