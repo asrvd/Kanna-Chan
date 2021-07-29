@@ -30,7 +30,7 @@ class Utility(commands.Cog):
     
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        channel_id = return_channel(member.server.guild.id)
+        channel_id = return_channel(member.guild.id)
         channel = self.client.get_channel(channel_id)
         if channel_id == None:
             return
