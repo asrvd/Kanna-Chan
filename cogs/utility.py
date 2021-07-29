@@ -23,6 +23,7 @@ class Utility(commands.Cog):
         self.kana_id = 857835279259664403
     
     @commands.command()
+    @commands.is_owner()
     async def wsetup(self, ctx, *, channel: discord.TextChannel = None):
         create(ctx.guild.id, channel.id)
         await ctx.send(f">> Welcome messages have been setup to {channel.mention} now.")
