@@ -7,10 +7,10 @@ from decouple import config
 firebase = pyrebase.initialize_app(json.loads(config("firebaseConfig")))
 db = firebase.database()
 
-def create(guild, channel):    #stores marriage info in database
+def create(guild, channel):    #stores guild ID and channel ID
     db.child("WELCOME").child(guild).set({"CHANNEL": channel})
 
-def return_channel(guild):
+def return_channel(guild):     #returns channel ID
     channel = db.child("WELCOME").child(guild).child("CHANNEL").get().val()
     if channel == None:
         return None
