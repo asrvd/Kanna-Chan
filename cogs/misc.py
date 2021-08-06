@@ -1,6 +1,11 @@
 import discord
 from discord.ext import commands
 import random
+import json
+import requests
+from decouple import config
+
+PLL_API_KEY = str(config("PLL_KEY"))
 
 class Misc(commands.Cog):
     def __init__(self, client):
@@ -27,6 +32,15 @@ class Misc(commands.Cog):
     async def say(self, ctx, *, message):
         emb = discord.Embed(title=message, description=f"by {ctx.author.mention}", color=0x2e69f2)
         await ctx.send(embed=emb)
+    
+    @commands.command(aliases=['pll'])
+    async def pickupline(self, ctx):
+        url=f"https://simplescraper.io/api/1CdGulumT9fJTlY4bOAG?apikey={PLL_API_KEY}&limit=100"
+        response = requests.request("GET", url)
+        text=response.text
+        json_data = json.loads(text)
+        line=json_data["data"][random.randint(1, 79)]["line"]
+        await ctx.reply(line)
 
     @commands.Cog.listener()
     async def on_message(self, message):
@@ -57,17 +71,17 @@ class Misc(commands.Cog):
 
         if message.content.lower() in love_words:
             if message.author.id == 784363251940458516:
-                await message.channel.send(f"{message.author.mention}\nKanna loves asheesh too uwu..❤")
+                await message.reply(f"{message.author.mention}\nKanna loves asheesh too uwu..❤")
                 await message.add_reaction('❤')
             else: 
-                await message.channel.send(embed=love_emb)
+                await message.reply(embed=love_emb)
                 await message.add_reaction('❤')
         elif message.content.lower() in hate_words:
             if message.author.id == 784363251940458516:
-                await message.channel.send(f"{message.author.mention}\nBut Kanna loves asheesh..❤")
+                await message.reply(f"{message.author.mention}\nBut Kanna loves asheesh..❤")
                 await message.add_reaction('❤')
             else: 
-                await message.channel.send(embed=hate_emb)
+                await message.reply(embed=hate_emb)
                 await message.add_reaction('❤')
 
 def setup(client):
