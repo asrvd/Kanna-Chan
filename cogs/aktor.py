@@ -46,7 +46,7 @@ class Akinator(commands.Cog):
 
         if c == 0:
             desc=f"**It's {aki.first_guess['name']}**\n*{aki.first_guess['description']}*!\n**Was I correct? (yes/no)**"
-            emb = discord.Embed(title="Here is my guess!", description=desc)
+            emb = discord.Embed(title="Here is my guess!", description=desc, color=0x2e69f2)
             emb.set_image(url=aki.first_guess['absolute_picture_path'])
             await ctx.author.send(embed=emb)
             def check(m):
