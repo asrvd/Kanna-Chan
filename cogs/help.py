@@ -77,7 +77,7 @@ class Help(commands.Cog):
             )
             await ctx.send(embed=emb)
         elif topic.lower() == "image":
-            emb = discord.Embed(title="IMAGE COMMANDS", description="**Avaialable commands**\n`woof` Sends a random doogo image.\n`meow` Sends a random catto image.", color=0x2e69f2)
+            emb = discord.Embed(title="IMAGE COMMANDS", description="**Avaialable commands**\n🐶 `woof` Sends a random doogo image.\n🐱 `meow` Sends a random catto image.", color=0x2e69f2)
             emb.set_footer(
             text=f"Kanna Chan",
             icon_url=kana.avatar_url,
