@@ -10,7 +10,7 @@ class Response(commands.Cog):
     async def simp(self, ctx, mem: discord.Member = None):
         if mem == None:
             mem = ctx.author
-        emb = discord.embed(titile="", description=f"{ctx.author.mention} simps on {mem.mention} <3\n*`{funresponses.pickup()}`*", color=0x2e69f2)
+        emb = discord.Embed(titile="", description=f"{ctx.author.mention} simps on {mem.mention} <3\n*`{funresponses.pickup()}`*", color=0x2e69f2)
         emb.set_image(url="https://i.imgur.com/RlrlmmP.gif")
         await ctx.send(embed=emb)
         
