@@ -5,3 +5,4 @@ pyrebase
 imageio
 akinator.py
 pygifsicle
+fun-responses
