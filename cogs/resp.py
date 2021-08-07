@@ -14,4 +14,6 @@ class Response(commands.Cog):
         emb.set_image(url="https://i.imgur.com/RlrlmmP.gif")
         await ctx.send(embed=emb)
         
-    
+def setup(client):
+  client.add_cog(Response(client))
+  print(">> Responses loaded")   
