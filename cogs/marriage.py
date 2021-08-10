@@ -189,6 +189,12 @@ class Marry(commands.Cog):
                     icon_url=kana.avatar_url,
                     )
                     await ctx.send(embed=em2) 
+    
+    @commands.command()
+    @commands.is_owner()
+    async def remove(self, ctx, mem1: discord.Member=None, mem2: discord.Member=None):
+        remove(mem1.id, mem2.id)
+        await ctx.reply("`>> Successfully removed from database.`")
 
 def setup(client):
     client.add_cog(Marry(client))
