@@ -192,7 +192,7 @@ class Marry(commands.Cog):
     
     @commands.command()
     @commands.is_owner()
-    async def remove(self, ctx, mem1: discord.Member=None, mem2: discord.Member=None):
+    async def remove(self, ctx, mem1: discord.User=None, mem2: discord.User=None):
         remove(mem1.id, mem2.id)
         await ctx.reply("`>> Successfully removed from database.`")
 
