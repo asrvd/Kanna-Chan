@@ -169,7 +169,7 @@ class Help(commands.Cog):
                     components=[
                         Select(placeholder="Select", options=[
                         SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890"), default=True),
-                        SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="87319188956054329")), 
+                        SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
                         SelectOption(label="Avatar", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
                         SelectOption(label="Actions", value="actions", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654")),
                         SelectOption(label="Utility", value="utility", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522")),
