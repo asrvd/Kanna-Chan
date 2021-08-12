@@ -119,7 +119,7 @@ class Games(commands.Cog):
             if kana == user:
                 cond = "t"
             game = {"rock": "scissors", "scissors": "paper", "paper": "rock"}
-            elif game[user] == kana:
+            if game[user] == kana:
                 cond = "w"
             elif game[user] != kana and kana != user:
                 cond = "l"
