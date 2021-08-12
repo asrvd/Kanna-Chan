@@ -165,7 +165,7 @@ class Help(commands.Cog):
         kana = self.client.get_user(self.kana_id)
         if topic == None:
             try:
-                msg=await ctx.send(embed=genemb,
+                await ctx.send(embed=genemb,
                     components=[
                         Select(placeholder="Select", options=[
                         SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890"), default=True),
@@ -181,7 +181,9 @@ class Help(commands.Cog):
                 )
                 try:
                     while True:
-                        interaction = await self.client.wait_for("select_option",timeout=40)
+                        def check(interaction):
+                            return interaction.user==ctx.author and interaction.channel == ctx.channel
+                        interaction = await self.client.wait_for("select_option",check=check, timeout=40)
                         response = interaction.component[0].label
                         if response.lower() == "general":
                             await interaction.respond(type=InteractionType.UpdateMessage, embed=genemb, components=[
@@ -246,7 +248,7 @@ class Help(commands.Cog):
                             SelectOption(label="Avatar", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
                             SelectOption(label="Actions", value="actions", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654")),
                             SelectOption(label="Utility", value="utility", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522")),
-                            SelectOption(label="Cards", value="cards",emoji=discord.PartialEmoji(name="ASKannaStare", id="292359094759849984"), deafult=True),
+                            SelectOption(label="Cards", value="cards",emoji=discord.PartialEmoji(name="ASKannaStare", id="292359094759849984"), default=True),
                             SelectOption(label="Responses", value="responses" , emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071")),
                             SelectOption(label="Image", value="image", emoji=discord.PartialEmoji(name="kannazoom", id="841107540166180915"))])])
                         elif response.lower() == "responses":
@@ -270,7 +272,7 @@ class Help(commands.Cog):
                             SelectOption(label="Utility", value="utility", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522")),
                             SelectOption(label="Cards", value="cards",emoji=discord.PartialEmoji(name="ASKannaStare", id="292359094759849984")),
                             SelectOption(label="Responses", value="responses" , emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071")),
-                            SelectOption(label="Image", value="image", emoji=discord.PartialEmoji(name="kannazoom", id="841107540166180915"), deafult = True)])])
+                            SelectOption(label="Image", value="image", emoji=discord.PartialEmoji(name="kannazoom", id="841107540166180915"), default = True)])])
                 except asyncio.TimeoutError:
                     await interaction.respond(type=InteractionType.UpdateMessage, components=[
                             Select(placeholder="Select", options=[
