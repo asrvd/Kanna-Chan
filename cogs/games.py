@@ -119,12 +119,12 @@ class Games(commands.Cog):
             if kana == user:
                 cond = "t"
             game = {"rock": "scissors", "scissors": "paper", "paper": "rock"}
-            if game[user] == kana:
+            elif game[user] == kana:
                 cond = "w"
-            elif game[user] != kana:
+            elif game[user] != kana and kana != user:
                 cond = "l"
             if cond == "t":
-                emb = discord.Embed(title=f"{ctx.author.display_name}'s RPS game!", description="**🙂 Oops, It's a tie..\nTry again :)**", color=0x2e69f2)
+                emb = discord.Embed(title=f"{ctx.author.display_name}'s RPS game!", description="**🙂 Oops, It's a draw..\nTry again :)**", color=0x2e69f2)
                 return emb
             elif cond == "w":
                 emb = discord.Embed(title=f"{ctx.author.display_name}'s RPS game!", description=f"**😏 You won the game!\nI chose {kana} and you chose {user}!**", color=0x2e69f2)
