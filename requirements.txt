@@ -7,3 +7,4 @@ akinator.py
 pygifsicle
 fun-responses
 discord-components
+asyncio
