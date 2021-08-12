@@ -130,7 +130,7 @@ class Games(commands.Cog):
                 emb = discord.Embed(title=f"{ctx.author.display_name}'s RPS game!", description=f"**😏 You won the game!\nI chose {kana} and you chose {user}!**", color=0x2e69f2)
                 return emb
             elif cond == "l":
-                emb = discord.Embed(title=f"{ctx.author.display_name}'s RPS game!", description=f"😞 You lost the game, Better luck next time..\nI chose {kana} and you chose{user}. ", color=0x2e69f2)
+                emb = discord.Embed(title=f"{ctx.author.display_name}'s RPS game!", description=f"**😞 You lost the game, Better luck next time..\nI chose {kana} and you chose{user}.**", color=0x2e69f2)
                 return emb
 
 
