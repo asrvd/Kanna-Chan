@@ -2,6 +2,7 @@ import os
 import discord
 from discord.ext import commands
 from decouple import config
+from discord_components import DiscordComponents
 
 intents = discord.Intents.default()
 intents.members = True
@@ -22,6 +23,7 @@ def load_cogs():
 async def on_ready():
   await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name='Asheeshh Onii Chan'))
   load_cogs()
+  DiscordComponents(client)
   print(">> Cogs loaded.")
   print('>> Kanna is Online.')
 
