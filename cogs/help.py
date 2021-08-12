@@ -35,7 +35,7 @@ gemb.add_field(
     inline=True
 )
 
-avemb = discord.Embed(title="🎴 **AVATAR**", description="**Command: `av`, `avatar`, `pfp`\n`kana av @user` Sends avatar of mentioned person. If no one is mentioned kanna sends your avatar.\n`kana av @user1 @user2` Sends the merged pfp of two users (matching pfp uwu).", color=0x2e69f2)
+avemb = discord.Embed(title="🎴 **AVATAR**", description="**Command**: `av`, `avatar`, `pfp`\n`kana av @user` Sends avatar of mentioned person. If no one is mentioned kanna sends your avatar.\n`kana av @user1 @user2` Sends the merged pfp of two users (matching pfp uwu).", color=0x2e69f2)
 
 genemb = discord.Embed(title="HELP HAS COME!!", description="BOT CREATOR: [**ASHISH**](https://github.com/AsheeshhSenpai)",color=0x2e69f2)
 
