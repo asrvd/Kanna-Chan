@@ -153,10 +153,12 @@ class Games(commands.Cog):
             embed = return_embed(bot, player)
             await resp.respond(type=InteractionType.UpdateMessage, embed=embed,
                 components=[
-                Button(style=ButtonStyle.blue, label="Rock", emoji="✊", disabled=True),
-                Button(style=ButtonStyle.red, label="Paper", emoji="🤚", disabled=True),
-                Button(style=ButtonStyle.green, label="Scissors", emoji="✌", disabled=True),
-                ]
+                    [
+                    Button(style=ButtonStyle.blue, label="Rock", emoji="✊", disabled=True),
+                    Button(style=ButtonStyle.red, label="Paper", emoji="🤚", disabled=True),
+                    Button(style=ButtonStyle.green, label="Scissors", emoji="✌", disabled=True)
+                    ],
+                ],
             ) 
         except asyncio.TimeoutError:
             await msg.edit(components=[
