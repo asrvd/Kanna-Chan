@@ -137,10 +137,12 @@ class Games(commands.Cog):
         emb = discord.Embed(title=f"{ctx.author.display_name}'s RPS game!", description="**rock, paper, scissors..\nClick on any one button to play the game!**", color=0x2e69f2)
         msg=await ctx.send(embed=emb,
             components=[
-            Button(style=ButtonStyle.blue, label="Rock", emoji="✊"),
-            Button(style=ButtonStyle.red, label="Paper", emoji="🤚"),
-            Button(style=ButtonStyle.green, label="Scissors", emoji="✌"),
-            ]
+                [
+                Button(style=ButtonStyle.blue, label="Rock", emoji="✊"),
+                Button(style=ButtonStyle.red, label="Paper", emoji="🤚"),
+                Button(style=ButtonStyle.green, label="Scissors", emoji="✌")
+                ],
+            ],
         )
         try:
             def check(resp):
