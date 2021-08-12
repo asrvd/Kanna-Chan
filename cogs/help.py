@@ -165,7 +165,7 @@ class Help(commands.Cog):
         kana = self.client.get_user(self.kana_id)
         if topic == None:
             try:
-                await ctx.send(embed=genemb,
+                msg = await ctx.send(embed=genemb,
                     components=[
                         Select(placeholder="Select", options=[
                         SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890"), default=True),
@@ -274,7 +274,7 @@ class Help(commands.Cog):
                             SelectOption(label="Responses", value="responses" , emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071")),
                             SelectOption(label="Image", value="image", emoji=discord.PartialEmoji(name="kannazoom", id="841107540166180915"), default = True)])])
                 except asyncio.TimeoutError:
-                    await interaction.respond(type=InteractionType.UpdateMessage, components=[
+                    await msg.edit(components=[
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292"), default=True), 
