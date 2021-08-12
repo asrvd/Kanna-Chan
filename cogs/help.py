@@ -45,11 +45,6 @@ genemb.add_field(
     inline=True
 )
 genemb.add_field(
-    name="📃 **COMMANDS**",
-    value=f"Send `kana cmds`",
-    inline=True
-)
-genemb.add_field(
     name="⚙ **SOURCE**",
     value=f"Send `kana source`",
     inline=True
