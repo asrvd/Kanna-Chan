@@ -6,3 +6,4 @@ imageio
 akinator.py
 pygifsicle
 fun-responses
+discord-components
