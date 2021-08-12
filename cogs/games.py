@@ -4,6 +4,8 @@ import random
 import json
 import requests
 from decouple import config
+from discord_components import DiscordComponents, Button, Select, SelectOption, ButtonStyle, InteractionType
+import asyncio
 
 rapid_api = str(config("RAPID_API_KEY"))
 
@@ -109,6 +111,59 @@ class Games(commands.Cog):
             await ctx.send(f'{ctx.author.mention} You won! Congratulations on winning the lottery!')
         else:
             await ctx.send(f"{ctx.author.mention} Better luck next time... You were one of the 124/125 who lost the lottery...\nThe numbers were `{', '.join(string_numbers)}`")
+
+    @commands.command()
+    async def rps(self, ctx):
+        def return_embed(kana, user):
+            cond = ""
+            if kana == user:
+                cond = "t"
+            game = {"rock": "scissors", "scissors": "paper", "paper": "rock"}
+            if game[user] == kana:
+                cond = "w"
+            elif game[user] != kana:
+                cond = "l"
+            if cond == "t":
+                emb = discord.Embed(title=f"{ctx.author.display_name}'s RPS game!", description="**🙂 Oops, It's a tie..\nTry again :)**", color=0x2e69f2)
+                return emb
+            elif cond == "w":
+                emb = discord.Embed(title=f"{ctx.author.display_name}'s RPS game!", description=f"**😏 You won the game!\nI chose {kana} and you chose {user}!**", color=0x2e69f2)
+                return emb
+            elif cond == "l":
+                emb = discord.Embed(title=f"{ctx.author.display_name}'s RPS game!", description=f"😞 You lost the game, Better luck next time..\nI chose {kana} and you chose{user}. ", color=0x2e69f2)
+                return emb
+
+
+        emb = discord.Embed(title=f"{ctx.author.display_name}'s RPS game!", description="rock, paper, scissors..", color=0x2e69f2)
+        emb.set_footer(text="Click on any one button!")
+        msg=await ctx.send(embed=emb,
+            components=[
+            Button(style=ButtonStyle.blue, label="Rock", emoji="✊"),
+            Button(style=ButtonStyle.red, label="Paper", emoji="🤚"),
+            Button(style=ButtonStyle.green, label="Scissors", emoji="✌"),
+            ]
+        )
+        try:
+            def check(resp):
+                return resp.user == ctx.author and resp.channel == ctx.channel
+        
+            resp = await self.client.wait_for("button_click", check=check, timeout=60)
+            bot = random.choice(["rock", "paper", "scissors"])
+            player = resp.component.label.lower()
+            embed = return_embed(bot, player)
+            await resp.respond(type=InteractionType.UpdateMessage, embed=embed,
+                components=[
+                Button(style=ButtonStyle.blue, label="Rock", emoji="✊", disabled=True),
+                Button(style=ButtonStyle.red, label="Paper", emoji="🤚", disabled=True),
+                Button(style=ButtonStyle.green, label="Scissors", emoji="✌", disabled=True),
+                ]
+            ) 
+        except asyncio.TimeoutError:
+            await msg.edit(components=[
+                Button(style=ButtonStyle.blue, label="Rock", emoji="✊", disabled=True),
+                Button(style=ButtonStyle.red, label="Paper", emoji="🤚", disabled=True),
+                Button(style=ButtonStyle.green, label="Scissors", emoji="✌", disabled=True),
+                ])
 
     @commands.command(aliases=["df"])
     async def define(self, ctx, *, query):

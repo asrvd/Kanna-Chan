@@ -30,6 +30,11 @@ gemb.add_field(
     inline=True
 )
 gemb.add_field(
+    name="🙌 **RPS**",
+    value="`kana rps`",
+    inline=True
+)
+gemb.add_field(
     name="🥰 **SHIP**",
     value="`kana help ship`",
     inline=True
