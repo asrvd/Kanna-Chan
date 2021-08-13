@@ -10,6 +10,7 @@ PLL_API_KEY = str(config("PLL_KEY"))
 class Misc(commands.Cog):
     def __init__(self, client):
         self.client = client
+        self.kana_id = 857835279259664403
 
     @commands.command()
     async def arz(self, ctx):
@@ -33,6 +34,43 @@ class Misc(commands.Cog):
         emb = discord.Embed(title=message, description=f"by {ctx.author.mention}", color=0x2e69f2)
         await ctx.send(embed=emb)
     
+    @commands.command()
+    async def about(self, ctx):
+        kana = self.client.get_user(self.kana_id)
+        """Tells you information about the bot itself."""
+
+        embed = discord.Embed(description="BOT CREATOR: [**ASHISH**](https://github.com/AsheeshhSenpai)",color=0x2e69f2)
+        embed.title = 'Kanna Chan'
+
+        owner = await self.client.get_user(self.client.owner_id)
+        embed.set_author(name="asheeshh", icon_url=owner.avatar_url)
+
+        # statistics
+        total_members = 0
+        total_unique = len(self.client.users)
+
+        text = 0
+        voice = 0
+        guilds = 0
+        for guild in self.client.guilds:
+            guilds += 1
+            if guild.unavailable:
+                continue
+
+            total_members += guild.member_count
+            for channel in guild.channels:
+                if isinstance(channel, discord.TextChannel):
+                    text += 1
+                elif isinstance(channel, discord.VoiceChannel):
+                    voice += 1
+
+        embed.add_field(name='Members', value=f'{total_members} total members.\n{total_unique} unique members.')
+        embed.add_field(name='Total Servers', value=guilds)
+        embed.add_field(name='Commands Run', value=sum(self.client.command_stats.values()))
+        embed.set_footer(text=f'Made with ❤ using discord.py', icon_url=kana.avatar_url)
+        embed.timestamp = discord.utils.utcnow()
+        await ctx.send(embed=embed)
+
     @commands.command(aliases=['pll'])
     async def pickupline(self, ctx):
         url=f"https://simplescraper.io/api/1CdGulumT9fJTlY4bOAG?apikey={PLL_API_KEY}&limit=100"
