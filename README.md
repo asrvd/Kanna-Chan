@@ -36,3 +36,12 @@ You can use the `av` cmd mentioning two people to see their shared pfp too!
 <h2>Games</h2>
 
 Send `kanna games` to see the list of games available and how to play them.
+
+__GAMES AVAILABLE__
+>> `Truth or Dare`
+>> `Unscramble`
+>> `Rock, Paper, Scissors!`
+>> `Ship`
+>> `HighLow`
+>> `Lottery`
+>> `Define`
