@@ -162,11 +162,67 @@ class Games(commands.Cog):
                 ],
             ) 
         except asyncio.TimeoutError:
-            await msg.edit(components=[
+            await msg.edit(components=[[
                 Button(style=ButtonStyle.blue, label="Rock", emoji="✊", disabled=True),
                 Button(style=ButtonStyle.red, label="Paper", emoji="🤚", disabled=True),
                 Button(style=ButtonStyle.green, label="Scissors", emoji="✌", disabled=True),
-                ])
+                ],],)
+
+    @commands.command(aliases=['hl'])
+    async def highlow(self, ctx,):
+        def return_embed(num1, num2, guess):
+            cond = ""
+            if num1 == num2:
+                cond = "t"
+            elif num1 > num2 and guess == "high":
+                cond = "w"
+            elif num1 < num2 and guess == "low":
+                cond = "w"
+            else:
+                cond = "l"
+            if cond == "t":
+                emb = discord.Embed(title=f"{ctx.author.display_name}'s HIGHLOW game!", description=f"**😏 woah, It's a JACKPOT!!\nThe number was exactly {num2}!**", color=0x2e69f2)
+                return emb
+            elif cond == "w":
+                emb = discord.Embed(title=f"{ctx.author.display_name}'s HIGHLOW game!", description=f"**🙂 You won the game!\nThe number was {num1}!**", color=0x2e69f2)
+                return emb
+            elif cond == "l":
+                emb = discord.Embed(title=f"{ctx.author.display_name}'s HIGHLOW game!", description=f"**😞 You lost the game, Better luck next time..\nThe number was {num1}.**", color=0x2e69f2)
+                return emb
+        n1 = random.randint(1, 100)
+        n2 = random.randint(1, 100)
+        emb = discord.Embed(title=f"{ctx.author.display_name}'s HIGHLOW game!", description=f"**Guess whether the number is higher or lower than {n2}.\nYou have 30s to answer!**", color=0x2e69f2)
+        msg=await ctx.send(embed=emb,
+            components=[
+                [
+                Button(style=ButtonStyle.blue, label="HIGH", emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071")),
+                Button(style=ButtonStyle.blue, label="JACKPOT!", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522")),
+                Button(style=ButtonStyle.blue, label="LOW", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654"))
+                ],
+            ],
+        )
+        try:
+            def check(resp):
+                return resp.user == ctx.author and resp.channel == ctx.channel
+        
+            resp = await self.client.wait_for("button_click", check=check, timeout=30)
+            player = resp.component.label.lower()
+            embed = return_embed(n1, n2, player)
+            await resp.respond(type=InteractionType.UpdateMessage, embed=embed,
+                components=[
+                    [
+                    Button(style=ButtonStyle.blue, label="HIGH", emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071"), disabled=True),
+                    Button(style=ButtonStyle.blue, label="JACKPOT!", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522"), disabled=True),
+                    Button(style=ButtonStyle.blue, label="LOW", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654"), disabled=True)
+                    ],
+                ],
+            ) 
+        except asyncio.TimeoutError:
+            await msg.edit(components=[[
+                Button(style=ButtonStyle.blue, label="HIGH", emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071"), disabled=True),
+                Button(style=ButtonStyle.blue, label="JACKPOT!", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522"), disabled=True),
+                Button(style=ButtonStyle.blue, label="LOW", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654"), disabled=True)
+                ],],)
 
     @commands.command(aliases=["df"])
     async def define(self, ctx, *, query):
