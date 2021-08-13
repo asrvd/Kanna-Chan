@@ -35,6 +35,16 @@ gemb.add_field(
     inline=True
 )
 gemb.add_field(
+    name="🤔 **HIGHLOW**",
+    value="`kana highlow`",
+    inline=True
+)
+gemb.add_field(
+    name="✍ **UNSCRAMBLE**",
+    value="`kana uns`",
+    inline=True
+)
+gemb.add_field(
     name="🥰 **SHIP**",
     value="`kana help ship`",
     inline=True

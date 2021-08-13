@@ -8,6 +8,7 @@ from discord_components import DiscordComponents, Button, Select, SelectOption, 
 import asyncio
 
 rapid_api = str(config("RAPID_API_KEY"))
+word_api = str(config("WORD_API_KEY"))
 
 class Games(commands.Cog):
     def __init__(self, client):
@@ -95,6 +96,44 @@ class Games(commands.Cog):
         "Put as many snacks into your mouth at once as you can"
         ]
         await ctx.send(f"Dare: {random.choice(dare)}")
+
+    @commands.command(aliases=["uns"])
+    async def unscramble(self, ctx):
+        kana = self.client.get_user(self.kana_id)
+        url = "https://random-words5.p.rapidapi.com/getRandom"
+        headers = {
+            'x-rapidapi-key': word_api,
+            'x-rapidapi-host': "random-words5.p.rapidapi.com"
+            }
+        response = requests.request("GET", url, headers=headers)
+        word = response.text
+        sword = random.shuffle(word)
+        emb = discord.Embed(title=f"{ctx.author.display_name}'s UNSCRAMBLE game!", description=f"**Unscramble the word {sword} and write the unscrambled word in chat.\nYou have 40s to answer!!**", color=0x2e69f2)
+        emb.set_footer(
+          text = "For more games send kana help",
+          icon_url= kana.avatar_url 
+        )
+        msg = await ctx.send(embed=emb)
+        wemb = discord.Embed(title=f"{ctx.author.display_name}'s UNSCRAMBLE game!", description=f"**😏 You won the game!\nThe word was {word}!!**", color=0x2e69f2)
+        wemb.set_footer(
+          text = "For more games send kana help",
+          icon_url= kana.avatar_url 
+        )
+        lemb = discord.Embed(title=f"{ctx.author.display_name}'s UNSCRAMBLE game!", description=f"**😞 You lost the game..\nThe word was {word}. Better luck next time.**", color=0x2e69f2)
+        lemb.set_footer(
+          text = "For more games send kana help",
+          icon_url= kana.avatar_url 
+        )
+        try:
+            def check(m):
+                m.author == ctx.author and m.channel == ctx.channel
+            response = await self.client.wait_for('message', check=check, timeout=40)
+            if response.lower() == word:
+                await msg.edit(embed=wemb)
+            elif response.lower() != word:
+                await msg.edit(embed=lemb)
+        except asyncio.TimeoutError:
+            await msg.edit(embed=None, content=f"{ctx.author.mention}\n😞 You took too long to answer, You lost the game.")
 
     @commands.command(aliases=['lotto'])
     async def lottery(self, ctx, *, guesses):
