@@ -10,7 +10,7 @@ intents.presences = True
 
 #kana variables
 kana_id = 857835279259664403
-client = commands.Bot(command_prefix=commands.when_mentioned_or(['kanna ', 'kana ', 'k.', 'K.', 'Kanna ', 'Kana ']), case_insensitive=True, intents=intents)
+client = commands.Bot(command_prefix=commands.when_mentioned_or('kanna ', 'kana ', 'k.', 'K.', 'Kanna ', 'Kana '), case_insensitive=True, intents=intents)
 client.remove_command("help")
 
 print(">> Kanna is awaking...")
