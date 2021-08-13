@@ -4,6 +4,7 @@ import random
 import json
 import requests
 from decouple import config
+import datetime
 
 PLL_API_KEY = str(config("PLL_KEY"))
 
@@ -67,7 +68,7 @@ class Misc(commands.Cog):
         embed.add_field(name='Members', value=f'{total_members} total members.\n{total_unique} unique members.')
         embed.add_field(name='Total Servers', value=guilds)
         embed.set_footer(text=f'Made with ❤ using discord.py', icon_url=kana.avatar_url)
-        embed.timestamp = discord.utils.utcnow()
+        embed.timestamp = datetime.datetime.utcnow()
         await ctx.send(embed=embed)
 
     @commands.command(aliases=['pll'])
