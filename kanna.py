@@ -22,12 +22,12 @@ def load_cogs():
 
 @client.event
 async def on_ready():
-  print(f">> Logged in as : {client.user.name} \n>> ID : {client.user.id}")
-  print(f">> Total Servers : {len(client.guilds)}\n")
   await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name='Asheeshh Onii Chan'))
   load_cogs()
   DiscordComponents(client)
   print(">> Cogs loaded.")
+  print(f">> Logged in as : {client.user.name} \n>> ID : {client.user.id}")
+  print(f">> Total Servers : {len(client.guilds)}\n")
   print('>> Kanna is Online.')
 
 @client.command()
