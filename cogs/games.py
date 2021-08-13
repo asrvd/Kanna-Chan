@@ -128,11 +128,11 @@ class Games(commands.Cog):
         )
         try:
             def check(m):
-                m.author == ctx.author and m.channel == ctx.channel
+                return m.author == ctx.author and m.channel == ctx.channel
             response = await self.client.wait_for('message', check=check, timeout=40)
-            if response.content.lower().strip() == str(word):
+            if response.content.lower() == word:
                 await msg.edit(embed=wemb)
-            elif response.content.lower().strip() != str(word):
+            elif response.content.lower() != word:
                 await msg.edit(embed=lemb)
         except asyncio.TimeoutError:
             await msg.edit(embed=lemb, content=f"{ctx.author.mention}\n😞 You took too long to answer, You lost the game.")
