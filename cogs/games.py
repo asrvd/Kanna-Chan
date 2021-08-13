@@ -110,7 +110,7 @@ class Games(commands.Cog):
         wlist = list(response.text)
         random.shuffle(wlist)
         sword = ''.join(wlist)
-        emb = discord.Embed(title=f"{ctx.author.display_name}'s UNSCRAMBLE game!", description=f"**Unscramble the word {sword} and write the unscrambled word in chat.\nYou have 40s to answer!!**", color=0x2e69f2)
+        emb = discord.Embed(title=f"{ctx.author.display_name}'s UNSCRAMBLE game!", description=f"**Unscramble the word [{sword}] and write the unscrambled word in chat.\nYou have 40s to answer!!**", color=0x2e69f2)
         emb.set_footer(
           text = "For more games send kana help",
           icon_url= kana.avatar_url 
@@ -130,9 +130,9 @@ class Games(commands.Cog):
             def check(m):
                 m.author == ctx.author and m.channel == ctx.channel
             response = await self.client.wait_for('message', check=check, timeout=40)
-            if response.lower() == word:
+            if response.content.lower() == word:
                 await msg.edit(embed=wemb)
-            elif response.lower() != word:
+            elif response.content.lower() != word:
                 await msg.edit(embed=lemb)
         except asyncio.TimeoutError:
             await msg.edit(embed=lemb, content=f"{ctx.author.mention}\n😞 You took too long to answer, You lost the game.")
