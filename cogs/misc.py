@@ -66,7 +66,6 @@ class Misc(commands.Cog):
 
         embed.add_field(name='Members', value=f'{total_members} total members.\n{total_unique} unique members.')
         embed.add_field(name='Total Servers', value=guilds)
-        embed.add_field(name='Commands Run', value=sum(self.client.command_stats.values()))
         embed.set_footer(text=f'Made with ❤ using discord.py', icon_url=kana.avatar_url)
         embed.timestamp = discord.utils.utcnow()
         await ctx.send(embed=embed)
