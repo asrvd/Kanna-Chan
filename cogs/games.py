@@ -107,7 +107,9 @@ class Games(commands.Cog):
             }
         response = requests.request("GET", url, headers=headers)
         word = response.text
-        sword = random.shuffle(word)
+        wlist = list(response.text)
+        random.shuffle(wlist)
+        sword = ''.join(wlist)
         emb = discord.Embed(title=f"{ctx.author.display_name}'s UNSCRAMBLE game!", description=f"**Unscramble the word {sword} and write the unscrambled word in chat.\nYou have 40s to answer!!**", color=0x2e69f2)
         emb.set_footer(
           text = "For more games send kana help",
