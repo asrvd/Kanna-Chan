@@ -1,8 +1,10 @@
 import os
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 from decouple import config
 from discord_components import DiscordComponents
+import asyncio
+import random
 
 intents = discord.Intents.default()
 intents.members = True
@@ -20,9 +22,16 @@ def load_cogs():
     if file.endswith(".py") and not file.startswith("_"):
       client.load_extension(f"cogs.{file[:-3]}")
 
+async def switchpresence():
+  await client.wait_until_ready()
+  sm = [f"{len(client.guilds)} Servers!", f"{len(client.users)} Users!"]
+  while not client.is_closed():
+    ast = random.choice(sm)
+    await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"Asheeshh Senpai ~ {ast}"))
+    await asyncio.sleep(4)
+
 @client.event
 async def on_ready():
-  await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f'{len(client.guilds)} Servers & {len(client.users)} Users!'))
   load_cogs()
   DiscordComponents(client)
   print(">> Cogs loaded.")
@@ -39,5 +48,6 @@ async def reload(ctx):
   await ctx.send("```>> Kanna reloaded cogs```")
 
 token = config("TOKEN")
+client.loop.create_task(switchpresence())
 client.run(token)
 
