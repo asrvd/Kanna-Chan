@@ -27,7 +27,7 @@ async def switchpresence():
   sm = [f"{len(client.guilds)} Servers!", f"{len(client.users)} Users!"]
   while not client.is_closed():
     ast = random.choice(sm)
-    await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"Asheeshh Senpai ~ {ast}"))
+    await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"Weebs ~ {ast}"))
     await asyncio.sleep(4)
 
 @client.event
