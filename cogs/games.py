@@ -135,7 +135,7 @@ class Games(commands.Cog):
             elif response.lower() != word:
                 await msg.edit(embed=lemb)
         except asyncio.TimeoutError:
-            await msg.edit(embed=None, content=f"{ctx.author.mention}\n😞 You took too long to answer, You lost the game.")
+            await msg.edit(embed=lemb, content=f"{ctx.author.mention}\n😞 You took too long to answer, You lost the game.")
 
     @commands.command(aliases=['lotto'])
     async def lottery(self, ctx, *, guesses):
