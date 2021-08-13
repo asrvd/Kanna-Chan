@@ -22,7 +22,7 @@ def load_cogs():
 
 @client.event
 async def on_ready():
-  await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name='Asheeshh Onii Chan'))
+  await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f'{len(client.guilds)} Servers and {len(client.users)} Users!'))
   load_cogs()
   DiscordComponents(client)
   print(">> Cogs loaded.")

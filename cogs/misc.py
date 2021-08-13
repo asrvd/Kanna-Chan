@@ -42,7 +42,7 @@ class Misc(commands.Cog):
         embed = discord.Embed(description="BOT CREATOR: [**ASHISH**](https://github.com/AsheeshhSenpai)",color=0x2e69f2)
         embed.title = 'Kanna Chan'
 
-        owner = await self.client.get_user(self.client.owner_id)
+        owner = self.client.get_user(784363251940458516)
         embed.set_author(name="asheeshh", icon_url=owner.avatar_url)
 
         # statistics
