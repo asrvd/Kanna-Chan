@@ -22,13 +22,12 @@ def load_cogs():
     if file.endswith(".py") and not file.startswith("_"):
       client.load_extension(f"cogs.{file[:-3]}")
 
+@tasks.loop(seconds=3)
 async def switchpresence():
   await client.wait_until_ready()
   sm = [f"{len(client.guilds)} Servers!", f"{len(client.users)} Users!"]
-  while not client.is_closed():
-    ast = random.choice(sm)
-    await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"Weebs ~ {ast}"))
-    await asyncio.sleep(4)
+  ast = random.choice(sm)
+  await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"Weebs ~ {ast}"))
 
 @client.event
 async def on_ready():
@@ -36,7 +35,7 @@ async def on_ready():
   DiscordComponents(client)
   print(">> Cogs loaded.")
   print(f">> Logged in as : {client.user.name} \n>> ID : {client.user.id}")
-  print(f">> Total Servers : {len(client.guilds)}\n")
+  print(f">> Total Servers : {len(client.guilds)}")
   print('>> Kanna is Online.')
 
 @client.command()
@@ -48,6 +47,6 @@ async def reload(ctx):
   await ctx.send("```>> Kanna reloaded cogs```")
 
 token = config("TOKEN")
-client.loop.create_task(switchpresence())
+switchpresence.start()
 client.run(token)
 
