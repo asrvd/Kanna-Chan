@@ -88,69 +88,9 @@ genemb.add_field(
 
 h = discord.Embed(
             title="ACTIONS",
-            description="BOT CREATOR: [**ASHISH**](https://github.com/AsheeshhSenpai)",
+            description="**AVAILABLE ACTIONS**\n`pat`, `hug`, `cuddle`, `kiss`, `bonk`, `kill`, `punch`, `handhold`, `highfive`, `feed`, `nom`, `slap`, `pout`, `smug`, `tickle`, `poke`, `blush`.)",
             color=0x2e69f2
             )
-h.add_field(
-            name="❤ **Love**", 
-            value=f"Kanna sends love to the person.", 
-            inline=True
-)
-h.add_field(
-            name="🤚 **Pat**",
-            value=f"pat any person.",
-            inline=True
-)
-h.add_field(
-            name="🙇‍♀️ **Thank**",
-            value=f"Kanna thanks the person.",
-            inline=True
-)
-h.add_field(
-            name="🤔 **Think**",
-            value=f"Kanna thinks hmmm..",
-            inline=True
-)
-h.add_field(
-            name="😮 **Amazed**",
-            value=f"Kanna is amazed woah..",
-            inline=True
-)
-h.add_field(
-            name="🫂 **Hug**",
-            value=f"Kanna hugs the person.",
-            inline=True
-)
-h.add_field(
-            name="💃 **Dance**",
-            value=f"Kanna dances with the person.",
-            inline=True
-)
-h.add_field(
-            name="🔪 **Kill**",
-            value=f"Kanna kills the person.",
-            inline=True
-)
-h.add_field(
-            name="🤝 **Befriend**",
-            value=f"Kanna befriends the person.",
-            inline=True
-)
-h.add_field(
-            name="👅 **Lick**",
-            value=f"lickie lickie..",
-            inline=True
-)
-h.add_field(
-            name="😈 **Attack**",
-            value=f"Kanna attacks",
-            inline=True
-)
-h.add_field(
-            name="🗣 **Say**",
-            value=f"Kanna says what you want her to say.",
-            inline=True
-)
 
 
 cemb = discord.Embed(title="💳 **CUSTOM CARDS**", description="`simpcard (person you simp for)` Kana makes a simpcard for you with your name and pfp on it.\n`gaycard` Kana makes a gaycard for you with your name and pfp.\n`uwucard` (mention someone) Kana makes a card to show your love for another person uwu.", color=0x2e69f2)

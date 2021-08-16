@@ -8,3 +8,4 @@ pygifsicle
 fun-responses
 discord-components
 asyncio
+anime-images-api
