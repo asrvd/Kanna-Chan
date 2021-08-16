@@ -118,7 +118,7 @@ class Roleplay(commands.Cog):
             m = ctx.author
         emb = discord.Embed(description=f"{ctx.author.mention} pouts at {m.mention} ~ hmph", color=0x2e69f2)
         req = requests.get('https://shiro.gg/api/images/pout')
-        rjson = rjson.loads(req.content)
+        rjson = json.loads(req.content)
         emb.set_image(url=rjson['url'])
         await ctx.send(embed=emb)
 
