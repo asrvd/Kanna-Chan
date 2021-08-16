@@ -1,4 +1,5 @@
 import discord
+from discord.colour import Color
 from discord.ext import commands
 import random
 import json
@@ -35,6 +36,11 @@ class Misc(commands.Cog):
         emb = discord.Embed(title=message, description=f"by {ctx.author.mention}", color=0x2e69f2)
         await ctx.send(embed=emb)
     
+    @commands.command()
+    async def status(self, ctx, *, mem: discord.Member = None):
+        emb = discord.Embed(title=f"{mem.mention}'s Status.", description=mem.status, color=0x2e69f2)
+        await ctx.send(embed=emb)
+
     @commands.command()
     async def about(self, ctx):
         kana = self.client.get_user(self.kana_id)
