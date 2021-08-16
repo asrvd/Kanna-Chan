@@ -88,7 +88,7 @@ genemb.add_field(
 
 h = discord.Embed(
             title="ACTIONS",
-            description="**AVAILABLE ACTIONS**\n`pat`, `hug`, `cuddle`, `kiss`, `bonk`, `kill`, `punch`, `handhold`, `highfive`, `feed`, `nom`, `slap`, `pout`, `smug`, `tickle`, `poke`, `blush`.)",
+            description="**AVAILABLE ACTIONS**\n`pat`, `hug`, `cuddle`, `kiss`, `bonk`, `kill`, `punch`, `handhold`, `highfive`, `feed`, `nom`, `slap`, `pout`, `smug`, `tickle`, `poke`, `blush`.",
             color=0x2e69f2
             )
 
