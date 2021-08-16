@@ -310,6 +310,7 @@ class Help(commands.Cog):
                 print(e)
         elif topic.lower() == "bot":
             emb = discord.Embed(title="MAKE ME BOT", description="Turn yourself into bot! To use send ~ \n`kana bot (your message without brackets)` and Kana will delete your message and make your message be sent by bot with your name and pfp!\n**Permission Needed: Manage Webhooks**", color=0x2e69f2)
+            emb.set_footer(
             text=f"Kanna Chan",
             icon_url=kana.avatar_url,
             )
