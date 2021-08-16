@@ -57,8 +57,8 @@ high5gifs = [
 
 def return_gif(arg):
     request = requests.get(f"https://nekos.life/api/v2/img/{arg}")
-    json = json.loads(request.content)
-    return json['url']
+    rjson = json.loads(request.content)
+    return rjson['url']
 
 class Roleplay(commands.Cog):
     def __init__(self, client):
@@ -82,8 +82,8 @@ class Roleplay(commands.Cog):
             await ctx.send(f"{ctx.author.mention} You want to punch yourself..? Are you sure..?")
         emb = discord.Embed(description=f"{ctx.author.mention} punches {m.mention} ~ OwO", color=0x2e69f2)
         req = requests.get('https://shiro.gg/api/images/punch')
-        json = json.loads(req.content)
-        emb.set_image(url=json['url'])
+        rjson = json.loads(req.content)
+        emb.set_image(url=rjson['url'])
         await ctx.send(embed=emb)
 
     @commands.command()
@@ -118,8 +118,8 @@ class Roleplay(commands.Cog):
             m = ctx.author
         emb = discord.Embed(description=f"{ctx.author.mention} pouts at {m.mention} ~ hmph", color=0x2e69f2)
         req = requests.get('https://shiro.gg/api/images/pout')
-        json = json.loads(req.content)
-        emb.set_image(url=json['url'])
+        rjson = rjson.loads(req.content)
+        emb.set_image(url=rjson['url'])
         await ctx.send(embed=emb)
 
     @commands.command()
@@ -168,8 +168,8 @@ class Roleplay(commands.Cog):
             m = ctx.author
         emb = discord.Embed(description=f"{ctx.author.mention} noms {m.mention} ~ nyaa!", color=0x2e69f2)
         req = requests.get('https://shiro.gg/api/images/nom')
-        json = json.loads(req.content)
-        emb.set_image(url=json['url'])
+        rjson = json.loads(req.content)
+        emb.set_image(url=rjson['url'])
         await ctx.send(embed=emb)
 
     @commands.command(aliases=['boop'])
@@ -178,8 +178,8 @@ class Roleplay(commands.Cog):
             m = ctx.author
         emb = discord.Embed(description=f"{ctx.author.mention} pokes {m.mention} ~ OwO", color=0x2e69f2)
         req = requests.get('https://shiro.gg/api/images/poke')
-        json = json.loads(req.content)
-        emb.set_image(url=json['url'])
+        rjson = json.loads(req.content)
+        emb.set_image(url=rjson['url'])
         await ctx.send(embed=emb)
 
     @commands.command()
@@ -188,8 +188,8 @@ class Roleplay(commands.Cog):
             m = ctx.author
         emb = discord.Embed(description=f"{ctx.author.mention} blushes at {m.mention} ~ >.<", color=0x2e69f2)
         req = requests.get('https://shiro.gg/api/images/blush')
-        json = json.loads(req.content)
-        emb.set_image(url=json['url'])
+        rjson = json.loads(req.content)
+        emb.set_image(url=rjson['url'])
         await ctx.send(embed=emb)
 
     @commands.command(aliases=["hold"])
