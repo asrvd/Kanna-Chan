@@ -3,6 +3,7 @@ from discord.ext import commands
 import random
 import json
 import requests
+from discord import utils
 from decouple import config
 from discord_components import DiscordComponents, Button, Select, SelectOption, ButtonStyle, InteractionType
 import asyncio
@@ -309,6 +310,15 @@ class Games(commands.Cog):
         ]
 
         await ctx.send(f"{m1.mention} X {m2.mention}\n{random.choice(ship_list)}")
+
+    @commands.command()
+    async def bot(ctx, *, message):
+        webhooks = await ctx.channel.webhooks()
+        webhook = utils.get(webhooks, name="Kanna")
+        if webhook is None:
+            webhook = await ctx.channel.create_webhook(name = "Kanna")
+        await webhook.send(message, username = ctx.author.name, avatar_url = ctx.author.avatar_url)
+        await ctx.message.delete()
 
 def setup(client):
     client.add_cog(Games(client))

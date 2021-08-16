@@ -50,6 +50,12 @@ gemb.add_field(
     inline=True
 )
 
+gemb.add_field(
+    name="🤖 **MAKE ME BOT**",
+    value="`kana help bot`",
+    inline=True
+)
+
 avemb = discord.Embed(title="🎴 **AVATAR**", description="**Command**: `av`, `avatar`, `pfp`\n`kana av @user` Sends avatar of mentioned person. If no one is mentioned kanna sends your avatar.\n`kana av @user1 @user2` Sends the merged pfp of two users (matching pfp uwu).", color=0x2e69f2)
 
 genemb = discord.Embed(title="HELP HAS COME!!", description="BOT CREATOR: [**ASHISH**](https://github.com/AsheeshhSenpai)",color=0x2e69f2)
@@ -302,6 +308,12 @@ class Help(commands.Cog):
                 
             except Exception as e:
                 print(e)
+        elif topic.lower() == "bot":
+            emb = discord.Embed(title="MAKE ME BOT", description="Turn yourself into bot! To use send ~ \n`kana bot (your message without brackets)` and Kana will delete your message and make your message be sent by bot with your name and pfp!\n**Permission Needed: Manage Webhooks**", color=0x2e69f2)
+            text=f"Kanna Chan",
+            icon_url=kana.avatar_url,
+            )
+            await ctx.send(embed=emb)
         elif topic.lower() == "akinator":
             emb = discord.Embed(title="AKINATOR", description="Start a game of Akinator using Kanna Chan!\nSend `kana akinator` to start the game. **The game is played in your DM**. To stop the game while playing send `stop` and to return to previous question send `back`.\nAll questions should be answered in `yes/no` or `y/n`.\n**Powered by: **[Akinator](https://akinator.com)", color=0x2e69f2)
             emb.set_image(url="https://static.freemake.com/blog/wp-content/uploads/2014/09/akinator-game.jpg")
