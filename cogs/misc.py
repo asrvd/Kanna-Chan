@@ -38,7 +38,7 @@ class Misc(commands.Cog):
     
     @commands.command()
     async def status(self, ctx, *, mem: discord.Member = None):
-        emb = discord.Embed(title=f"{mem.mention}'s Status.", description=mem.status, color=0x2e69f2)
+        emb = discord.Embed(title=f"{mem.name}'s Status.", description=mem.status, color=0x2e69f2)
         await ctx.send(embed=emb)
 
     @commands.command()
