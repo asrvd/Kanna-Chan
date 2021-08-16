@@ -312,7 +312,7 @@ class Games(commands.Cog):
         await ctx.send(f"{m1.mention} X {m2.mention}\n{random.choice(ship_list)}")
 
     @commands.command()
-    async def bot(ctx, *, message):
+    async def bot(self, ctx, *, message):
         webhooks = await ctx.channel.webhooks()
         webhook = utils.get(webhooks, name="Kanna")
         if webhook is None:
