@@ -98,7 +98,13 @@ cemb = discord.Embed(title="💳 **CUSTOM CARDS**", description="`simpcard (pers
 utilemb = discord.Embed(title="📘 **UTILITY**", color=0x2e69f2)
 utilemb.add_field(
     name="👋 WELCOME MESSAGE",
-    value="`kana wsetup #channel` Setup a channel where kanna will welcome users with a cute message.\n**It's an Admin/Mod only command**"
+    value="`kana wsetup #channel` Setup a channel where kanna will welcome users with a cute message.\n**It's an Admin/Mod only command**",
+    inline=False
+)
+utilemb.add_field(
+    name="🔎 ENLARGE EMOTES",
+    value="`kana enlarge (one emote or more than one)`\nKana enlarges the emotes and shows them in Embed.",
+    inline=False
 )
 
 respemb = discord.Embed(title="**RESPONSES**", color=0x2e69f2)

@@ -3,6 +3,7 @@ from discord.ext import commands
 import pyrebase
 import json
 from decouple import config
+from disputils import BotEmbedPaginator
 
 firebase = pyrebase.initialize_app(json.loads(config("firebaseConfig")))
 db = firebase.database()
@@ -40,6 +41,24 @@ class Utility(commands.Cog):
             embed = discord.Embed(title="NEW MEMBER!", description=desc, color=0x2e69f2)
             embed.set_image(url="attachment://welcome.gif")
             await channel.send(member.mention, embed=embed, file=file)
+
+    @commands.command()
+    async def enlarge(ctx, *, content):
+        cont = content.split()
+        embeds = []
+        for word in cont:
+            if word.startswith("<") and word.endswith(">"):
+                lst = word.strip("<:a>").split(":")
+                if word.startswith("<a:"):
+                    emoj = discord.PartialEmoji(name=lst[0], id=lst[1], animated=True)
+                else:
+                    emoj = discord.PartialEmoji(name=lst[0], id=lst[1])
+                asset = emoj.url
+                emb = discord.Embed(description=f"`{lst[1]}`\n`{lst[0]}`", color=0x2e69f2)
+                emb.set_image(url=str(asset))
+                embeds.append(emb)
+        paginator = BotEmbedPaginator(ctx, embeds, control_emojis=("⏮", "◀", "▶", "⏭"))
+        await paginator.run()
 
 def setup(client):
   client.add_cog(Utility(client))
