@@ -43,7 +43,7 @@ class Utility(commands.Cog):
             await channel.send(member.mention, embed=embed, file=file)
 
     @commands.command()
-    async def enlarge(ctx, *, content):
+    async def enlarge(self, ctx, *, content):
         cont = content.split()
         embeds = []
         for word in cont:
