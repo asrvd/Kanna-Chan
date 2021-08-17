@@ -76,6 +76,11 @@ genemb.add_field(
     inline=True
 )
 genemb.add_field(
+    name="⭐ **SUPPORT**",
+    value=f"DM to `aSHish#1198`\nJoin support server ~ [Click here](https://discord.gg/vtKJdYMQv5)",
+    inline=True
+)
+genemb.add_field(
     name="❓ **ABOUT**",
     value=f"[Click here](https://github.com/AsheeshhSenpai/Kanna-Chan/blob/main/README.md#about)",
     inline=True
