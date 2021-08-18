@@ -6,7 +6,7 @@ kwee = "<:kannawee:877036162122924072>"
 kdance = "<a:kanna_dance:877038778798207016>"
 kbored = "<:kanna_bored:877036162827583538>"
 ksmug = "<:kanna_smug:877038777896427560>"
-heart = "<a:WhiteHeartExplosion:821865122443296768>"
+heart = "<a:explosion_heart:877426228775227392>"
 
 class Server(commands.Cog):
     def __init__(self, client):
