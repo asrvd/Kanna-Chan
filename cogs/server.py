@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-arrow = "<a:righter_arrow:509735362994896924>"
+arrow = "<a:right:877425183839891496>"
 kwee = "<:kannawee:877036162122924072>"
 kdance = "<a:kanna_dance:877038778798207016>"
 kbored = "<:kanna_bored:877036162827583538>"
