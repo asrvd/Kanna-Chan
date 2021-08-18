@@ -90,17 +90,14 @@ class Server(commands.Cog):
         )
         emb.add_field(
             name=f"{heart} **Do not join voice chat channels without permission of the people already in there.**",
-            value=f"",
             inline=False
         )
         emb.add_field(
             name=f"{heart} ***The Admins and Mods will Mute/Kick/Ban per discretion. If you feel mistreated dm an Admin and we will resolve the issue.***",
-            value=f"",
             inline=False
         )
         emb.add_field(
             name=f"{heart} ***Your presence in this server implies accepting these rules, including all further changes. These changes might be done at any time without notice, it is your responsibility to check for them.***",
-            value=f"",
             inline=False
         )
         emb.set_footer(
