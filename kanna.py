@@ -8,7 +8,6 @@ import random
 
 intents = discord.Intents.default()
 intents.members = True
-intents.presences = True
 
 #kana variables
 kana_id = 857835279259664403
