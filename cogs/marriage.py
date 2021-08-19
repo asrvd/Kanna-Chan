@@ -100,7 +100,11 @@ class Marry(commands.Cog):
             )
             await ctx.send(embed=emb)
         elif mem.id == ctx.author.id:
-            await ctx.send("You can't marry yourself, dumb <:dum:864375070196367400>")
+            await ctx.reply("You can't marry yourself, dumb <:dum:864375070196367400>")
+        elif mem.id == self.kana_id:
+            await ctx.reply("You can't marry me, I'm a minor!! Hello, FBI? <:kanna_fbi:877036161812561960>")
+        elif mem.bot:
+            await ctx.reply("You want to marry a bot? I understand you are not getting real girls but you gotta try <:kanna_suicide:877038776013176832>")
         else:
             if mcheck(ctx.author.id, mem.id) == False:
                 author = ctx.author.name
