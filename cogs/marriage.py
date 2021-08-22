@@ -136,7 +136,7 @@ class Marry(commands.Cog):
                     )
                     await ctx.send(ctx.author.mention, embed=em2)
             else:
-                await ctx.send("Anyone of you is already married ;-;")
+                await ctx.reply("Anyone of you is already married ;-;")
 
     @commands.command()
     async def marriage(self, ctx):
@@ -154,15 +154,15 @@ class Marry(commands.Cog):
             )
             await ctx.send(ctx.author.mention, embed = emb)
         else:
-            await ctx.send(f"{ctx.author.mention} You are currently not married to anyone.")
+            await ctx.reply(f"{ctx.author.mention} You are currently not married to anyone.")
 
     @commands.command()
     async def divorce(self, ctx, mem: discord.User = None):
         kana = self.client.get_user(self.kana_id)
         if mem == ctx.author:
-            await ctx.send("How do you divorce with yourself baka! <:dum:864375070196367400>")
+            await ctx.reply("How do you divorce with yourself baka! <:dum:864375070196367400>")
         elif mem == None:
-            await ctx.send("Who do you wnat to divorce with?")
+            await ctx.reply("Who do you want to divorce with?")
         else:
             if check_partner(ctx.author.id, mem.id) == True:
                 author = ctx.author.name
