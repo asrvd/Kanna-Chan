@@ -128,7 +128,18 @@ class Avatar(commands.Cog):
                 icon_url=kana.avatar_url,
                 )
                 await ctx.send(embed=embed, file=file)
-
+    
+    @commands.command(aliases=['bn', 'bnr'])
+    async def banner(self, ctx, mem: discord.User = None):
+        if mem == None:
+            mem = ctx.author
+        req = await self.client.http.request(discord.http.Route("GET", "/users/{uid}", uid=mem.id))
+        banner_id = req["banner"]
+        if banner_id:
+            banner_url = f"https://cdn.discordapp.com/banners/{mem.id}/{banner_id}?size=1024"
+        emb = discord.Embed(color=0x2e69f2)
+        emb.set_img(url=banner_url)
+        await ctx.send(embed=emb)
 def setup(client):
     client.add_cog(Avatar(client))
     print(">> Avatar loaded")
