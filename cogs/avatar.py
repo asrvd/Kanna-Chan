@@ -139,14 +139,13 @@ class Avatar(commands.Cog):
             banner_url = f"https://cdn.discordapp.com/banners/{mem.id}/{banner_id}?size=1024"
         response = requests.get(banner_url)
         img = Image.open(BytesIO(response.content))
-        try:
-            if img.is_animated:
-                emb = discord.Embed(color=0x2e69f2)
-                img.save("banner.gif")
-                file=discord.File("banner.gif")
-                emb.set_image(url="attachment://banner.gif")
-                await ctx.send(embed=emb, file=file) 
-        except Exception:
+        if img.is_animated:
+            emb = discord.Embed(color=0x2e69f2)
+            img.save("banner.gif")
+            file=discord.File("banner.gif")
+            emb.set_image(url="attachment://banner.gif")
+            await ctx.send(embed=emb, file=file) 
+        else:
             emb = discord.Embed(color=0x2e69f2)
             img.save("banner.png")
             file=discord.File("banner.png")
