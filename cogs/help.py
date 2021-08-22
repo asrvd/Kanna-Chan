@@ -56,7 +56,7 @@ gemb.add_field(
     inline=True
 )
 
-avemb = discord.Embed(title="🎴 **AVATAR**", description="**Command**: `av`, `avatar`, `pfp`\n`kana av @user` Sends avatar of mentioned person. If no one is mentioned kanna sends your avatar.\n`kana av @user1 @user2` Sends the merged pfp of two users (matching pfp uwu).", color=0x2e69f2)
+avemb = discord.Embed(title="🎴 **AVATAR**", description="**Command**: `av`, `avatar`, `pfp`\n`kana av @user` Sends avatar of mentioned person. If no one is mentioned kanna sends your avatar.\n\n`kana av @user1 @user2` Sends the merged pfp of two users (matching pfp uwu).\n\n**ENLARGE USER BANNER**\n**Command**: `bnr`, `banner`, `bn`\n`kana bnr @user` Sends banner of mentioned person. If no one is mentioned kanna sends your banner by default.", color=0x2e69f2)
 
 genemb = discord.Embed(title="HELP HAS COME!!", description="BOT CREATOR: [**ASHISH**](https://github.com/AsheeshhSenpai) `aSHish#1198`",color=0x2e69f2)
 
@@ -124,7 +124,7 @@ respemb.add_field(
     inline=True
 )
 
-imemb = discord.Embed(title="IMAGE COMMANDS", description="**Avaialable commands**\n🐶 `woof` Sends a random doogo image.\n🐱 `meow` Sends a random catto image.", color=0x2e69f2)
+imemb = discord.Embed(title="IMAGE COMMANDS", description="**Avaialable commands**\n🐶 `woof` Sends a random doogo image.\n\n🐱 `meow` Sends a random catto image.", color=0x2e69f2)
 
 
 class Help(commands.Cog):
@@ -142,7 +142,7 @@ class Help(commands.Cog):
                         Select(placeholder="Select", options=[
                         SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890"), default=True),
                         SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
-                        SelectOption(label="Avatar", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
+                        SelectOption(label="Avatar & Banner", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
                         SelectOption(label="Actions", value="actions", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654")),
                         SelectOption(label="Utility", value="utility", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522")),
                         SelectOption(label="Cards", value="cards",emoji=discord.PartialEmoji(name="ASKannaStare", id="292359094759849984")),
@@ -162,7 +162,7 @@ class Help(commands.Cog):
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890"), default=True),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
-                            SelectOption(label="Avatar", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
+                            SelectOption(label="Avatar & Banner", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
                             SelectOption(label="Actions", value="actions", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654")),
                             SelectOption(label="Utility", value="utility", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522")),
                             SelectOption(label="Cards", value="cards",emoji=discord.PartialEmoji(name="ASKannaStare", id="292359094759849984")),
@@ -173,7 +173,7 @@ class Help(commands.Cog):
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292"), default=True), 
-                            SelectOption(label="Avatar", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
+                            SelectOption(label="Avatar & Banner", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
                             SelectOption(label="Actions", value="actions", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654")),
                             SelectOption(label="Utility", value="utility", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522")),
                             SelectOption(label="Cards", value="cards",emoji=discord.PartialEmoji(name="ASKannaStare", id="292359094759849984")),
@@ -184,7 +184,7 @@ class Help(commands.Cog):
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
-                            SelectOption(label="Avatar", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363"), default=True),
+                            SelectOption(label="Avatar & Banner", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363"), default=True),
                             SelectOption(label="Actions", value="actions", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654")),
                             SelectOption(label="Utility", value="utility", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522")),
                             SelectOption(label="Cards", value="cards",emoji=discord.PartialEmoji(name="ASKannaStare", id="292359094759849984")),
@@ -195,7 +195,7 @@ class Help(commands.Cog):
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
-                            SelectOption(label="Avatar", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
+                            SelectOption(label="Avatar & Banner", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
                             SelectOption(label="Actions", value="actions", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654"), default=True),
                             SelectOption(label="Utility", value="utility", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522")),
                             SelectOption(label="Cards", value="cards",emoji=discord.PartialEmoji(name="ASKannaStare", id="292359094759849984")),
@@ -206,7 +206,7 @@ class Help(commands.Cog):
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
-                            SelectOption(label="Avatar", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
+                            SelectOption(label="Avatar & Banner", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
                             SelectOption(label="Actions", value="actions", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654")),
                             SelectOption(label="Utility", value="utility", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522"), default=True),
                             SelectOption(label="Cards", value="cards",emoji=discord.PartialEmoji(name="ASKannaStare", id="292359094759849984")),
@@ -217,7 +217,7 @@ class Help(commands.Cog):
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
-                            SelectOption(label="Avatar", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
+                            SelectOption(label="Avatar & Banner", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
                             SelectOption(label="Actions", value="actions", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654")),
                             SelectOption(label="Utility", value="utility", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522")),
                             SelectOption(label="Cards", value="cards",emoji=discord.PartialEmoji(name="ASKannaStare", id="292359094759849984"), default=True),
@@ -228,7 +228,7 @@ class Help(commands.Cog):
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
-                            SelectOption(label="Avatar", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
+                            SelectOption(label="Avatar & Banner", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
                             SelectOption(label="Actions", value="actions", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654")),
                             SelectOption(label="Utility", value="utility", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522")),
                             SelectOption(label="Cards", value="cards",emoji=discord.PartialEmoji(name="ASKannaStare", id="292359094759849984")),
@@ -239,7 +239,7 @@ class Help(commands.Cog):
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
-                            SelectOption(label="Avatar", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
+                            SelectOption(label="Avatar & Banner", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
                             SelectOption(label="Actions", value="actions", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654")),
                             SelectOption(label="Utility", value="utility", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522")),
                             SelectOption(label="Cards", value="cards",emoji=discord.PartialEmoji(name="ASKannaStare", id="292359094759849984")),
@@ -250,7 +250,7 @@ class Help(commands.Cog):
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292"), default=True), 
-                            SelectOption(label="Avatar", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
+                            SelectOption(label="Avatar & Banner", value="avatar", emoji=discord.PartialEmoji(name="kanna_bored", id="865149005347684363")),
                             SelectOption(label="Actions", value="actions", emoji=discord.PartialEmoji(name="kannah", id="873191866387013654")),
                             SelectOption(label="Utility", value="utility", emoji=discord.PartialEmoji(name="RWKannaSmug", id="762995028200128522")),
                             SelectOption(label="Cards", value="cards",emoji=discord.PartialEmoji(name="ASKannaStare", id="292359094759849984")),
