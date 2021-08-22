@@ -138,7 +138,7 @@ class Avatar(commands.Cog):
         if banner_id:
             banner_url = f"https://cdn.discordapp.com/banners/{mem.id}/{banner_id}?size=1024"
         emb = discord.Embed(color=0x2e69f2)
-        emb.set_img(url=banner_url)
+        emb.set_image(url=banner_url)
         await ctx.send(embed=emb)
 def setup(client):
     client.add_cog(Avatar(client))
