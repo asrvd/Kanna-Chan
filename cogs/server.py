@@ -112,10 +112,13 @@ class Server(commands.Cog):
     @commands.Cog.listener()
     async def on_member_join(self, member):
         if member.guild.id == 876798564704084008:
-            member_role = member.guild.get_role(876804164661944340)
-            await member.add_roles(member_role)
-            desc = f"{member.name} Thanks for joining Kanna's Server. The server is currently under construction, Thanks for being an **early supporter**!! If you need any kind of help or support just ping any staff member or DM `aSHish#1198`. Have a nice stay in the server :)"
-            await member.send(desc)
+            if member.bot:
+                return
+            else:
+                member_role = member.guild.get_role(876804164661944340)
+                await member.add_roles(member_role)
+                desc = f"{member.name} Thanks for joining Kanna's Server. The server is currently under construction, Thanks for being an **early supporter**!! If you need any kind of help or support just ping any staff member or DM `aSHish#1198`. Have a nice stay in the server :)"
+                await member.send(desc)
         else:
             return
 
