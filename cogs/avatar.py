@@ -17,8 +17,8 @@ class Avatar(commands.Cog):
         #for single pfp
         if m1 == None and m2 == None:
             m1 = ctx.author
-	    asset1 = m1.avatar_url_as(size=512)
-	    await asset1.save("avatar.png")
+            asset1 = m1.avatar_url_as(size=512)
+            await asset1.save("avatar.png")
             file = discord.File("avatar.png")
             embed = discord.Embed(color=0x2e69f2)
             embed.set_image(url="attachment://avatar.png")
@@ -29,8 +29,8 @@ class Avatar(commands.Cog):
             await ctx.send(embed=embed, file = file)
         elif m1 != None and m2 == None:
             pfp = m1.avatar_url
-	    asset1 = m1.avatar_url_as(size=512)
-	    await asset1.save("avatar.png")
+            asset1 = m1.avatar_url_as(size=512)
+            await asset1.save("avatar.png")
             file = discord.File("avatar.png")
             embed = discord.Embed(color=0x2e69f2)
             embed.set_image(url="attachment://avatar.png")
@@ -42,7 +42,7 @@ class Avatar(commands.Cog):
         elif m2 == m1:
             pfp = m1.avatar_url
             asset1 = m1.avatar_url_as(size=512)
-	    await asset1.save("avatar.png")
+            await asset1.save("avatar.png")
             file = discord.File("avatar.png")
             embed = discord.Embed(color=0x2e69f2)
             embed.set_image(url="attachment://avatar.png")
