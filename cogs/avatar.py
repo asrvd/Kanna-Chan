@@ -17,32 +17,40 @@ class Avatar(commands.Cog):
         #for single pfp
         if m1 == None and m2 == None:
             m1 = ctx.author
-            pfp = m1.avatar_url
+	    asset1 = m1.avatar_url_as(size=512)
+	    await asset1.save("avatar.png")
+            file = discord.File("avatar.png")
             embed = discord.Embed(color=0x2e69f2)
-            embed.set_image(url=pfp)
+            embed.set_image(url="attachment://avatar.png")
             embed.set_footer(
             text=f"Kanna Chan",
             icon_url=kana.avatar_url,
             )
-            await ctx.send(embed=embed)
+            await ctx.send(embed=embed, file = file)
         elif m1 != None and m2 == None:
             pfp = m1.avatar_url
+	    asset1 = m1.avatar_url_as(size=512)
+	    await asset1.save("avatar.png")
+            file = discord.File("avatar.png")
             embed = discord.Embed(color=0x2e69f2)
-            embed.set_image(url=pfp)
+            embed.set_image(url="attachment://avatar.png")
             embed.set_footer(
             text=f"Kanna Chan",
             icon_url=kana.avatar_url,
             )
-            await ctx.send(embed=embed)
+            await ctx.send(embed=embed, file=file)
         elif m2 == m1:
             pfp = m1.avatar_url
+            asset1 = m1.avatar_url_as(size=512)
+	    await asset1.save("avatar.png")
+            file = discord.File("avatar.png")
             embed = discord.Embed(color=0x2e69f2)
-            embed.set_image(url=pfp)
+            embed.set_image(url="attachment://avatar.png")
             embed.set_footer(
             text=f"Kanna Chan",
             icon_url=kana.avatar_url,
             )
-            await ctx.send(embed=embed)
+            await ctx.send(embed=embed, file=file)
 
         #for shared pfp
         elif m2 != m1:                                
