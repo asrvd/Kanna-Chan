@@ -143,11 +143,12 @@ class Avatar(commands.Cog):
         try:
             if img.is_animated:
                 img.save("banner.gif")
-                emb.set_image(url="attachment://banner.gif")
+                file=discord.File("banner.gif")
+                emb.set_image(url="attachment://banner.gif") 
         except Exception:
             img.save("banner.png")
+            file=discord.File("banner.png")
             emb.set_image(url="attachment://banner.png")
-        file=discord.File(img)
         await ctx.send(embed=emb, file=file)
 
 def setup(client):
