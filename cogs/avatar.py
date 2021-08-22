@@ -131,6 +131,7 @@ class Avatar(commands.Cog):
     
     @commands.command(aliases=['bn', 'bnr'])
     async def banner(self, ctx, mem: discord.User = None):
+        kana = self.client.get_user(self.kana_id)
         if mem == None:
             mem = ctx.author
         req = await self.client.http.request(discord.http.Route("GET", "/users/{uid}", uid=mem.id))
@@ -139,17 +140,25 @@ class Avatar(commands.Cog):
             banner_url = f"https://cdn.discordapp.com/banners/{mem.id}/{banner_id}?size=1024"
         response = requests.get(banner_url)
         img = Image.open(BytesIO(response.content))
-        if img.is_animated:
+        if img.is_animated == True:
             emb = discord.Embed(color=0x2e69f2)
             img.save("banner.gif")
             file=discord.File("banner.gif")
             emb.set_image(url="attachment://banner.gif")
+            emb.set_footer(
+                text=f"Kanna Chan",
+                icon_url=kana.avatar_url,
+            )
             await ctx.send(embed=emb, file=file) 
         else:
             emb = discord.Embed(color=0x2e69f2)
             img.save("banner.png")
             file=discord.File("banner.png")
             emb.set_image(url="attachment://banner.png")
+            emb.set_footer(
+                text=f"Kanna Chan",
+                icon_url=kana.avatar_url,
+            )
             await ctx.send(embed=emb, file=file)
         
 
