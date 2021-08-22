@@ -5,7 +5,7 @@ from io import BytesIO
 import imageio
 import numpy as np
 from PIL import Image, ImageSequence
-
+import requests
 
 class Avatar(commands.Cog):
     def __init__(self, client):
@@ -137,9 +137,19 @@ class Avatar(commands.Cog):
         banner_id = req["banner"]
         if banner_id:
             banner_url = f"https://cdn.discordapp.com/banners/{mem.id}/{banner_id}?size=1024"
+        response = requests.get(banner_url)
+        img = Image.open(BytesIO(response.content))
         emb = discord.Embed(color=0x2e69f2)
-        emb.set_image(url=banner_url)
-        await ctx.send(embed=emb)
+        try:
+            if img.is_animated:
+                img.save("banner.gif")
+                emb.set_image(url="attachment://banner.gif")
+        except Exception:
+            img.save("banner.png")
+            emb.set_image(url="attachment://banner.png")
+        file=discord.File(img)
+        await ctx.send(embed=emb, file=file)
+
 def setup(client):
     client.add_cog(Avatar(client))
     print(">> Avatar loaded")
