@@ -3,6 +3,7 @@ from discord.ext import commands
 import json
 from discord_components import DiscordComponents, Button, Select, SelectOption, ButtonStyle, InteractionType
 import datetime
+from disputils import BotConfirmation
 
 guild_id = 864220272444571658
 ccid = 879271125228593152
@@ -26,21 +27,17 @@ class Confession(commands.Cog):
             )
             ca = self.client.get_channel(caid)
             cc = self.client.get_channel(ccid)
-            msg = await ca.send(embed=emb, 
-                components=[
-                [
-                Button(style=ButtonStyle.green, label="Yes", emoji="✅"),
-                Button(style=ButtonStyle.red, label="No", emoji="❎")
-                ],
-            ],
-        )
-            while True:
-                resp = await self.client.wait_for("button_click")
-                if resp.component.label.lower() == "yes":
-                    await cc.send(embed=emb)
-                    await msg.edit(content="approved ✅", embed=emb)
-                elif resp.component.label.lower() == "no":
-                    await msg.edit(content="disapproved ❎", embed=emb)
+
+            msg1 = await ca.send(content="Send **y** to approve or **n** to disapprove.", embed=emb)
+
+            resp = await self.client.wait_for("message")
+
+            if resp.content.lower() == "y":
+                await cc.send(embed=emb)
+                await msg1.edit(content="Approved!", embed=emb)
+            elif resp.content.lower() == "n":
+                await msg1.edit(content="Disapproved!", embed=emb)
+
         else:
             await ctx.reply("Confessions can be sent only through DM.")
 
