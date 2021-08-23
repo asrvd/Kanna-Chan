@@ -18,7 +18,7 @@ class Confession(commands.Cog):
         if ctx.channel.type is discord.ChannelType.private:
             kana = self.client.get_user(self.kana_id)
             await ctx.reply("Your confession has been sent! Please wait for any staff to approve it.")
-            emb = discord.Embed(title="ANIMEHUB CONFESSIONS", description=desc, color=0xfc80e0)
+            emb = discord.Embed(title="ANIMEHUB CONFESSIONS", description=f"```{desc}```", color=0xfc80e0)
             emb.timestamp = datetime.datetime.utcnow()
             emb.set_footer(
                 text="DM me kana confess (your message) to confess",
