@@ -29,8 +29,9 @@ class Confession(commands.Cog):
             cc = self.client.get_channel(ccid)
 
             msg1 = await ca.send(content="Send **y** to approve or **n** to disapprove.", embed=emb)
-
-            resp = await self.client.wait_for("message")
+            def check(msg):
+                return msg.channel.id == caid
+            resp = await self.client.wait_for("message", check=check)
 
             if resp.content.lower() == "y":
                 await cc.send(embed=emb)
