@@ -26,7 +26,7 @@ class Confession(commands.Cog):
             )
             ca = self.client.get_channel(caid)
             cc = self.client.get_channel(ccid)
-            await ca.send("<@&879272737812672512>", embed=emb, 
+            await ca.send(embed=emb, 
                 components=[
                 [
                 Button(style=ButtonStyle.green, label="Yes", emoji="✅"),
