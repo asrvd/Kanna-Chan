@@ -26,7 +26,7 @@ class Confession(commands.Cog):
             )
             ca = self.client.get_channel(caid)
             cc = self.client.get_channel(ccid)
-            await ca.send(embed=emb, 
+            msg = await ca.send(embed=emb, 
                 components=[
                 [
                 Button(style=ButtonStyle.green, label="Yes", emoji="✅"),
@@ -38,21 +38,9 @@ class Confession(commands.Cog):
                 resp = await self.client.wait_for("button_click")
                 if resp.component.label.lower() == "yes":
                     await cc.send(embed=emb)
-                    await resp.respond(type=InteractionType.UpdateMessage, embed=emb,
-                        components=[
-                            [
-                            Button(style=ButtonStyle.blue, label="Approved", emoji="✅", disabled=True)
-                            ],
-                        ],
-                    )
+                    await msg.edit(content="approved ✅", embed=emb)
                 elif resp.component.label.lower() == "no":
-                    await resp.respond(type=InteractionType.UpdateMessage, embed=emb,
-                        components=[
-                            [
-                            Button(style=ButtonStyle.blue, label="Disapproved", emoji="❎", disabled=True)
-                            ],
-                        ],
-                    )
+                    await msg.edit(content="disapproved ❎", embed=emb)
         else:
             await ctx.reply("Confessions can be sent only through DM.")
 
