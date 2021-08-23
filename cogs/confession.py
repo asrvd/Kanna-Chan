@@ -35,24 +35,26 @@ class Confession(commands.Cog):
             ],
         )
 
-        resp = await self.client.wait_for("button_click")
-        if resp.component.label.lower() == "yes":
-            await cc.send(embed=emb)
-            await resp.respond(type=InteractionType.UpdateMessage, embed=emb,
-                components=[
-                    [
-                    Button(style=ButtonStyle.blue, label="Approved", emoji="✅", disabled=True)
+            resp = await self.client.wait_for("button_click")
+            if resp.component.label.lower() == "yes":
+                await cc.send(embed=emb)
+                await resp.respond(type=InteractionType.UpdateMessage, embed=emb,
+                    components=[
+                        [
+                        Button(style=ButtonStyle.blue, label="Approved", emoji="✅", disabled=True)
+                        ],
                     ],
-                ],
-            )
-        elif resp.component.label.lower() == "no":
-            await resp.respond(type=InteractionType.UpdateMessage, embed=emb,
-                components=[
-                    [
-                    Button(style=ButtonStyle.blue, label="Disapproved", emoji="❎", disabled=True)
+                )
+            elif resp.component.label.lower() == "no":
+                await resp.respond(type=InteractionType.UpdateMessage, embed=emb,
+                    components=[
+                        [
+                        Button(style=ButtonStyle.blue, label="Disapproved", emoji="❎", disabled=True)
+                        ],
                     ],
-                ],
-            )
+                )
+        else:
+            await ctx.reply("Confessions can be sent only through DM.")
 
 def setup(client):
     client.add_cog(Confession(client))
