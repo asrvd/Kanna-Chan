@@ -37,6 +37,7 @@ class Confession(commands.Cog):
                 ],
             )
             resp = await self.client.wait_for("button_click", check=None, timeout=None)
+            await resp.respond(type=6)
             if resp.component.label.lower() == "approve":
                 await cc.send(embed=emb)
                 await msg1.edit(content="**Approved!**", embed=emb,
