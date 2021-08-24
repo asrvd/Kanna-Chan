@@ -5,7 +5,7 @@ import json
 import requests
 from discord import utils
 from decouple import config
-from discord_components import DiscordComponents, Button, Select, SelectOption, ButtonStyle, InteractionType
+from discord_components import DiscordComponents, Button, Select, SelectOption, ButtonStyle
 import asyncio
 
 rapid_api = str(config("RAPID_API_KEY"))
@@ -194,7 +194,7 @@ class Games(commands.Cog):
             bot = random.choice(["rock", "paper", "scissors"])
             player = resp.component.label.lower()
             embed = return_embed(bot, player)
-            await resp.respond(type=InteractionType.UpdateMessage, embed=embed,
+            await resp.respond(type=7, embed=embed,
                 components=[
                     [
                     Button(style=ButtonStyle.blue, label="Rock", emoji="✊", disabled=True),
@@ -250,7 +250,7 @@ class Games(commands.Cog):
             resp = await self.client.wait_for("button_click", check=check, timeout=30)
             player = resp.component.label.lower()
             embed = return_embed(n1, n2, player)
-            await resp.respond(type=InteractionType.UpdateMessage, embed=embed,
+            await resp.respond(type=7, embed=embed,
                 components=[
                     [
                     Button(style=ButtonStyle.blue, label="HIGH", emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071"), disabled=True),
