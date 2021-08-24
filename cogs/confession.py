@@ -28,7 +28,7 @@ class Confession(commands.Cog):
             ca = self.client.get_channel(caid)
             cc = self.client.get_channel(ccid)
 
-            await ca.send(embed=emb,
+            msg1 = await ca.send(embed=emb,
                 components=[
                     [
                     Button(style=ButtonStyle.green, label="Approve"),
@@ -39,7 +39,7 @@ class Confession(commands.Cog):
             resp = await self.client.wait_for("button_click", check=None, timeout=None)
             if resp.component.label.lower() == "approve":
                 await cc.send(embed=emb)
-                await resp.respond(type=7, content="**Approved!**", embed=emb,
+                await msg1.edit(content="**Approved!**", embed=emb,
                     components=[
                     [
                     Button(style=ButtonStyle.green, label="Approve", disabled=True),
@@ -48,7 +48,7 @@ class Confession(commands.Cog):
                 ],
                 )
             elif resp.component.label.lower() == "disapprove":
-                await resp.respond(type=7, content="**Disapproved!**", embed=emb,
+                await msg1.edit(content="**Disapproved!**", embed=emb,
                     components=[
                     [
                     Button(style=ButtonStyle.green, label="Approve", disabled=True),
