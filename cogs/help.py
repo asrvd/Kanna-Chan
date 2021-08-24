@@ -157,7 +157,7 @@ class Help(commands.Cog):
                             return interaction.user==ctx.author and interaction.channel == ctx.channel
                         interaction = await self.client.wait_for("select_option",check=check, timeout=40)
                         print(interaction.values[0])
-                        response = interaction.component.label
+                        response = interaction.values[0]
                         if response.lower() == "general":
                             await interaction.respond(type=7, embed=genemb, components=[
                             Select(placeholder="Select", options=[
