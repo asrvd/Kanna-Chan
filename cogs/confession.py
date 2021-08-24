@@ -28,16 +28,35 @@ class Confession(commands.Cog):
             ca = self.client.get_channel(caid)
             cc = self.client.get_channel(ccid)
 
-            msg1 = await ca.send(content="Send **y** to approve or **n** to disapprove.", embed=emb)
-            def check(msg):
-                return msg.channel.id == caid
-            resp = await self.client.wait_for("message", check=check)
-
-            if resp.content.lower() == "y":
+            msg1 = await ca.send(embed=emb,
+                components=[
+                    [
+                    Button(style=ButtonStyle.green, label="Approve"),
+                    Button(style=ButtonStyle.red, label="Disapprove")
+                    ],
+                ],
+            )
+            resp = await self.client.wait_for("button_click", timeout=None)
+            if resp.component.label.lower() == "approved":
                 await cc.send(embed=emb)
-                await msg1.edit(content="Approved!", embed=emb)
-            elif resp.content.lower() == "n":
-                await msg1.edit(content="Disapproved!", embed=emb)
+                await msg1.edit(content="**Approved!**", embed=emb,
+                    components=[
+                    [
+                    Button(style=ButtonStyle.green, label="Approve", disabled=True),
+                    Button(style=ButtonStyle.red, label="Disapprove", disabled=True)
+                    ],
+                ],
+                )
+            elif resp.component.label.lower() == "diapproved":
+                await msg1.edit(content="**Disapproved!**", embed=emb,
+                    components=[
+                    [
+                    Button(style=ButtonStyle.green, label="Approve", disabled=True),
+                    Button(style=ButtonStyle.red, label="Disapprove", disabled=True)
+                    ],
+                ],
+                )
+            
 
         else:
             await ctx.reply("Confessions can be sent only through DM.")
