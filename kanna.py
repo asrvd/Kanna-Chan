@@ -26,7 +26,7 @@ async def switchpresence():
   await client.wait_until_ready()
   sm = [f"{len(client.guilds)} Servers!", f"{len(client.users)} Users!"]
   ast = random.choice(sm)
-  await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"Weebs ~ {ast}"))
+  await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"k.help & {ast}"))
 
 @client.event
 async def on_ready():
