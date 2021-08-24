@@ -216,29 +216,28 @@ class Roleplay(commands.Cog):
         elif m2 == None:
             m2 = m1
             m1 = ctx.author
-        size = (128, 128)
-        mask = Image.new('L', size, 0)
-        draw = ImageDraw.Draw(mask) 
-        draw.ellipse((0, 0) + size, fill=255)
+        
         bg = Image.open("./images/kanna_pat.png")
-        asset1 = m1.avatar_url_as(size=256)
-        asset2 = m2.avatar_url_as(size=256)
-        data1 = BytesIO(await asset1.read())
-        data2 = BytesIO(await asset2.read())
-        pfp1 = Image.open(data1).convert('RGBA')
-        pfp2 = Image.open(data2).convert('RGBA')
+        asset1 = m1.avatar_url_as(format='png', size=128)
+        asset2 = m2.avatar_url_as(format='png', size=128)
+        await asset1.save('pfp1.png')
+        await asset2.save('pfp2.png')
+        pfp1 = Image.open('pfp1.png')
+        pfp2 = Image.open('pfp2.png')
         pfp1 = pfp1.resize((122, 122))
         pfp2 = pfp2.resize((122, 122))
-        pfp1.save('pfp1.png')
-        pfp2.save('pfp2.png')
+        mask = Image.new('L', (122, 122), 0)
+        draw = ImageDraw.Draw(mask) 
+        draw.ellipse((0, 0, 122, 122), fill=255)
+        mask.save('mask.jpg')
+        bgimg = bg.copy()
+        bgimg.paste(pfp1, (122, 86), mask)
+        bgimg.paste(pfp2, (355, 82), mask)
 
-        bg.paste(pfp1, (122, 86))
-        bg.paste(pfp2, (355, 82))
-
-        bg.save("avatar.png")
-        file = discord.File("avatar.png")
+        bgimg.save("pat.png")
+        file = discord.File("pat.png")
         emb = discord.Embed(title="", description=f"{m1.mention} pats {m2.mention} uwu", color=0x2e69f2)
-        emb.set_image(url="attachment://avatar.png")
+        emb.set_image(url="attachment://pat.png")
         await ctx.send(embed=emb, file=file)
 
 def setup(client):
