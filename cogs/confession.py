@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 import json
-from discord_components import DiscordComponents, Button, Select, SelectOption, ButtonStyle, InteractionType
+from discord_components import DiscordComponents, Button, Select, SelectOption, ButtonStyle
 import datetime
 from disputils import BotConfirmation
 
