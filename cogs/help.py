@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from discord_components import DiscordComponents, Button, Select, SelectOption, InteractionType
+from discord_components import DiscordComponents, Button, Select, SelectOption
 import asyncio
 
 gemb = discord.Embed(title="GAMES", color=0x2e69f2)
@@ -158,7 +158,7 @@ class Help(commands.Cog):
                         interaction = await self.client.wait_for("select_option",check=check, timeout=40)
                         response = interaction.component[0].label
                         if response.lower() == "general":
-                            await interaction.respond(type=InteractionType.UpdateMessage, embed=genemb, components=[
+                            await interaction.respond(type=7, embed=genemb, components=[
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890"), default=True),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
@@ -169,7 +169,7 @@ class Help(commands.Cog):
                             SelectOption(label="Responses", value="responses" , emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071")),
                             SelectOption(label="Image", value="image", emoji=discord.PartialEmoji(name="kannazoom", id="841107540166180915"))])])
                         elif response.lower() == "games":
-                            await interaction.respond(type=InteractionType.UpdateMessage,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=gemb, components=[
+                            await interaction.respond(type=7,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=gemb, components=[
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292"), default=True), 
@@ -180,7 +180,7 @@ class Help(commands.Cog):
                             SelectOption(label="Responses", value="responses" , emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071")),
                             SelectOption(label="Image", value="image", emoji=discord.PartialEmoji(name="kannazoom", id="841107540166180915"))])])
                         elif response.lower() == "avatar & banner":
-                            await interaction.respond(type=InteractionType.UpdateMessage,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=avemb, components=[
+                            await interaction.respond(type=7,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=avemb, components=[
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
@@ -191,7 +191,7 @@ class Help(commands.Cog):
                             SelectOption(label="Responses", value="responses" , emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071")),
                             SelectOption(label="Image", value="image", emoji=discord.PartialEmoji(name="kannazoom", id="841107540166180915"))])])
                         elif response.lower() == "actions":
-                            await interaction.respond(type=InteractionType.UpdateMessage,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=h, components=[
+                            await interaction.respond(type=7,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=h, components=[
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
@@ -202,7 +202,7 @@ class Help(commands.Cog):
                             SelectOption(label="Responses", value="responses" , emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071")),
                             SelectOption(label="Image", value="image", emoji=discord.PartialEmoji(name="kannazoom", id="841107540166180915"))])])
                         elif response.lower() == "utility":
-                            await interaction.respond(type=InteractionType.UpdateMessage,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=utilemb, components=[
+                            await interaction.respond(type=7,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=utilemb, components=[
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
@@ -213,7 +213,7 @@ class Help(commands.Cog):
                             SelectOption(label="Responses", value="responses" , emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071")),
                             SelectOption(label="Image", value="image", emoji=discord.PartialEmoji(name="kannazoom", id="841107540166180915"))])])
                         elif response.lower() == "cards":
-                            await interaction.respond(type=InteractionType.UpdateMessage,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=cemb, components=[
+                            await interaction.respond(type=7,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=cemb, components=[
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
@@ -224,7 +224,7 @@ class Help(commands.Cog):
                             SelectOption(label="Responses", value="responses" , emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071")),
                             SelectOption(label="Image", value="image", emoji=discord.PartialEmoji(name="kannazoom", id="841107540166180915"))])])
                         elif response.lower() == "responses":
-                            await interaction.respond(type=InteractionType.UpdateMessage,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=respemb, components=[
+                            await interaction.respond(type=7,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=respemb, components=[
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
@@ -235,7 +235,7 @@ class Help(commands.Cog):
                             SelectOption(label="Responses", value="responses" , emoji=discord.PartialEmoji(name="KannaAwh", id="758724574010409071"), default=True),
                             SelectOption(label="Image", value="image", emoji=discord.PartialEmoji(name="kannazoom", id="841107540166180915"))])])
                         elif response.lower() == "image":
-                            await interaction.respond(type=InteractionType.UpdateMessage,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=imemb, components=[
+                            await interaction.respond(type=7,content="Join Kanna's Server for fun emotes and cool events discord.gg/7CYP8pKzDB", embed=imemb, components=[
                             Select(placeholder="Select", options=[
                             SelectOption(label="General", value="general", emoji=discord.PartialEmoji(name="kannawhat", id="721404617690316890")),
                             SelectOption(label="Games", value="games", emoji=discord.PartialEmoji(name="kannaO", id="873191889560543292")), 
