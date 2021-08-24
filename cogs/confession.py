@@ -39,7 +39,7 @@ class Confession(commands.Cog):
             resp = await self.client.wait_for("button_click", check=None, timeout=None)
             if resp.component.label.lower() == "approved":
                 await cc.send(embed=emb)
-                await msg1.edit(content="**Approved!**", embed=emb,
+                await resp.respond(type=7, content="**Approved!**", embed=emb,
                     components=[
                     [
                     Button(style=ButtonStyle.green, label="Approve", disabled=True),
@@ -48,7 +48,7 @@ class Confession(commands.Cog):
                 ],
                 )
             elif resp.component.label.lower() == "diapproved":
-                await msg1.edit(content="**Disapproved!**", embed=emb,
+                await resp.respond(type=7, content="**Disapproved!**", embed=emb,
                     components=[
                     [
                     Button(style=ButtonStyle.green, label="Approve", disabled=True),
