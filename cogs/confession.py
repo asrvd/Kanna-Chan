@@ -37,7 +37,6 @@ class Confession(commands.Cog):
                 ],
             )
             resp = await self.client.wait_for("button_click", check=None, timeout=None)
-            print(f"response={resp.component.label.lower()}")
             if resp.component.label.lower() == "approve":
                 await cc.send(embed=emb)
                 await resp.respond(type=7, content="**Approved!**", embed=emb,
