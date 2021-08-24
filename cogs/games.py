@@ -315,8 +315,6 @@ class Games(commands.Cog):
         bg.paste(pfp1, (37, 28), mask)
         bg.paste(pfp2, (752, 27), mask)
         bg.save('back.png')
-        f=discord.File('back.png')
-        await ctx.send(file=f)
         temp=Image.open('./images/temp4.png')
         im = Image.open('back.png').convert('RGBA')
         final=Image.alpha_composite(im, temp)
@@ -335,7 +333,7 @@ class Games(commands.Cog):
         elif love > 90 and love <= 101:
             quote = "Fated partners uwu"
         file=discord.File('final.png')
-        desc = f"{m1.mention} + {m2.mention} = {love}% of love\n**{quote}**"
+        desc = f"{m1.mention} + {m2.mention} = {love}% of love <:kannawee:877036162122924072>\n**{quote}**"
         await ctx.send(desc, file=file)
 
     @commands.command()
