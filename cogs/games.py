@@ -7,6 +7,7 @@ from discord import utils
 from decouple import config
 from discord_components import DiscordComponents, Button, Select, SelectOption, ButtonStyle
 import asyncio
+from PIL import Image, ImageDraw
 
 rapid_api = str(config("RAPID_API_KEY"))
 word_api = str(config("WORD_API_KEY"))
@@ -298,18 +299,44 @@ class Games(commands.Cog):
         elif m2 == None:
             m2 = m1
             m1 = ctx.author
-
-        ship_list=[
-            "Possible..",
-            "Not in this life..",
-            "Maybe..",
-            "Best couple!",
-            "Looks impossible..",
-            "Fated partners..",
-            "Should already be in this relationship.."
-        ]
-
-        await ctx.send(f"{m1.mention} X {m2.mention}\n{random.choice(ship_list)}")
+        asset1 = m1.avatar_url_as(format='png', size=512)
+        asset2 = m2.avatar_url_as(format='png', size=512)
+        await asset1.save('pfp1.png')
+        await asset2.save('pfp2.png')
+        pfp1=Image.open('pfp1.png')
+        pfp2=Image.open('pfp2.png')
+        pfp1=pfp1.resize((400, 400))
+        pfp2=pfp2.resize((400, 400))
+        mask=Image.new('L', (400, 400), 0)
+        mask_draw=ImageDraw.Draw(mask)
+        mask_draw.ellipse((0, 0, 400, 400), fill=255)
+        mask.save('mask.jpg')
+        bg=Image.new('RGBA', (1200, 500), (255, 0, 0, 0))
+        bg.paste(pfp1, (37, 28), mask)
+        bg.paste(pfp2, (752, 27), mask)
+        bg.save('back.png')
+        f=discord.File('back.png')
+        await ctx.send(file=f)
+        temp=Image.open('./images/temp4.png')
+        im = Image.open('back.png').convert('RGBA')
+        final=Image.alpha_composite(im, temp)
+        final.save('final.png')
+        love = random.randint(0, 101)
+        if love >= 0 and love <=15:
+            quote = "Not in this life.."
+        elif love > 15 and love <=25:
+            quote = "Looks impossible..but who knows?"
+        elif love > 25 and love <=50:
+            quote = "Maybe.."
+        elif love > 50 and love <=70:
+            quote = "Quite Possible.."
+        elif love > 70 and love <=90:
+            quote = "Should already be in this relationship!!"
+        elif love > 90 and love <= 101:
+            quote = "Fated partners uwu"
+        file=discord.File('final.png')
+        desc = f"{m1.mention} + {m2.mention} = {love}% of love\n**{quote}**"
+        await ctx.send(desc, file=file)
 
     @commands.command()
     async def bot(self, ctx, *, message):
