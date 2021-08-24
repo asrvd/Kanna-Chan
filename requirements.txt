@@ -6,7 +6,7 @@ imageio
 akinator.py
 pygifsicle
 fun-responses
-discord-components==2.0.2
+discord-components
 asyncio
 anime-images-api
 disputils
