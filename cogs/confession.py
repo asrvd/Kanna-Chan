@@ -19,6 +19,7 @@ class Confession(commands.Cog):
         if ctx.channel.type is discord.ChannelType.private:
             kana = self.client.get_user(self.kana_id)
             await ctx.reply("Your confession has been sent! Please wait for any staff to approve it.")
+            global emb
             emb = discord.Embed(title="ANIMEHUB CONFESSIONS", description=f"```{desc}```", color=0xfc80e0)
             emb.timestamp = datetime.datetime.utcnow()
             emb.set_footer(
@@ -28,7 +29,7 @@ class Confession(commands.Cog):
             ca = self.client.get_channel(caid)
             cc = self.client.get_channel(ccid)
 
-            msg1 = await ca.send(embed=emb,
+            await ca.send(embed=emb,
                 components=[
                     [
                     Button(style=ButtonStyle.green, label="Approve"),
@@ -36,31 +37,33 @@ class Confession(commands.Cog):
                     ],
                 ],
             )
-            resp = await self.client.wait_for("button_click", check=None, timeout=None)
-            await resp.respond(type=6)
-            if resp.component.label.lower() == "approve":
-                await cc.send(embed=emb)
-                await msg1.edit(content="**Approved!**", embed=emb,
-                    components=[
-                    [
-                    Button(style=ButtonStyle.green, label="Approve", disabled=True),
-                    Button(style=ButtonStyle.red, label="Disapprove", disabled=True)
-                    ],
-                ],
-                )
-            elif resp.component.label.lower() == "disapprove":
-                await msg1.edit(content="**Disapproved!**", embed=emb,
-                    components=[
-                    [
-                    Button(style=ButtonStyle.green, label="Approve", disabled=True),
-                    Button(style=ButtonStyle.red, label="Disapprove", disabled=True)
-                    ],
-                ],
-                )
-            
-
         else:
             await ctx.reply("Confessions can be sent only through DM.")
+
+    @commands.Cog.listener()
+    async def on_button_click(self, interaction):
+        if interaction.channel.id == caid:
+            cc = self.client.get_channel(ccid)
+            if interaction.component.label.lower() == "approve":
+                await cc.send(embed=emb)
+                await interaction.respond(type=7, content="**Approved!**", embed=emb,
+                    components=[
+                    [
+                    Button(style=ButtonStyle.green, label="Approve", disabled=True),
+                    Button(style=ButtonStyle.red, label="Disapprove", disabled=True)
+                    ],
+                ],
+                )
+            elif interaction.component.label.lower() == "disapprove":
+                await interaction.respond(type=7, content="**Disapproved!**", embed=emb,
+                    components=[
+                    [
+                    Button(style=ButtonStyle.green, label="Approve", disabled=True),
+                    Button(style=ButtonStyle.red, label="Disapprove", disabled=True)
+                    ],
+                ],
+                )
+
 
 def setup(client):
     client.add_cog(Confession(client))
