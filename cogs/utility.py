@@ -1,9 +1,11 @@
 import discord
 from discord.ext import commands
+from discord.ext.commands import has_permissions
 import pyrebase
 import json
 from decouple import config
 from disputils import BotEmbedPaginator
+from PIL import Image, ImageDraw, ImageFont
 
 firebase = pyrebase.initialize_app(json.loads(config("firebaseConfig")))
 db = firebase.database()
@@ -24,7 +26,7 @@ class Utility(commands.Cog):
         self.kana_id = 857835279259664403
     
     @commands.command()
-    @commands.is_owner()
+    @commands.has_permissions(administrator=True)
     async def wsetup(self, ctx, *, channel: discord.TextChannel = None):
         create(ctx.guild.id, channel.id)
         await ctx.send(f">> Welcome messages have been setup to {channel.mention} now.")
@@ -36,11 +38,29 @@ class Utility(commands.Cog):
         if channel_id == None:
             return
         elif channel_id != None:
-            desc = f"Everyone, welcome our newest member {member.mention}!"
-            file = discord.File("./images/welcome.gif")
-            embed = discord.Embed(title="NEW MEMBER!", description=desc, color=0x2e69f2)
-            embed.set_image(url="attachment://welcome.gif")
-            await channel.send(member.mention, embed=embed, file=file)
+            guild_name = member.guild.name
+            name = member.name
+            id = member.discriminator
+            f1 = ImageFont.truetype('./fonts/Magz.otf', 128)
+            f2 = ImageFont.truetype('./fonts/Magz.otf', 64)
+            desc = f"Welcome {member.mention} to the Server **{guild_name}**!"
+            bg = Image.new('RGBA', (800, 200), (255, 0, 0, 0))
+            asset = member.avatar_url_as(format='png', size=256)
+            await asset.save('av.png')
+            im = Image.open('av.png')
+            im = im.resize((200, 200))
+            mask = Image.new('L', (200, 200), 0)
+            mask_draw = ImageDraw.Draw(mask)
+            mask_draw.ellipse((0, 0, 200, 200), fill=255)
+            mask.save('mask.jpg')
+            bg.paste(im, (100, 0), mask)
+            draw = ImageDraw.Draw(bg)
+            draw.text((365, 20), name, (144, 66, 245), font=f1)
+            draw.text((365, 119), id, (247, 87, 237), font=f2)
+            bg.save('final.png')
+            file = discord.File('final.png')
+            await channel.send(desc, file=file)
+
 
     @commands.command()
     async def enlarge(self, ctx, *, content):
