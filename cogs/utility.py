@@ -38,28 +38,31 @@ class Utility(commands.Cog):
         if channel_id == None:
             return
         elif channel_id != None:
-            guild_name = member.guild.name
-            name = member.name
-            id = member.discriminator
-            f1 = ImageFont.truetype('./fonts/Magz.otf', 128)
-            f2 = ImageFont.truetype('./fonts/Magz.otf', 64)
-            desc = f"Welcome {member.mention} to the Server **{guild_name}**!"
-            bg = Image.new('RGBA', (1000, 200), (255, 0, 0, 0))
-            asset = member.avatar_url_as(format='png', size=256)
-            await asset.save('av.png')
-            im = Image.open('av.png')
-            im = im.resize((200, 200))
-            mask = Image.new('L', (200, 200), 0)
-            mask_draw = ImageDraw.Draw(mask)
-            mask_draw.ellipse((0, 0, 200, 200), fill=255)
-            mask.save('mask.jpg')
-            bg.paste(im, (30, 0), mask)
-            draw = ImageDraw.Draw(bg)
-            draw.text((300, 20), name, (144, 66, 245), font=f1)
-            draw.text((300, 119), id, (247, 87, 237), font=f2)
-            bg.save('final.png')
-            file = discord.File('final.png')
-            await channel.send(desc, file=file)
+            if member.bot:
+                return
+            else:
+                guild_name = member.guild.name
+                name = member.name
+                id = member.discriminator
+                f1 = ImageFont.truetype('./fonts/Magz.otf', 128)
+                f2 = ImageFont.truetype('./fonts/Magz.otf', 64)
+                desc = f"Welcome {member.mention} to the Server **{guild_name}**!"
+                bg = Image.new('RGBA', (1000, 200), (255, 0, 0, 0))
+                asset = member.avatar_url_as(format='png', size=256)
+                await asset.save('av.png')
+                im = Image.open('av.png')
+                im = im.resize((200, 200))
+                mask = Image.new('L', (200, 200), 0)
+                mask_draw = ImageDraw.Draw(mask)
+                mask_draw.ellipse((0, 0, 200, 200), fill=255)
+                mask.save('mask.jpg')
+                bg.paste(im, (30, 0), mask)
+                draw = ImageDraw.Draw(bg)
+                draw.text((300, 20), name, (144, 66, 245), font=f1)
+                draw.text((300, 119), id, (247, 87, 237), font=f2)
+                bg.save('final.png')
+                file = discord.File('final.png')
+                await channel.send(desc, file=file)
 
 
     @commands.command()
@@ -80,6 +83,7 @@ class Utility(commands.Cog):
         paginator = BotEmbedPaginator(ctx, embeds, control_emojis=("⏮", "◀", "▶", "⏭"))
         await paginator.run()
 
+          
 def setup(client):
   client.add_cog(Utility(client))
   print(">> Utility loaded")
