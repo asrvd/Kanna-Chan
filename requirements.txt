@@ -10,3 +10,4 @@ discord-components
 asyncio
 anime-images-api
 disputils
+pet-pet-gif
