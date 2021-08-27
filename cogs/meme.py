@@ -9,7 +9,7 @@ class Meme(commands.Cog):
         self.kana_id = 857835279259664403
 
     @commands.command()
-    async def headpat(self, ctx, mem: discord.User()):
+    async def headpat(self, ctx, mem: discord.User = None):
         if mem == None:
             mem = ctx.author
         asset = mem.avatar_url_as(format='png')
