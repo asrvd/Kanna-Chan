@@ -4,6 +4,7 @@ import pyrebase
 from decouple import config
 import json
 import datetime
+from discord_components import DiscordComponents, Button, Select, SelectOption, ButtonStyle
 
 firebase = pyrebase.initialize_app(json.loads(config("firebaseConfig")))
 db = firebase.database()
@@ -110,6 +111,10 @@ class Marry(commands.Cog):
                 author = ctx.author.name
                 desc = f":ring: **{author}** has proposed to **{mem.name}** :ring:\n\n{mem.name} , Do you accept this proposal?\n**Type yes to accept or no to decline.**"
                 em = discord.Embed(title="MARRIAGE PROPOSAL!", description=desc,color=0x2e69f2)
+                em.set_author(
+                        name="Marriage!",
+                        url=ctx.author.avatar_url
+                )
                 em.set_footer(
                 text=f"Kanna Chan",
                 icon_url=kana.avatar_url,
@@ -119,17 +124,26 @@ class Marry(commands.Cog):
                     return m.author == mem
                 response = await self.client.wait_for('message', check=check, timeout=40)
                 if response.content.lower().strip() == "yes":
-                    msg = f" {author} and {mem.name}\n\nYou are married now uwu."
+                    msg = f"<a:yayy:882300913920917514> {author} and {mem.name}\n\nYou are married now uwu <a:yayy:882300913920917514>"
                     em1 = discord.Embed(title=":heart: Congratulations!! :heart:", description=msg, color=0x2e69f2)
+                    em1.set_author(
+                        name="Marriage!",
+                        url=ctx.author.avatar_url
+                    )
                     em1.set_footer(
                     text=f"Kanna Chan",
                     icon_url=kana.avatar_url,
                     )
+                    em1.set_image(url="https://c.tenor.com/onRe_6jABMcAAAAC/ring-will-you-marry-me.gif")
                     await ctx.send(embed=em1)
                     create(ctx.author.id, mem.id)
                 elif response.content.lower().strip() == "no":
                     msg = "The proposal between " + author + " and " + mem.name + " has been declined."
-                    em2 = discord.Embed(description=msg, color=0x2e69f2)
+                    em2 = discord.Embed(title=f"<a:kanna_cry:877036167206420500> {ctx.author.mention} your proposal was declined <a:kanna_cry:877036167206420500>", description=msg, color=0x2e69f2)
+                    em2.set_author(
+                        name="Marriage!",
+                        url=ctx.author.avatar_url
+                    )
                     em2.set_footer(
                     text=f"Kanna Chan",
                     icon_url=kana.avatar_url,
@@ -147,11 +161,16 @@ class Marry(commands.Cog):
             then = return_time(ctx.author.id)
             thatday = datetime.datetime.strptime(then ,'%Y-%m-%d')
             month = {1: "January", 2: "February", 3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August", 9: "September", 10: "October", 11: "November", 12: "December"}
-            emb = discord.Embed(description=f"**{ctx.author.name}** is married to **{partner_name}** uwu\n\nMarried since {thatday.day} {month[thatday.month]}, {thatday.year}\nYou are cute <:catcute:785777055617777717>", color=0x2e69f2)
+            emb = discord.Embed(description=f"**{ctx.author.name}** is married to **{partner_name}** uwu\n\nMarried since {thatday.day} {month[thatday.month]}, {thatday.year} <a:woww:882301342377459772>\nYou are cute <:cute_stare:882300914101289031>", color=0x2e69f2)
+            emb.set_author(
+                name=f"{ctx.author.name.lower()}'s Marriage Card",
+                url=ctx.author.avatar_url
+            )
             emb.set_footer(
             text=f"Kanna Chan",
             icon_url=kana.avatar_url,
             )
+            emb.set_image(url="https://c.tenor.com/8CZQ5N0SPKAAAAAC/mochi-cat.gif")
             await ctx.send(ctx.author.mention, embed = emb)
         else:
             await ctx.reply(f"{ctx.author.mention} You are currently not married to anyone.")
@@ -162,7 +181,7 @@ class Marry(commands.Cog):
         if mem == ctx.author:
             await ctx.reply("How do you divorce with yourself baka! <:dum:864375070196367400>")
         elif mem == None:
-            await ctx.reply("Who do you want to divorce with?")
+            await ctx.reply("Mention your partner to divorce with!")
         else:
             if check_partner(ctx.author.id, mem.id) == True:
                 author = ctx.author.name

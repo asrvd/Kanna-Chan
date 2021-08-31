@@ -1,3 +1,4 @@
+from os import name
 import discord
 from discord.ext import commands
 from discord.ext.commands import has_permissions
@@ -67,6 +68,7 @@ class Utility(commands.Cog):
 
     @commands.command()
     async def enlarge(self, ctx, *, content):
+        kana = self.client.get_user(self.kana_id)
         cont = content.split()
         embeds = []
         for word in cont:
@@ -78,6 +80,14 @@ class Utility(commands.Cog):
                     emoj = discord.PartialEmoji(name=lst[0], id=lst[1])
                 asset = emoj.url
                 emb = discord.Embed(description=f"`{lst[1]}`\n`{lst[0]}`", color=0x2e69f2)
+                emb.set_author(
+                    name="Enlarged Emotes!",
+                    url=ctx.author.avatar_url
+                )
+                emb.set_footer(
+                    text="Kanna Chan",
+                    icon_url=kana.avatar_url
+                )
                 emb.set_image(url=str(asset))
                 embeds.append(emb)
         paginator = BotEmbedPaginator(ctx, embeds, control_emojis=("⏮", "◀", "▶", "⏭"))

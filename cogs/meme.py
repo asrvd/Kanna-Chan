@@ -10,6 +10,7 @@ class Meme(commands.Cog):
 
     @commands.command()
     async def headpat(self, ctx, mem: discord.User = None):
+        kana = self.client.get_user(self.kana_id)
         if mem == None:
             mem = ctx.author
         asset = mem.avatar_url_as(format='png')
@@ -19,6 +20,14 @@ class Meme(commands.Cog):
         dest.seek(0)
         file = discord.File(dest, filename="pat.gif")
         emb = discord.Embed(description=f"`{mem.name.lower()}_pat`",color=0x2e69f2)
+        emb.set_author(
+            name="pat, pat..",
+            url=ctx.author.avatar_url
+        )
+        emb.set_footer(
+            text="Kanna Chan",
+            icon_url=kana.avatar_url
+        )
         emb.set_image(url="attachment://pat.gif")
         await ctx.send(embed=emb, file=file)
 
