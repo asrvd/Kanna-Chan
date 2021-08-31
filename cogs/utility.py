@@ -82,7 +82,7 @@ class Utility(commands.Cog):
                 emb = discord.Embed(description=f"`{lst[1]}`\n`{lst[0]}`", color=0x2e69f2)
                 emb.set_author(
                     name="Enlarged Emotes!",
-                    url=ctx.author.avatar_url
+                    icon_url=ctx.author.avatar_url
                 )
                 emb.set_footer(
                     text="Kanna Chan",

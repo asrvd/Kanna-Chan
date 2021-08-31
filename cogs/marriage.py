@@ -113,7 +113,7 @@ class Marry(commands.Cog):
                 em = discord.Embed(title="MARRIAGE PROPOSAL!", description=desc,color=0x2e69f2)
                 em.set_author(
                         name="Marriage!",
-                        url=ctx.author.avatar_url
+                        icon_url=ctx.author.avatar_url
                 )
                 em.set_footer(
                 text=f"Kanna Chan",
@@ -128,7 +128,7 @@ class Marry(commands.Cog):
                     em1 = discord.Embed(title=":heart: Congratulations!! :heart:", description=msg, color=0x2e69f2)
                     em1.set_author(
                         name="Marriage!",
-                        url=ctx.author.avatar_url
+                        icon_url=ctx.author.avatar_url
                     )
                     em1.set_footer(
                     text=f"Kanna Chan",
@@ -142,7 +142,7 @@ class Marry(commands.Cog):
                     em2 = discord.Embed(title=f"<a:kanna_cry:877036167206420500> {ctx.author.mention} your proposal was declined <a:kanna_cry:877036167206420500>", description=msg, color=0x2e69f2)
                     em2.set_author(
                         name="Marriage!",
-                        url=ctx.author.avatar_url
+                        icon_url=ctx.author.avatar_url
                     )
                     em2.set_footer(
                     text=f"Kanna Chan",
@@ -164,7 +164,7 @@ class Marry(commands.Cog):
             emb = discord.Embed(description=f"**{ctx.author.name}** is married to **{partner_name}** uwu\n\nMarried since {thatday.day} {month[thatday.month]}, {thatday.year} <a:woww:882301342377459772>\nYou are cute <:cute_stare:882300914101289031>", color=0x2e69f2)
             emb.set_author(
                 name=f"{ctx.author.name.lower()}'s Marriage Card",
-                url=ctx.author.avatar_url
+                icon_url=ctx.author.avatar_url
             )
             emb.set_footer(
             text=f"Kanna Chan",
