@@ -270,26 +270,43 @@ class Games(commands.Cog):
     @commands.command(aliases=["df"])
     async def define(self, ctx, *, query):
         kana = self.client.get_user(self.kana_id)
+        banned_words=[
+            "nigga",
+            "niggi",
+            "nigor",
+            "negor",
+            "nigger",
+            "niggas",
+            "nigora",
+            "negors",
+            "niggis",
+            "cum",
+            "pussy"
+        ]
         url = "https://mashape-community-urban-dictionary.p.rapidapi.com/define"
-        querystring = {"term":f"{query}"}
-        headers = {
-            'x-rapidapi-key': rapid_api,
-            'x-rapidapi-host': "mashape-community-urban-dictionary.p.rapidapi.com"
-        }
-        res = requests.request("GET", url, headers=headers, params=querystring)
-        result = res.content
-        json_data = json.loads(result)
-        list = json_data["list"]
-        if list == []:
-            await ctx.send("No results available for this query ;-;")
+        if query not in banned_words:
+            querystring = {"term":f"{query}"}
+            headers = {
+                'x-rapidapi-key': rapid_api,
+                'x-rapidapi-host': "mashape-community-urban-dictionary.p.rapidapi.com"
+            }
+            res = requests.request("GET", url, headers=headers, params=querystring)
+            result = res.content
+            json_data = json.loads(result)
+            list = json_data["list"]
+            if list == []:
+                await ctx.send("No results available for this query ;-;")
+            else:
+                jtext = json_data["list"][0]["definition"]
+                example = json_data["list"][0]["example"]
+                link = json_data["list"][0]["permalink"]
+                emb = discord.Embed(description=f"{jtext}\n\n*`{example}`*\n\n*more results at {link}*", color=0x2e69f2)
+                emb.set_author(name=f"Definition Of {query.capitalize()}", icon_url=ctx.author.avatar_url)
+                emb.set_footer(text="Kanna Chan", icon_url=kana.avatar_url)
+                await ctx.send(embed=emb)
         else:
-            jtext = json_data["list"][0]["definition"]
-            example = json_data["list"][0]["example"]
-            link = json_data["list"][0]["permalink"]
-            emb = discord.Embed(description=f"{jtext}\n\n*`{example}`*\n\n*more results at {link}*", color=0x2e69f2)
-            emb.set_author(name=f"Definition Of {query.capitalize()}", icon_url=ctx.author.avatar_url)
-            emb.set_footer(text="Kanna Chan", icon_url=kana.avatar_url)
-            await ctx.send(embed=emb)
+            await ctx.reply("That word is banned by the developer for community reasons.")
+          
 
     @commands.command()
     async def ship(self, ctx, m1: discord.User = None, m2: discord.User = None):
