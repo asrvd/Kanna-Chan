@@ -281,7 +281,9 @@ class Games(commands.Cog):
             "negors",
             "niggis",
             "cum",
-            "pussy"
+            "pussy",
+            "nigoral",
+            "nigorals"
         ]
         url = "https://mashape-community-urban-dictionary.p.rapidapi.com/define"
         if query not in banned_words:
