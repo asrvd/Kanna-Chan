@@ -80,7 +80,7 @@ class Roleplay(commands.Cog):
             await ctx.send("Please mention someone to punch!")
         elif m == ctx.author:
             await ctx.send(f"{ctx.author.mention} You want to punch yourself..? Are you sure..?")
-        elif m == self.client.user.id:
+        elif m.id == self.client.user.id:
             emb = discord.Embed(description=f"no u {ctx.author.mention}", color=0x2e69f2)
             emb.set_image(url="https://c.tenor.com/eaAbCBZy0PoAAAAS/reverse-nozumi.gif")
             await ctx.reply(embed=emb)
@@ -113,7 +113,7 @@ class Roleplay(commands.Cog):
     async def slap(self, ctx, m: discord.Member = None):
         if m == None:
             m = ctx.author
-        elif m == self.client.user.id:
+        elif m.id == self.client.user.id:
             emb = discord.Embed(description=f"no u {ctx.author.mention}", color=0x2e69f2)
             emb.set_image(url="https://c.tenor.com/eaAbCBZy0PoAAAAS/reverse-nozumi.gif")
             await ctx.reply(embed=emb)
@@ -152,7 +152,7 @@ class Roleplay(commands.Cog):
     async def kill(self, ctx, m: discord.Member = None):
         if m == None:
             m = ctx.author
-        elif m == self.client.user.id:
+        elif m.id == self.client.user.id:
             emb = discord.Embed(description=f"no u {ctx.author.mention}", color=0x2e69f2)
             emb.set_image(url="https://c.tenor.com/eaAbCBZy0PoAAAAS/reverse-nozumi.gif")
             await ctx.reply(embed=emb)
