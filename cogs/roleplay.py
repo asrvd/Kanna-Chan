@@ -84,11 +84,12 @@ class Roleplay(commands.Cog):
             emb = discord.Embed(description=f"no u {ctx.author.mention}", color=0x2e69f2)
             emb.set_image(url="https://c.tenor.com/eaAbCBZy0PoAAAAS/reverse-nozumi.gif")
             await ctx.reply(embed=emb)
-        emb = discord.Embed(description=f"{ctx.author.mention} punches {m.mention} ~ OwO", color=0x2e69f2)
-        req = requests.get('https://shiro.gg/api/images/punch')
-        rjson = json.loads(req.content)
-        emb.set_image(url=rjson['url'])
-        await ctx.send(embed=emb)
+        else:
+            emb = discord.Embed(description=f"{ctx.author.mention} punches {m.mention} ~ OwO", color=0x2e69f2)
+            req = requests.get('https://shiro.gg/api/images/punch')
+            rjson = json.loads(req.content)
+            emb.set_image(url=rjson['url'])
+            await ctx.send(embed=emb)
 
     @commands.command()
     async def kiss(self, ctx, m: discord.Member = None):
@@ -116,9 +117,10 @@ class Roleplay(commands.Cog):
             emb = discord.Embed(description=f"no u {ctx.author.mention}", color=0x2e69f2)
             emb.set_image(url="https://c.tenor.com/eaAbCBZy0PoAAAAS/reverse-nozumi.gif")
             await ctx.reply(embed=emb)
-        emb = discord.Embed(description=f"{ctx.author.mention} slaps {m.mention} ~ baakaah", color=0x2e69f2)
-        emb.set_image(url=return_gif("slap"))
-        await ctx.send(embed=emb)
+        else:
+            emb = discord.Embed(description=f"{ctx.author.mention} slaps {m.mention} ~ baakaah", color=0x2e69f2)
+            emb.set_image(url=return_gif("slap"))
+            await ctx.send(embed=emb)
     
     @commands.command()
     async def pout(self, ctx, m: discord.Member = None):
@@ -142,10 +144,6 @@ class Roleplay(commands.Cog):
     async def tickle(self, ctx, m: discord.Member = None):
         if m == None:
             m = ctx.author
-        elif m == self.client.user.id:
-            emb = discord.Embed(description=f"no u {ctx.author.mention}", color=0x2e69f2)
-            emb.set_image(url="https://c.tenor.com/eaAbCBZy0PoAAAAS/reverse-nozumi.gif")
-            await ctx.reply(embed=emb)
         emb = discord.Embed(description=f"{ctx.author.mention} tickles {m.mention} ~_~", color=0x2e69f2)
         emb.set_image(url=return_gif("tickle"))
         await ctx.send(embed=emb)
@@ -154,9 +152,14 @@ class Roleplay(commands.Cog):
     async def kill(self, ctx, m: discord.Member = None):
         if m == None:
             m = ctx.author
-        emb = discord.Embed(description=f"{ctx.author.mention} kills {m.mention} ~ RIP", color=0x2e69f2)
-        emb.set_image(url=anime.get_sfw('kill'))
-        await ctx.send(embed=emb)
+        elif m == self.client.user.id:
+            emb = discord.Embed(description=f"no u {ctx.author.mention}", color=0x2e69f2)
+            emb.set_image(url="https://c.tenor.com/eaAbCBZy0PoAAAAS/reverse-nozumi.gif")
+            await ctx.reply(embed=emb)
+        else:
+            emb = discord.Embed(description=f"{ctx.author.mention} kills {m.mention} ~ RIP", color=0x2e69f2)
+            emb.set_image(url=anime.get_sfw('kill'))
+            await ctx.send(embed=emb)
 
     @commands.command()
     async def bonk(self, ctx, m: discord.Member = None):
