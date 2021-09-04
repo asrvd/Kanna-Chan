@@ -22,7 +22,7 @@ class Meme(commands.Cog):
         emb = discord.Embed(description=f"`{mem.name.lower()}_pat`",color=0x2e69f2)
         emb.set_author(
             name="pat, pat..",
-            url=ctx.author.avatar_url
+            icon_url=ctx.author.avatar_url
         )
         emb.set_footer(
             text="Kanna Chan",

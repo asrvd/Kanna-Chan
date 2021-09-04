@@ -154,7 +154,7 @@ class Roleplay(commands.Cog):
             m = ctx.author
         elif m.id == self.client.user.id:
             emb = discord.Embed(description=f"no u {ctx.author.mention}", color=0x2e69f2)
-            emb.set_image(url="https://c.tenor.com/eaAbCBZy0PoAAAAS/reverse-nozumi.gif")
+            emb.set_image(url="https://c.tenor.com/eaAbCBZy0PoAAAAC/reverse-nozumi.gif")
             await ctx.reply(embed=emb)
         else:
             emb = discord.Embed(description=f"{ctx.author.mention} kills {m.mention} ~ RIP", color=0x2e69f2)
