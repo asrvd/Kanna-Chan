@@ -72,7 +72,7 @@ genemb.add_field(
 )
 genemb.add_field(
     name="🎐 **INVITE ME**",
-    value=f"[Click here](https://discord.com/api/oauth2/authorize?client_id=857835279259664403&permissions=1812327489&scope=bot)",
+    value=f"[Click here](https://discord.com/api/oauth2/authorize?client_id=857835279259664403&permissions=138445974593&scope=bot%20applications.commands)",
     inline=True
 )
 genemb.add_field(
@@ -331,7 +331,7 @@ class Help(commands.Cog):
 
     @commands.command()
     async def invite(self, ctx):
-        emb = discord.Embed(title="INVITE KANNA CHAN!!", description="Invite Kanna in your server uwu\n[Click here](https://discord.com/api/oauth2/authorize?client_id=857835279259664403&permissions=1812327489&scope=bot)", color=0x2e69f2)
+        emb = discord.Embed(title="INVITE KANNA CHAN!!", description="Invite Kanna in your server uwu\n[Click here](https://discord.com/api/oauth2/authorize?client_id=857835279259664403&permissions=138445974593&scope=bot%20applications.commands)", color=0x2e69f2)
         kana = self.client.get_user(self.kana_id)
         emb.set_footer(
             text=f"Kanna Chan",
