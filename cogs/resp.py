@@ -3,6 +3,8 @@ import funresponses
 from discord.ext import commands
 import random
 from decouple import config
+import requests
+import json
 
 API_KEY = config("WEEBY_API_KEY")
 
