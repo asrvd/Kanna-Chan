@@ -2,6 +2,9 @@ import discord
 import funresponses
 from discord.ext import commands
 import random
+from decouple import config
+
+API_KEY = config("WEEBY_API_KEY")
 
 simp_gifs = [
     "https://i.imgur.com/RlrlmmP.gif",
@@ -28,9 +31,9 @@ class Response(commands.Cog):
     async def roast(self, ctx, mem: discord.Member = None):
         if mem == None:
             mem = ctx.author
-        emb = discord.Embed(titile="", description=f"{ctx.author.mention} roasts {mem.mention}..that hurt ouch\n\n*`{funresponses.roast()}`*", color=0x2e69f2)
-        emb.set_image(url="http://pa1.narvii.com/5829/7c80049211a976e27e51ed7ea406c401904289e5_hq.gif")
-        await ctx.send(embed=emb)
+        req = requests.get(f"https://weebyapi.xyz/json/roast?token={str(API_KEY)}")
+        js = json.loads(req.content)
+        await ctx.send(f"{mem.id}\n{js['response']}")
     
         
 def setup(client):
