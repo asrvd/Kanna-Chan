@@ -35,7 +35,7 @@ class Response(commands.Cog):
             mem = ctx.author
         req = requests.get(f"https://weebyapi.xyz/json/roast?token={str(API_KEY)}")
         js = json.loads(req.content)
-        await ctx.send(f"{mem.id}\n{js['response']}")
+        await ctx.send(f"{mem.mention}\n{js['response']}")
     
         
 def setup(client):
