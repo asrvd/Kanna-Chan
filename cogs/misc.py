@@ -25,6 +25,7 @@ class Misc(commands.Cog):
             "*Wo tumhen DP dikhaakar gumraah karegi,\nMagar Tum Aadhaar card par adde rehna..\n~KAKASHI*",
             "*yeh waqt bhi guzar jayega..\n~KAKASHI*",
             "*na reply chahiye\nna tera sath\nnikal meri zindagi se\nnahi karni tujhse koi baat..\n~SENSEI*",
+            "*love is pain\ngostudy for JEE Main..\n~SENSEI*",
             "*insaan ka dil bara hona chaiye, chota to mera dongle bhi he..\n~SAIYAN*",
             "*age is just a number, jail is just a room..\n~DA 8 YEAR OLD*"
             ]
