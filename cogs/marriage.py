@@ -139,7 +139,7 @@ class Marry(commands.Cog):
                     create(ctx.author.id, mem.id)
                 elif response.content.lower().strip() == "no":
                     msg = "The proposal between " + author + " and " + mem.name + " has been declined."
-                    em2 = discord.Embed(title=f"<a:kanna_cry:877036167206420500> {ctx.author.mention} your proposal was declined <a:kanna_cry:877036167206420500>", description=msg, color=0x2e69f2)
+                    em2 = discord.Embed(title=f"<a:kanna_cry:877036167206420500> {ctx.author.name} your proposal was declined <a:kanna_cry:877036167206420500>", description=msg, color=0x2e69f2)
                     em2.set_author(
                         name="Marriage!",
                         icon_url=ctx.author.avatar_url
