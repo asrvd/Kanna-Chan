@@ -46,7 +46,7 @@ class Confession(commands.Cog):
             cc = self.client.get_channel(ccid)
             if interaction.component.label.lower() == "approve":
                 await cc.send(embed=emb)
-                await interaction.respond(type=7, content="**Approved!**", embed=emb,
+                await interaction.respond(type=7, content=f"Approved by **{interaction.user.name}**", embed=emb,
                     components=[
                     [
                     Button(style=ButtonStyle.green, label="Approve", disabled=True),
@@ -55,7 +55,7 @@ class Confession(commands.Cog):
                 ],
                 )
             elif interaction.component.label.lower() == "disapprove":
-                await interaction.respond(type=7, content="**Disapproved!**", embed=emb,
+                await interaction.respond(type=7, content=f"Disapproved by **{interaction.user.name}**", embed=emb,
                     components=[
                     [
                     Button(style=ButtonStyle.green, label="Approve", disabled=True),
