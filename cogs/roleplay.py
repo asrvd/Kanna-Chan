@@ -108,6 +108,7 @@ class Roleplay(commands.Cog):
             await ctx.reply("Who do you want to `kill`?")
         else:
             emb = discord.Embed(description=f"{ctx.author.mention} kills {m.mention} ~ RIP", color=0x2e69f2)
+            print(return_gif("kill"))
             emb.set_image(url=return_gif("kill"))
             await ctx.send(embed=emb)
 
