@@ -170,7 +170,7 @@ class Avatar(commands.Cog):
         if members == []:
             members = [ctx.author]
         if len(members) == 1:
-            emb = discord.Embed(title="", description=f"", color=0xFF0055)
+            emb = discord.Embed(title="", description=f"", color=0x2e69f2)
             emb.set_image(url=members[0].avatar_url)
             await ctx.send(embed=emb)
             return
@@ -244,7 +244,7 @@ class Avatar(commands.Cog):
                 # f"images/generated/{ctx.author.id}.gif", filename="pic.gif"
                 f"{ctx.author.id}.gif", filename="pic.gif"
             )
-            emb = discord.Embed(title="", description=f"", color=0xFF0055)
+            emb = discord.Embed(title="", description=f"", color=0x2e69f2)
             emb.set_image(url="attachment://pic.gif")
         else:
             s = len(imgs)
@@ -263,7 +263,7 @@ class Avatar(commands.Cog):
                 # f"images/generated/{ctx.author.id}.png", filename="pic.jpg"
                 f"{ctx.author.id}.png", filename="pic.jpg"
             )
-            emb = discord.Embed(title="", description=f"", color=0xFF0055)
+            emb = discord.Embed(title="", description=f"", color=0x2e69f2)
             emb.set_image(url="attachment://pic.jpg")
 
         await ctx.send(file=file, embed=emb)
