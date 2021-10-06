@@ -1,11 +1,12 @@
-# Kanna Chan
+# Kanna Chan ❤️
 
-<img align='center' src="https://user-images.githubusercontent.com/68690233/125222011-cfb47e00-e2e6-11eb-9f35-a99342ce97ce.png">
+<img align='center' src="https://c.tenor.com/VEDaRqyKjyQAAAAC/kanna-kamui-loli-dragon.gif">
 
 <h2>ABOUT</h2>
 Kanna Chan is a Discord Bot with some Fun Commands. It can reply to some of your messages, play games with you, make some fun Cards for you and can also show your pfp or shared pfps.</br>
 </br>
-<a href="https://discord.com/api/oauth2/authorize?client_id=857835279259664403&permissions=318528&scope=bot">Invite Kanna!</a>
+<h2> <a href="https://discord.com/api/oauth2/authorize?client_id=857835279259664403&permissions=318528&scope=bot">Invite Kanna to your server Now !</a> </h2>
+<img align='center' src="https://c.tenor.com/oQn73ZkvcG4AAAAC/kanna.gif">
 
 <h2>Commands</h2>
 
