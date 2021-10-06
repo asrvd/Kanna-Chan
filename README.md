@@ -5,7 +5,7 @@
 <h2>ABOUT</h2>
 Kanna Chan is a Discord Bot with some Fun Commands. It can reply to some of your messages, play games with you, make some fun Cards for you and can also show your pfp or shared pfps.</br>
 </br>
-<h2> <a href="https://discord.com/api/oauth2/authorize?client_id=857835279259664403&permissions=318528&scope=bot">Invite Kanna to your server Now !</a> </h2>
+<h2> <a href="https://discord.com/api/oauth2/authorize?client_id=857835279259664403&permissions=318528&scope=bot">Invite Kanna to your server Now !</a> 😊</h2>
 <img align='center' src="https://c.tenor.com/oQn73ZkvcG4AAAAC/kanna.gif">
 
 <h2>Commands</h2>
