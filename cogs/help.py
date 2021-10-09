@@ -103,7 +103,7 @@ cemb = discord.Embed(title="💳 **CUSTOM CARDS**", description="`simpcard (pers
 utilemb = discord.Embed(title="📘 **UTILITY**", color=0x2e69f2)
 utilemb.add_field(
     name="👋 WELCOME MESSAGE",
-    value="`kana wsetup #channel` Setup a channel where kanna will welcome new members in your server!\n**It's an Admin/Mod only command**",
+    value="`kana wsetup #channel` Setup a channel where kanna will welcome new members in your server!\n**It's an Admin/Mod only command\n\n`kana wdisable` Disable welcome message setup for your server.**",
     inline=False
 )
 utilemb.add_field(
