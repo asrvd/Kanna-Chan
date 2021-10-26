@@ -44,5 +44,7 @@ class Anime(commands.Cog):
             f"**{quote}**\n\n~ **{char}** | **{anime}**"
         )
      
-
+def setup(client):
+    client.add_cog(Anime(client))
+    print(">> Anime loaded")
     
