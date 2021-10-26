@@ -36,7 +36,7 @@ class Anime(commands.Cog):
 
     @commands.command()
     @commands.is_owner()
-    async def send(self, ctx):
+    async def sendquote(self, ctx):
         anime, char, quote = make_request()
         quote_channel = self.client.get_channel(qcid)
         await ctx.add_reaction('✔')
