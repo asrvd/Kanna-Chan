@@ -14,7 +14,7 @@ from pytz import timezone
 qcid = 902509178352988220
 
 def make_request(): # Get Quote
-    response = requests.get("https://animechan.vercel.app/api/random")
+    response = requests.get("https://animechan.vercel.app/api/random", verify=False)
     resp = json.loads(response.content)
     return resp['anime'], resp['character'], resp['quote']
 
