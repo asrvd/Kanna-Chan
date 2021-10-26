@@ -104,7 +104,13 @@ class Misc(commands.Cog):
             "i hate you kanna",
             "hate you kanna"
         ]
-
+        
+        sad_words = [
+            "i am sad",
+            "i am depressed",
+            "i am very sad"
+        ]
+        
         love_emb = discord.Embed(title="", description=f"Kanna loves you too {message.author.mention} uwu", color=0x2e69f2)
         love_emb.set_image(url="https://pa1.narvii.com/7231/f52073bab90f9a13f3e292af0b3e1b1e8f8ba189r1-540-304_hq.gif")
         
@@ -113,14 +119,16 @@ class Misc(commands.Cog):
 
         if message.content.lower() in love_words:
             if message.author.id == 784363251940458516:
-                await message.reply(f"{message.author.mention}\nKanna loves asheesh too uwu..❤")
+                await message.reply(f"{message.author.name}\nKanna loves asheesh too uwu..❤")
                 await message.add_reaction('❤')
             else: 
                 await message.reply(embed=love_emb)
                 await message.add_reaction('❤')
+        elif message.content.lower() in sad_words:
+            await message.reply(f"{message.author.name} please don't be sad, everything will be alright, here take a hug <:kanna_hug:877036162345238528>")
         elif message.content.lower() in hate_words:
             if message.author.id == 784363251940458516:
-                await message.reply(f"{message.author.mention}\nBut Kanna loves asheesh..❤")
+                await message.reply(f"{message.author.name}\nBut Kanna loves asheesh..❤")
                 await message.add_reaction('❤')
             else: 
                 await message.reply(embed=hate_emb)
