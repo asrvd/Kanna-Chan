@@ -39,7 +39,7 @@ class Anime(commands.Cog):
     async def sendquote(self, ctx):
         anime, char, quote = make_request()
         quote_channel = self.client.get_channel(qcid)
-        await ctx.add_reaction('✔')
+        await ctx.message.add_reaction('✔')
         await quote_channel.send(
             f"**{quote}**\n\n~ **{char}** | **{anime}**"
         )
