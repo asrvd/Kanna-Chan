@@ -143,7 +143,8 @@ class Utility(commands.Cog):
             afcreate(ctx.author.id, ctx.guild.id, message)
             await ctx.reply(f"`{ctx.author.name}` your AFK has been set: {message}")
         except Exception:
-            return
+            afcreate(ctx.author.id, ctx.guild.id, message)
+            await ctx.reply(f"`{ctx.author.name}` your AFK has been set: {message}")
         
         
     @commands.Cog.listener()
