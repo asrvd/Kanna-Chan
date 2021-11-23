@@ -139,11 +139,12 @@ class Utility(commands.Cog):
         new_nick = "[AFK] " + nick
         try:
             await ctx.author.edit(nick = new_nick)
+            await asyncio.sleep(2)
+            afcreate(ctx.author.id, ctx.guild.id, message)
+            await ctx.reply(f"`{ctx.author.name}` your AFK has been set: {message}")
         except Exception:
             return
-        await asyncio.sleep(2)
-        afcreate(ctx.author.id, ctx.guild.id, message)
-        await ctx.reply(f"`{ctx.author.name}` your AFK has been set: {message}")
+        
         
     @commands.Cog.listener()
     async def on_message(self, message):
