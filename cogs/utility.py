@@ -152,12 +152,14 @@ class Utility(commands.Cog):
         if checkafk(message.author.id, message.guild.id):
             remove_afk(message.author.id, message.guild.id)
             await message.reply(f"Welcome back! your AFK has been removed", delete_after=15)
+            new_nick = message.author.display_name.strip("[AFK]")
+            await message.author.edit(nick=new_nick)
         for mention in message.mentions:
             if checkafk(mention.id, message.guild.id):
                 if message.author.bot:
                     return
                 else:
-                    note = get_afk_message(mention.id, message.author.id)
+                    note = get_afk_message(mention.id, message.guild.id)
                     await message.reply(
                     f"`{mention}` is AFK: **{note}**", delete_after=15)
           
