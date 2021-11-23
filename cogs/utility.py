@@ -132,7 +132,7 @@ class Utility(commands.Cog):
         await paginator.run()
 
     @commands.command()
-    async def afk(self, ctx, *, message):
+    async def afk(self, ctx, *, message=None):
         if message == None:
             message = "AFK"
         nick = ctx.author.display_name
