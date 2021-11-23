@@ -7,6 +7,7 @@ import json
 from decouple import config
 from disputils import BotEmbedPaginator
 from PIL import Image, ImageDraw, ImageFont
+import asyncio
 
 firebase = pyrebase.initialize_app(json.loads(config("firebaseConfig")))
 db = firebase.database()
@@ -23,6 +24,23 @@ def return_channel(guild):     #returns channel ID
         return None
     else:
         return channel
+
+def afcreate(id, guild,  message):
+    db.child("AFKUTIL").child(id).child(guild).set({"AFK": True, "MESSAGE": message})
+
+def checkafk(id, guild):
+    check = db.child("AFKUTIL").child(id).child(guild).child("AFK").get().val()
+    if check == None or check == False:
+        return False
+    elif check == True:
+        return True
+
+def get_afk_message(id, guild):
+    message = db.child("AFKUTIL").child(id).child(guild).child("MESSAGE").get().val()
+    return message
+
+def remove_afk(id, guild):
+    db.child("AFKUTIL").child(id).child(guild).remove()
 
 class Utility(commands.Cog):
     def __init__(self, client):
@@ -113,6 +131,30 @@ class Utility(commands.Cog):
         paginator = BotEmbedPaginator(ctx, embeds, control_emojis=("⏮", "◀", "▶", "⏭"))
         await paginator.run()
 
+    @commands.command()
+    async def afk(self, ctx, *, message):
+        if message == None:
+            message = "AFK"
+        nick = ctx.author.display_name
+        new_nick = "[AFK] " + nick
+        await ctx.author.edit(nick = new_nick)
+        await asyncio.sleep(2)
+        afcreate(ctx.author.id, ctx.guild.id, message)
+        await ctx.reply(f"`{ctx.author.name}` your AFK has been set: {message}")
+        
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if checkafk(message.author.id, message.guild.id):
+            remove_afk(message.author.id, message.guild.id)
+            await message.reply(f"Welcome back! your AFK has been removed", delete_after=15)
+        for mention in message.mentions:
+            if checkafk(mention.id, message.guild.id):
+                if message.author.bot:
+                    return
+                else:
+                    note = get_afk_message(mention.id, message.author.id)
+                    await message.reply(
+                    f"`{mention}` is AFK: **{note}**", delete_after=15)
           
 def setup(client):
   client.add_cog(Utility(client))
