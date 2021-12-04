@@ -39,6 +39,14 @@ async def on_ready():
 
 @client.command()
 @commands.is_owner()
+async def unload(ctx, *,extension):
+  for file in os.listdir("./cogs"):
+    if file.endswith(".py") and not file.startswith("_"):
+      client.reload_extension(f"cogs.{extension}")
+  await ctx.send(f"```>> Kanna unloaded {extension}```")
+
+@client.command()
+@commands.is_owner()
 async def reload(ctx):
   for file in os.listdir("./cogs"):
     if file.endswith(".py") and not file.startswith("_"):
