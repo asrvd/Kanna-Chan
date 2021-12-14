@@ -35,7 +35,11 @@ class F(commands.Cog):
                 await resp.respond(type=4, ephemeral=False, content=f"**{resp.user.name.capitalize()}** has paid their respect.")
             except asyncio.TimeoutError:
                 await msg.edit(components=cmd)
-                await ctx.send(f"> *{len(check_list)} users paid their respect.*")
+                if type(user) == discord.User:
+                    r = user.name.capitalize()
+                else:
+                    r = user.capitalize()
+                await ctx.send(f"> *{len(check_list)} users paid their respect to {r}.*")
                 check_list.clear()
                 break
 
