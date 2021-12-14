@@ -32,10 +32,10 @@ class F(commands.Cog):
                     return resp.channel == ctx.channel and resp.user not in check_list
                 resp = await self.client.wait_for("button_click", check=check, timeout=15)
                 check_list.append(resp.user)
-                await resp.respond(type=4, ephemeral=False, content=f"**{resp.user.name.capitalize}** has paid their respect.")
+                await resp.respond(type=4, ephemeral=False, content=f"**{resp.user.name.capitalize()}** has paid their respect.")
             except asyncio.TimeoutError:
                 await msg.edit(components=cmd)
-                await ctx.send(f"{len(check_list)} users paid their respect.")
+                await ctx.send(f"> *{len(check_list)} users paid their respect.*")
                 check_list.clear()
                 break
 
