@@ -21,12 +21,13 @@ def load_cogs():
     if file.endswith(".py") and not file.startswith("_"):
       client.load_extension(f"cogs.{file[:-3]}")
 
-@tasks.loop(seconds=3)
+@tasks.loop(seconds=10)
 async def switchpresence():
   await client.wait_until_ready()
-  sm = [f"{len(client.guilds)} Servers!", f"{len(client.users)} Users!"]
+  #sm = [f"{len(client.guilds)} Servers!", f"{len(client.users)} Users!"]
+  ch = ["Christmas Carols", "Snowfall", "Cold December Night", "小林さんちのメイドラゴン"]
   ast = random.choice(sm)
-  await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.watching, name=f"k.help & {ast}"))
+  await client.change_presence(status=discord.Status.online, activity=discord.Streaming(name=random.choice(ch), url="https://twitch.tv/asheeeshh"))
 
 @client.event
 async def on_ready():
