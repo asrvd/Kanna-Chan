@@ -48,13 +48,13 @@ class Utility(commands.Cog):
         self.kana_id = 857835279259664403
     
     @commands.command()
-    @commands.has_permissions(administrator=True)
+    @commands.has_permissions(manage_server=True)
     async def wsetup(self, ctx, *, channel: discord.TextChannel = None):
         create(ctx.guild.id, channel.id)
         await ctx.send(f">> Welcome messages have been setup to {channel.mention} now.")
         
     @commands.command()
-    @commands.has_permissions(administrator=True)
+    @commands.has_permissions(manage_server=True)
     async def wdisable(self, ctx):
         if return_channel(ctx.guild.id) == None:
             await ctx.reply("Welcome message has not been setup for this server.")
