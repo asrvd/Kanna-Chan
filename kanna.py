@@ -27,7 +27,7 @@ async def switchpresence():
   #sm = [f"{len(client.guilds)} Servers!", f"{len(client.users)} Users!"]
   ch = ["Christmas Carols", "Snowfall", "Cold December Night", "小林さんちのメイドラゴン"]
   #ast = random.choice(sm)
-  await client.change_presence(status=discord.Status.online, activity=discord.Streaming(name=random.choice(ch), url="https://twitch.tv/asheeeshh"))
+  await client.change_presence(status=discord.Status.online, activity=discord.Activity(type=discord.ActivityType.playing, name="/ Commands Coming Soon!"))
 
 @client.event
 async def on_ready():
