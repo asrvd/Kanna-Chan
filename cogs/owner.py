@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import io
+import datetime
 
 class Owner(commands.Cog):
     def __init__(self, client):
@@ -8,7 +9,7 @@ class Owner(commands.Cog):
 
     @commands.command(aliases=['ds'])
     async def dumpservers(self, ctx):
-        timestamp = discord.utils.utcnow().strftime("%Y-%m-%d %H.%M")
+        timestamp = datetime.datetime.utcnow().strftime("%Y-%m-%d %H.%M")
         server_file = "Servers-{}.txt".format(timestamp)
 
         mess = await ctx.send(
