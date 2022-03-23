@@ -1,4 +1,5 @@
 # Kanna Chan ❤️
+**‼ Note: This version of kanna is no longer in use, for the source code of rewrite version click [here](https://github.com/asheeeshh/kanna-rewrite).**
 
 <img align='center' src="https://c.tenor.com/VEDaRqyKjyQAAAAC/kanna-kamui-loli-dragon.gif">
 
